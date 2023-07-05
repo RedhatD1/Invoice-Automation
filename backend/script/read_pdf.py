@@ -11,6 +11,6 @@ def read_pdf(file_path):
             text_content += text
     return text_content
 
-# Usage
-text = read_pdf('invoices/1.pdf')
-print(text)
+# # Usage
+# text = read_pdf('invoices/1.pdf')
+# print(text)
