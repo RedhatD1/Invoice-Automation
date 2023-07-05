@@ -1,19 +1,16 @@
-import PyPDF2
+import pdfplumber
 
 def read_pdf(file_path):
     # Open the PDF file in binary mode
-    with open(file=file_path, mode='rb') as file:
-        # Create a PDF reader object
-        reader = PyPDF2.PdfReader(file)
+    with pdfplumber.open(file_path) as pdf:
         text_content = ""
 
         # Iterate over each page and extract the text
-        for page in reader.pages:
+        for page in pdf.pages:
             text = page.extract_text()
-            text_content+=text
-
+            text_content += text
     return text_content
 
-# # Usage
-# text = read_pdf('invoices/3.pdf')
-# print(text)
+# Usage
+text = read_pdf('invoices/1.pdf')
+print(text)
