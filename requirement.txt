@@ -1,0 +1,3 @@
+pandas
+numpy
+pdf2image
