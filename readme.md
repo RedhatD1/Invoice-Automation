@@ -8,6 +8,7 @@ Put invoices in "/invoices/" directory
 python3 -m venv env
 source env/bin/activate
 pip3 install -r requirements.txt
+You need to have java runtime installed
 
 ### Installing new libraries
 pip3 install <library_name>

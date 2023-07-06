@@ -1,5 +1,6 @@
 from read_pdf import *
 import re
+import tabula
 
 def extract_invoice_number(text):
     try:
@@ -19,7 +20,17 @@ def extract_invoice_number(text):
             
     except IndexError:
         return None
+
+
+def extract_table(file_path):
     
+    tables = tabula.read_pdf(file_path, stream=True, pages='all', multiple_tables=False)
+    
+    if len(tables) > 0:
+        return tables[0]
+    else:
+        return None
+
 def main():
     for i in range(1, 13):
         path = 'invoices/' + str(i) + '.pdf'
@@ -27,6 +38,13 @@ def main():
         invoice = read_pdf(path)
         # print(invoice)
         invoice_number = extract_invoice_number(invoice)
+        invoice_tables = extract_table(path)
         print(f'Invoice {i} -> Invoice Number: {invoice_number}')
+        if invoice_tables is not None:
+            print(f'{path} has {len(invoice_tables)} table(s)')
+            print(invoice_tables)
+        else:
+            print(f'{path} has no readable tables')
+        print("-----------------------")
 if __name__ == "__main__":
     main()
