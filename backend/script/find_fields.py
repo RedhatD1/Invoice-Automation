@@ -5,25 +5,33 @@ import json
 import spacy
 
 def extract_lines(text):
-    last_digit_line_number = None
+    total_line_number = None
     description_line_number = None
 
     lines = text.split('\n')
 
-    # Find the line number of the last available digit
+    # Find the line number of the line containing "total"
     for i, line in enumerate(lines):
-        if any(char.isdigit() for char in line):
-            last_digit_line_number = i
+        if 'total' in line.lower():
+            total_line_number = i
 
     # Find the line number of the line containing "description"
     for i, line in enumerate(lines):
         if 'description' in line.lower():
             description_line_number = i
 
-    # Append the lines between "description" and the last available digit
+    # Check if "description" is found
+    if description_line_number is None:
+        # Find the line number of the line containing "price"
+        for i, line in enumerate(lines):
+            if 'price' in line.lower():
+                description_line_number = i
+                break
+
+    # Append the lines between "description" and "total"
     appended_lines = []
-    if description_line_number is not None and last_digit_line_number is not None:
-        appended_lines = lines[description_line_number:last_digit_line_number + 1]
+    if description_line_number is not None and total_line_number is not None:
+        appended_lines = lines[description_line_number:total_line_number + 1]
 
     table_field = '\n'.join(appended_lines)
 
@@ -56,22 +64,17 @@ def create_dataframe(text):
 def extract_information(text):
     result = {}
 
-    # Load the Spacy English language model
     nlp = spacy.load("en_core_web_sm")
-
-    # Process the text with Spacy
     doc = nlp(text)
 
-    # Extract phone number
     result['phone']= extract_contact_numbers(text)
 
-    # Extract email address
+
     for token in doc:
         if token.like_email:
             result["email"] = token.text
             break
 
-    # Extract billing and shipping addresses
     addresses = []
     for i, token in enumerate(doc[:-1]):
         if token.text == "Address":
@@ -89,6 +92,26 @@ def extract_information(text):
 
     return json.dumps(result, indent=4)
 
-text = read_pdf('invoices/8.pdf')
-print(extract_information(text))
-table_field = extract_lines(text)
+
+def parse_table_data(table_data):
+    rows = text.split('\n')
+    headers = rows[0].split()
+    data_rows = [row.split() for row in rows[1:]]
+
+    # Fill empty cells with NaN
+    max_length = max(len(row) for row in data_rows)
+    data_rows = [row + [''] * (max_length - len(row)) for row in data_rows]
+
+    df = pd.DataFrame(data_rows, columns=headers)
+    df = df.replace('', float('nan'))
+
+    print(df)
+    return df
+
+for i in range(1,13):
+    text = read_pdf(f'invoices/{i}.pdf')
+    # print(extract_information(text))
+    print(i)
+    table_field = extract_lines(text)
+    # parse_table_data(table_field)
+    print('\n')

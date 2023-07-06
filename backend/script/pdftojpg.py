@@ -1,17 +1,14 @@
-from PyPDF2 import PdfFileReader
-from wand.image import Image
+import os
+from pdf2image import convert_from_path
 
 def pdf_to_jpg(input_pdf_path, output_jpg_path):
-    with open(input_pdf_path, 'rb') as pdf_file:
-        pdf = PdfFileReader(pdf_file)
-        num_pages = pdf.numPages
+    images = convert_from_path(input_pdf_path, poppler_path=r'C:/Program Files/poppler-23.05.0/Library/bin')
+    filename = os.path.splitext(os.path.basename(input_pdf_path))[0]
 
-        with Image() as img:
-            for page_num in range(num_pages):
-                pdf_page = pdf.getPage(page_num)
-                img.from_bytes(pdf_page.extractImages()[0][7]['/Filter'][1]).save(filename=output_jpg_path.format(page_num))
+    for i, image in enumerate(images):
+        jpg_path = os.path.join(output_jpg_path, f'{filename}_page_{i+1}.jpg')
+        image.save(jpg_path, 'JPEG')
 
-import os
 
 def convert_pdfs_in_directory(input_dir, output_dir):
     # Create the output directory if it doesn't exist
@@ -24,12 +21,8 @@ def convert_pdfs_in_directory(input_dir, output_dir):
     # Process each PDF file
     for pdf_file in pdf_files:
         pdf_path = os.path.join(input_dir, pdf_file)
-        jpg_file = os.path.splitext(pdf_file)[0] + '.jpg'
-        jpg_path = os.path.join(output_dir, jpg_file)
 
-        # Call the pdf_to_jpg function to convert the current PDF to JPG
-        pdf_to_jpg(pdf_path, jpg_path)
-
+        pdf_to_jpg(pdf_path, output_dir)
 
 
 def main():
