@@ -35,7 +35,8 @@ def clean_header(df):
         # Replace column names with values from the first row
         df.columns = df.iloc[0]
         # Reset index
-        df.reset_index(drop=True, inplace=True)
+        df.reset_index(drop=False, inplace=True)
+        
     return df
 
 def clean_tables(df):
@@ -52,7 +53,6 @@ def extract_table(file_path):
         return None
 
 import spacy
-
 def extract_addresses(text):
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
@@ -66,6 +66,24 @@ def extract_addresses(text):
     concatenated_addresses = ', '.join(addresses)
     return concatenated_addresses
 
+def remove_non_alphanumeric(text):
+    # Remove brackets
+    text = re.sub(r'\[|\]|\(|\)', '', text)
+    # Remove special characters and punctuation
+    text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
+    return text
+
+def extract_total_numbers(text):
+    numbers = re.findall(r'Total\s+(\d+(?:\.\d+)?)', text, re.IGNORECASE)
+    if numbers:
+        return numbers[-1]
+    else:
+        numbers = re.findall(r'Total\s+Amount\s+(\d+(?:\.\d+)?)', text, re.IGNORECASE)
+        if numbers:
+            return numbers[-1]
+        else:
+            return None
+
 def main():
     for i in range(1, 17):
         invoice_path = 'invoices/' + str(i) + '.pdf'
@@ -74,10 +92,12 @@ def main():
         invoice_number = extract_invoice_number(invoice)
         invoice_addresses = extract_addresses(invoice)
         invoice_table = extract_table(invoice_path)
+        invoice_amount = extract_total_numbers(remove_non_alphanumeric(invoice))
 
         print(f'\n\n\n\n\n')
         print(f'Invoice {i} -> ')
         print(f'Invoice Number: {invoice_number}')
+        print(f'Invoice Amount: {invoice_amount}')
         print(f'Invoice Addresses: {invoice_addresses}')
         if invoice_table is not None:
             # print(f'{invoice_path} has {len(invoice_table)} table(s)')
