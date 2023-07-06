@@ -29,12 +29,25 @@ def create_json(df):
 
     return json_objects
 
+def clean_header(df):
+    # Check if any of the desired column names exist in the DataFrame
+    if not any(col_name in df.columns for col_name in ["Description", "Quantity", "Unit Price", "Amount"]):
+        # Replace column names with values from the first row
+        df.columns = df.iloc[0]
+        # Reset index
+        df.reset_index(drop=True, inplace=True)
+    return df
 
-def extract_table(file_path, output_path):
-    
-    tables = tabula.read_pdf(file_path, stream=True, pages='all', multiple_tables=False)
-    if len(tables) > 0:
-        return tables[0]
+def clean_tables(df):
+    df = df.dropna(thresh=df.shape[1]-1)
+    df = clean_header(df) # Use with caution
+    return df
+
+def extract_table(file_path):
+    tables1 = tabula.read_pdf(file_path, stream=True, pages='all', multiple_tables=False)
+    if len(tables1) > 0:
+        table = clean_tables(tables1[0])
+        return table
     else:
         return None
 
@@ -54,14 +67,13 @@ def extract_addresses(text):
     return concatenated_addresses
 
 def main():
-    for i in range(1, 13):
+    for i in range(1, 17):
         invoice_path = 'invoices/' + str(i) + '.pdf'
-        csv_path = 'invoices/' + str(i) + '.csv'
         invoice = read_pdf(invoice_path)
         # print(invoice)
         invoice_number = extract_invoice_number(invoice)
         invoice_addresses = extract_addresses(invoice)
-        invoice_table = extract_table(invoice_path, csv_path)
+        invoice_table = extract_table(invoice_path)
 
         print(f'\n\n\n\n\n')
         print(f'Invoice {i} -> ')
