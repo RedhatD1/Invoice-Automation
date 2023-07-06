@@ -2,7 +2,7 @@ invoices/
 invoices_img
 /backend/script/test.py
 .DS_Store
-
+/backend\script\edenai.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
