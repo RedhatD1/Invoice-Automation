@@ -1,6 +1,7 @@
 from read_pdf import *
 import re
 import tabula
+import json
 
 def extract_invoice_number(text):
     try:
@@ -41,7 +42,7 @@ def clean_header(df):
 
 def clean_tables(df):
     df = df.dropna(thresh=df.shape[1]-1)
-    df = clean_header(df) # Use with caution
+    # df = clean_header(df) # Use with caution
     return df
 
 def extract_table(file_path):
@@ -50,7 +51,7 @@ def extract_table(file_path):
         table = clean_tables(tables1[0])
         return table
     else:
-        return None
+        return []
 
 import spacy
 def extract_addresses(text):
@@ -84,36 +85,30 @@ def extract_total_numbers(text):
         else:
             return None
 
+def execute_script(input_path):
+    invoice_path = input_path
+    invoice = read_pdf(invoice_path)
+    invoice_number = extract_invoice_number(invoice)
+    invoice_addresses = extract_addresses(invoice)
+    invoice_table = extract_table(invoice_path)
+    invoice_amount = extract_total_numbers(remove_non_alphanumeric(invoice))
+
+    # Create a dictionary to hold the variables
+    data = {
+        "invoice_number": invoice_number,
+        "invoice_amount": invoice_amount,
+        "invoice_address": invoice_addresses,
+    }
+
+    # Convert the dictionary to JSON
+    json_data = json.dumps(data)
+
+    return json_data
+
 def main():
-    for i in range(1, 17):
-        invoice_path = 'invoices/' + str(i) + '.pdf'
-        invoice = read_pdf(invoice_path)
-        # print(invoice)
-        invoice_number = extract_invoice_number(invoice)
-        invoice_addresses = extract_addresses(invoice)
-        invoice_table = extract_table(invoice_path)
-        invoice_amount = extract_total_numbers(remove_non_alphanumeric(invoice))
-
-        print(f'\n\n\n\n\n')
-        print(f'Invoice {i} -> ')
-        print(f'Invoice Number: {invoice_number}')
-        print(f'Invoice Amount: {invoice_amount}')
-        print(f'Invoice Addresses: {invoice_addresses}')
-        if invoice_table is not None:
-            # print(f'{invoice_path} has {len(invoice_table)} table(s)')
-            print(f"The table is:")
-            print(invoice_table)
-            print("------------------------------------------------")
-            print(f"The table in JSON format is:")
-            table = create_json(invoice_table)
-            for row in table:
-                print(row)
-            
-        else:
-            print(f'{invoice_path} has no readable tables')
-        
-        print(f'\n\n\n\n\n')
-
+    # Execute the script
+    json_data = execute_script('invoices/2.pdf')
+    print(json_data)
 
 if __name__ == "__main__":
     main()
