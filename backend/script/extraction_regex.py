@@ -93,23 +93,40 @@ def extract_date(input_string):
     
     return matches[0]
 
+def extract_phone(text):
+    pattern = r"(\+?88)?01[3-9]\d{8}"
+    matches = re.findall(pattern, text)
+    if not matches:
+        return "None"
+    else:
+        return matches[0]
+
+def extract_email(text):
+    pattern = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"
+    matches = re.findall(pattern, text)
+    if not matches:
+        return "None"
+    else:
+        return matches[0]
+
 def execute_script(input_path):
-    invoice_path = input_path
+    invoice_path = f'invoices/{input_path}'
     invoice = read_pdf(invoice_path)
     invoice_number = extract_invoice_number(invoice)
     invoice_addresses = extract_addresses(invoice)
     invoice_table = extract_table(invoice_path)
     invoice_amount = extract_total_numbers(remove_non_alphanumeric(invoice))
-
+    invoice_phone = extract_phone(invoice)
+    invoice_email = extract_email(invoice)
     invoice_dict = invoice_table.to_dict(orient="records")
-    
+    invoice_name = input_path.split(".")[0]
     
     invoice_date = extract_date(invoice)
     data = {
         "customer_info": {
-            "name": "John Doe",
-            "phone": "1234567890",
-            "email": "john@doe.com",
+            "name": invoice_name,
+            "phone": invoice_phone,
+            "email": invoice_email,
             "billing_address": invoice_addresses,
             "shipping_address": invoice_addresses,
         },
