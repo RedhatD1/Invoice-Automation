@@ -94,11 +94,26 @@ def execute_script(input_path):
     invoice_amount = extract_total_numbers(remove_non_alphanumeric(invoice))
 
     invoice_dict = invoice_table.to_dict(orient="records")
+    from datetime import datetime
+
+    today = datetime.today()
+    formatted_date = today.strftime("%d-%m-%Y")
+    
     data = {
-        "invoice_number": "KA354448",
-        "invoice_amount": "3374",
-        "invoice_address": "Houston",
-        "invoice_table": invoice_dict
+        "customer_info": {
+            "name": "John Doe",
+            "phone": "1234567890",
+            "email": "john@doe.com",
+            "billing_address": invoice_addresses,
+            "shipping_address": invoice_addresses,
+        },
+        "item_details": invoice_dict,
+        "total_amount": invoice_amount,
+        "note": "Thank you.",
+        "invoice_info": {
+            "date": formatted_date,
+            "number": invoice_number,
+        },
     }
     return data
 
