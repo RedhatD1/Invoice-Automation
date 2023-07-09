@@ -40,6 +40,13 @@ def clean_header(df):
         
     return df
 
+def remove_currency(text):
+    # Remove currency symbols
+    text = re.sub(r'\$|\£|\€|\¥|\₹', '', text)
+    # Remove commas
+    text = re.sub(r',', '', text)
+    return text
+
 def clean_tables(df):
     df = df.dropna(thresh=df.shape[1]-1)
     # df = clean_header(df) # Use with caution
@@ -58,7 +65,8 @@ def extract_table(file_path):
 
         # Rename columns based on index
         table = table.set_axis([new_column_names.get(idx, col) for idx, col in enumerate(current_column_names)], axis=1)
-
+        # Remove currency symbols and commas
+        table['amount'] = table['amount'].apply(remove_currency)
         return table
     else:
         return []
@@ -119,6 +127,8 @@ def extract_email(text):
     else:
         return matches[0]
 
+
+
 def execute_script(input_path):
     invoice_path = f'invoices/{input_path}'
     invoice = read_pdf(invoice_path)
@@ -126,6 +136,7 @@ def execute_script(input_path):
     invoice_addresses = extract_addresses(invoice)
     invoice_table = extract_table(invoice_path)
     invoice_amount = extract_total_numbers(remove_non_alphanumeric(invoice))
+    invoice_amount = remove_currency(invoice_amount)
     invoice_phone = extract_phone(invoice)
     invoice_email = extract_email(invoice)
     invoice_dict = invoice_table.to_dict(orient="records")
