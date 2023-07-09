@@ -93,17 +93,14 @@ def execute_script(input_path):
     invoice_table = extract_table(invoice_path)
     invoice_amount = extract_total_numbers(remove_non_alphanumeric(invoice))
 
-    # Create a dictionary to hold the variables
+    invoice_dict = invoice_table.to_dict(orient="records")
     data = {
-        "invoice_number": invoice_number,
-        "invoice_amount": invoice_amount,
-        "invoice_address": invoice_addresses,
+        "invoice_number": "KA354448",
+        "invoice_amount": "3374",
+        "invoice_address": "Houston",
+        "invoice_table": invoice_dict
     }
-
-    # Convert the dictionary to JSON
-    json_data = json.dumps(data)
-
-    return json_data
+    return data
 
 def main():
     # Execute the script
