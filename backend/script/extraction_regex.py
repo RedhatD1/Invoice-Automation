@@ -49,6 +49,16 @@ def extract_table(file_path):
     tables1 = tabula.read_pdf(file_path, stream=True, pages='all', multiple_tables=False)
     if len(tables1) > 0:
         table = clean_tables(tables1[0])
+        if 'currency' not in table.columns:
+            # Add the column with default value to all rows
+            table['currency'] = 'taka'
+        current_column_names = table.columns.tolist()
+        # Create a dictionary to map index to new column names
+        new_column_names = {0: 'name', 1: 'description', 2: 'quantity', 3: 'unit_price', 4: 'amount', 5: 'currency'}
+
+        # Rename columns based on index
+        table = table.set_axis([new_column_names.get(idx, col) for idx, col in enumerate(current_column_names)], axis=1)
+
         return table
     else:
         return []
