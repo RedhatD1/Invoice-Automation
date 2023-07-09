@@ -90,8 +90,8 @@ def extract_date(input_string):
     if not matches:
         today = datetime.today()
         formatted_date = today.strftime("%d-%m-%Y")
-    
-    return matches[0]
+    else:
+        return matches[0]
 
 def extract_phone(text):
     pattern = r"(\+?88)?01[3-9]\d{8}"
