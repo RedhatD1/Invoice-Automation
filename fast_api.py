@@ -23,8 +23,8 @@ async def get_items(request: Request):
     params = request.query_params
     
     # Extract specific query parameters
-    file_name = params.get("pdf_file_name")
-    algo_name = params.get("algo_name")
+    file_name = params.get("pdfFileName")
+    # algo_name = params.get("algo_name")
     json_data = execute_script(file_name)
     # Return the response
     return JSONResponse(content=json_data)
