@@ -1,7 +1,7 @@
 from read_pdf import *
 import re
 import tabula
-import json
+from datetime import datetime
 
 def extract_invoice_number(text):
     try:
@@ -84,6 +84,14 @@ def extract_total_numbers(text):
             return numbers[-1]
         else:
             return None
+def extract_date(input_string):
+    pattern = r'\b(?:\d{1,2}(?:-|\/)\d{1,2}(?:-|\/)\d{4}|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4})\b'
+    matches = re.findall(pattern, input_string)
+    if not matches:
+        today = datetime.today()
+        formatted_date = today.strftime("%d-%m-%Y")
+    
+    return matches[0]
 
 def execute_script(input_path):
     invoice_path = input_path
@@ -94,11 +102,9 @@ def execute_script(input_path):
     invoice_amount = extract_total_numbers(remove_non_alphanumeric(invoice))
 
     invoice_dict = invoice_table.to_dict(orient="records")
-    from datetime import datetime
-
-    today = datetime.today()
-    formatted_date = today.strftime("%d-%m-%Y")
     
+    
+    invoice_date = extract_date(invoice)
     data = {
         "customer_info": {
             "name": "John Doe",
@@ -111,7 +117,7 @@ def execute_script(input_path):
         "total_amount": invoice_amount,
         "note": "Thank you.",
         "invoice_info": {
-            "date": formatted_date,
+            "date": invoice_date,
             "number": invoice_number,
         },
     }
