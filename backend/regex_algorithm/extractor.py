@@ -72,7 +72,7 @@ def standardize_df(df, currency="Taka"):
     df['currency'] = currency
     return df
 def get_json(df):
-    json = df.to_json(orient='records')
+    json = df.to_dict('records')
     return json
 
 def convert_to_json_template(df, name="", phone="", email="", billing_address="", shipping_address="", items=[], total_amount=0, note="", date="", number=""):
@@ -109,5 +109,5 @@ def get_json_formatted(file_name):
                                          date=details_utils.extract_date(invoice_text),
                                          number=details_utils.extract_invoice_number(invoice_text))
 
-
+    print(json_data)
     return json_data
