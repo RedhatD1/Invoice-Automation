@@ -55,8 +55,8 @@ async def get_items(request: Request):
     file_name = params.get("pdfFileName")
     # algo_name = params.get("algo_name")
     try: 
-        # json_data = execute_script(file_name)
-        json_data = extractor.get_json_formatted(file_name)
+        # json_data = execute_script(file_name) # old regex, gives errors
+        json_data = extractor.get_json_formatted(file_name) # new regex, does error handling
         return JSONResponse(content=json_data)
     except Exception as e:
         return JSONResponse(content=default_response)
