@@ -56,7 +56,7 @@ async def get_items(request: Request):
     # algo_name = params.get("algo_name")
     try: 
         # json_data = execute_script(file_name)
-        json_data = extractor.get_table(file_name)
+        json_data = extractor.get_json_formatted(file_name)
         return JSONResponse(content=json_data)
     except Exception as e:
         return JSONResponse(content=default_response)

@@ -95,7 +95,7 @@ def convert_to_json_template(df, name="", phone="", email="", billing_address=""
     }
     return json_data
 
-def get_table(file_name):
+def get_json_formatted(file_name):
     file_path = "invoices/" + file_name
     invoice_text = reader.read_invoice(file_path)
     invoice_tables = reader.read_tables(file_path)
