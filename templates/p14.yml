@@ -1,0 +1,35 @@
+issuer: ZAHID HOSSIN
+keywords:
+  - www.nativetechnologybd.com
+fields:
+  email:
+    parser: regex
+    regex: 'E-mail:\s*\w+@\w+.\w+'
+  phone:
+    parser: regex
+    regex: '(\+?8?8?01[3-9]\d{8})'
+  amount:
+    parser: regex
+    regex: \s*TOTAL\s+(\d+,\d+.\d+)
+  date:
+    parser: regex
+    regex: '\d{2}-[A-Za-z]{3}-\d{4}'
+  invoice_number:
+    parser: regex
+    regex: 'Invoice\s+No.\s+(\d{7})'
+lines:
+  start: \s*SL\s*NO.\s*PRODUCT\s*NAME\s*QUANTITY\s*PRICE\s*DISCOUNT\s*TAKA
+  end: SUBTOTAL
+  first_line: \s*\d*(?P<description>.+)\s+(?P<qty>\d+)\s+(?P<unit_price>\d+,\d+.\d+)\s+(?P<price>\d+,\d+.\d+)
+  line: '^\s+(?P<desc>.+)\s+^'
+  types:
+      qty: float
+      unit_price: float
+      price: float
+options:
+  remove_whitespace: false
+  currency: TK
+  date_formats:
+    - '%d/%m/%y'
+  languages:
+    - en

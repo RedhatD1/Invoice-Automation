@@ -1,6 +1,6 @@
-issuer: Aubry Kepe
+issuer: Jenni Althrope
 keywords:
-  - Curabitur c
+  - Pellentesque viverr
   - Houston, Te, 77055
 fields:
   email:
@@ -11,7 +11,7 @@ fields:
     regex: '\(\d{3}\)\s+\d{3}-\d{4}'
   amount:
     parser: regex
-    regex: 'Total:\s+(\d+)'
+    regex: 'Tax Amount($)\s+$(\d+)'
   date:
     parser: regex
     regex: '\s+(\d{1,2}\/\d{1,2}\/\d{4})'
@@ -19,13 +19,10 @@ fields:
     parser: regex
     regex: '\s+(\w{2}\d{6})'
 lines:
-  start: \s+Description\s+Quantity\s+Unit\sPrice\s+Total
-  end: \s+Total:\s
-  first_line: \s\w\s(?P<description>.+)\s+(?P<qty>\d+)\s+(?P<unit_price>\d+)\s+(?P<price>\$\d+)
+  start: \s+Description\s+Hours\s+Rate($/hr)\s+Amount($)
+  end: \s+Sub Total($)\s
+  first_line: \s\w\s(?P<description>.+)\s+(?P<hour>\d+)\s+(?P<rate>\d+)\s+(?P<price>\$\d+)
   line: '^\s+(?P<desc>.+)$'
-  types:
-      qty: float
-      unit_price: float
 options:
   remove_whitespace: false
   currency: USD

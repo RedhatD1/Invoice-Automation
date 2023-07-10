@@ -1,0 +1,40 @@
+issuer: Mushok
+keywords:
+  - Reddot DH
+  - Outlet One Gulsan
+fields:
+  email:
+    parser: regex
+    regex: '\w+@\w+.\w+'
+  phone:
+    parser: regex
+    regex: '(\+?8?8?01[3-9]\d{8})'
+  amount:
+    parser: regex
+    regex: \s*Grand\sTotal\s+(\d+.\d+)
+  date:
+    parser: regex
+    regex: '\w+\s\d+,\s\d{4}'
+  invoice_number:
+    parser: regex
+    regex: 'Order # (\d{10})'
+  # billing_address:
+  #   parser: regex
+  #   regex: 'Outlet One Gulsan'
+lines:
+  start: \s*ITEM\s+UNIT\sPRICE\s+QUANTITY\s+DISCOUNT\s+AMOUNT\s*\(৳\)
+  end: Sub-Total
+  first_line: \s*(?P<description>.+)\s+(?P<unit_price>\d+.\d+)\s+(?P<qty>\d+)\s+(?P<discount>\d+.\d+)\s+(?P<price>\d+.\d+)
+  line: '^\s+(?P<desc>.+)\s+^'
+  types:
+      qty: float
+      unit_price: float
+      discount: float
+      price: float
+options:
+  remove_whitespace: false
+  currency: TK
+  date_formats:
+    - '%d/%m/%y'
+  languages:
+    - en

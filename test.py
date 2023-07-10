@@ -10,8 +10,8 @@ def extract_invoice_details(extracted_data):
             "name": extracted_data.get("issuer", ""),
             "phone": extracted_data.get("phone", ""),
             "email": extracted_data.get("email", ""),
-            # "billing_address": extracted_data.get("billing_address", ""),
-            # "shipping_address": extracted_data.get("shipping_address", "")
+            "billing_address": extracted_data.get("billing_address", ""),
+            "shipping_address": extracted_data.get("shipping_address", "")
         },
         "item_details": [],
         "total_amount": extracted_data.get("amount", ""),
@@ -25,11 +25,12 @@ def extract_invoice_details(extracted_data):
     items = extracted_data.get("lines", [])
     for item in items:
         item_detail = {
-            "name": item.get("description", ""),
+            "item_name": item.get("description", ""),
             "unit_price": item.get("unit_price", ""),
             "quantity": item.get("qty", "1"),
+            "discount": item.get("discount", ""),
             "amount": item.get("price", ""),
-            "currency": item.get("currency", "USD")
+            "currency": item.get("currency", "")
         }
         invoice_json["item_details"].append(item_detail)
 
@@ -39,6 +40,6 @@ def extract_invoice_details(extracted_data):
 
 templates = read_templates('templates/')
 #print(templates)
-result = extract_data('invoices\p2.pdf', templates=templates)
+result = extract_data('invoices/2.pdf', templates=templates)
 result = extract_invoice_details(result)
 print(result)
