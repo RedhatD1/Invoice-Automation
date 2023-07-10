@@ -18,6 +18,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def sample_api():
+    return {"message": "hello world"}
+
 
 @app.get("/items/")
 async def get_items(request: Request):

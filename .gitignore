@@ -1,4 +1,5 @@
 invoices/
+Invoice_Automation/
 /backend/script/test.py
 .DS_Store
 .idea
