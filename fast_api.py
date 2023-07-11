@@ -1,13 +1,10 @@
-import sys
-sys.path.append('backend/script')
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-from extraction_regex import *
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.regex_algorithm import details_utils, reader, extractor, utils
-
+from backend.other import template
 
 app = FastAPI()
 app.add_middleware(
@@ -57,10 +54,13 @@ async def get_items(request: Request):
     
     # Extract specific query parameters
     file_name = params.get("pdfFileName")
-    # algo_name = params.get("algo_name")
-    try: 
-        # json_data = execute_script(file_name) # old regex, gives errors
-        json_data = extractor.get_json_formatted(file_name) # new regex, does error handling
+    algoName = params.get("algoName")
+    try:
+        if algoName == "regex":
+            json_data = extractor.get_json_formatted(file_name) # new regex, does error handling
+        else:
+            json_data = template.other(file_name) # template, does error handling
         return JSONResponse(content=json_data)
     except Exception as e:
+        print(e)
         return JSONResponse(content=default_response)
