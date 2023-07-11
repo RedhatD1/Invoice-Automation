@@ -80,8 +80,9 @@ def extract_total_amount(text):
 def extract_phone(text):
     pattern = r"(?:(?:\+|00)88|01)?\d{11}"
     matches = re.findall(pattern, text)
+    matches = list(set(matches))
     if matches:
-        return ", ".join(matches)
+        return matches[-1]
     else:
         return ""
 
@@ -92,8 +93,13 @@ def extract_email(text):
     if not matches:
         return ""
     else:
-        return matches[0]
+        email = matches[-1]
+        return email
 
+def extract_name(text):
+    email = extract_email(text)
+    username = email.split('@')[0]
+    return username
 def extract_address(text, patterns):
     for pattern in patterns:
         match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
