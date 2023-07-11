@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.regex_algorithm import details_utils, reader, extractor, utils
+from backend.regex_algorithm_sunjid_bhai import regex2
 from backend.other import template
 
 app = FastAPI()
@@ -15,6 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 def sample_api():
     return {"message": "hello world"}
@@ -22,7 +24,6 @@ def sample_api():
 
 @app.get("/items/")
 async def get_items(request: Request):
-
     default_response = {
         "customer_info": {
             "name": "None",
@@ -51,15 +52,17 @@ async def get_items(request: Request):
 
     # Get the query parameters from the request
     params = request.query_params
-    
+
     # Extract specific query parameters
     file_name = params.get("pdfFileName")
     algoName = params.get("algoName")
     try:
         if algoName == "regex":
-            json_data = extractor.get_json_formatted(file_name) # new regex, does error handling
+            json_data = extractor.get_json_formatted(file_name)  # new regex, does error handling
+        elif algoName == "regex2":
+            json_data = regex2.extract_information_from_invoice(file_name)
         else:
-            json_data = template.other(file_name) # template, does error handling
+            json_data = template.other(file_name)  # template, does error handling
         return JSONResponse(content=json_data)
     except Exception as e:
         print(e)
