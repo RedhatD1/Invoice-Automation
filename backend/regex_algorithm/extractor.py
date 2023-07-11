@@ -103,7 +103,7 @@ def get_json_formatted(file_name):
     result_table = standardize_df(result_table)
 
     json_data = convert_to_json_template(df=result_table,
-                                         name=file_name,
+                                         name=details_utils.extract_name(invoice_text),
                                          phone=details_utils.extract_phone(invoice_text),
                                          email=details_utils.extract_email(invoice_text),
                                          date=details_utils.extract_date(invoice_text),
