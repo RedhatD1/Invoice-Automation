@@ -24,7 +24,6 @@ def count_max_matches(df, keywords):
 
 
 def lru_crop_df(df, row, first_column, last_column): # Left Right Up crop DataFrame
-    # df = df.iloc[row:, first_column] # Crop DataFrame only left and right, not left
     df = df.iloc[row:, first_column:last_column+1]
     df = df.reset_index(drop=True)
     return df

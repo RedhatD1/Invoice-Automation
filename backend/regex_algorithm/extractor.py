@@ -108,6 +108,4 @@ def get_json_formatted(file_name):
                                          email=details_utils.extract_email(invoice_text),
                                          date=details_utils.extract_date(invoice_text),
                                          number=details_utils.extract_invoice_number(invoice_text))
-
-    print(json_data)
     return json_data

@@ -55,15 +55,19 @@ async def get_items(request: Request):
 
     # Extract specific query parameters
     file_name = params.get("pdfFileName")
-    algoName = params.get("algoName")
+    algorithm = params.get("algorithm")
     try:
-        if algoName == "regex":
+        if algorithm == "regex":
             json_data = extractor.get_json_formatted(file_name)  # new regex, does error handling
-        elif algoName == "regex2":
+        elif algorithm == "regex2":
             json_data = regex2.extract_information_from_invoice(file_name)
-        else:
+        elif algorithm == "ocr":
             json_data = template.other(file_name)  # template, does error handling
+        elif algorithm == "dl":
+            json_data = template.other(file_name)
+        else:
+            json_data = template.other(file_name)
         return JSONResponse(content=json_data)
     except Exception as e:
-        print(e)
+        # print(e)
         return JSONResponse(content=default_response)

@@ -14,7 +14,7 @@ You need to have java runtime installed
 
 ### Parameters
 pdfFileName: invoice.pdf
-algoName: "regex" or "other"
+algorithm: "regex", "regex2" or "other"
 
 ### Installing new libraries
 pip3 install <library_name>
