@@ -84,9 +84,9 @@ def standardize_date(text):
             return ""
         else:
             day = date_obj.day
-            month = date_obj.month
+            month = date_obj.strftime("%B")
             year = date_obj.year
-            formatted_date = f'{day}-{month}-{year}'
+            formatted_date = f'{day} {month}, {year}'
             return formatted_date
 
     except Exception as e:

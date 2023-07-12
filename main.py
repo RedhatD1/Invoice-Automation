@@ -36,13 +36,13 @@ async def get_items(request: Request):
             {
                 "name": "",
                 "description": "",
-                "quantity": 0,
-                "unit_price": 0,
-                "amount": "0",
-                "currency": "0"
+                "quantity": "",
+                "unit_price": "",
+                "amount": "",
+                "currency": ""
             }
         ],
-        "total_amount": "0",
+        "total_amount": "",
         "note": "",
         "invoice_info": {
             "date": "",
