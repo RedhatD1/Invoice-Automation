@@ -26,16 +26,16 @@ def sample_api():
 async def get_items(request: Request):
     default_response = {
         "customer_info": {
-            "name": "None",
-            "phone": "None",
-            "email": "None",
-            "billing_address": "None",
-            "shipping_address": "None"
+            "name": "",
+            "phone": "",
+            "email": "",
+            "billing_address": "",
+            "shipping_address": ""
         },
         "item_details": [
             {
-                "name": "None",
-                "description": "None",
+                "name": "",
+                "description": "",
                 "quantity": 0,
                 "unit_price": 0,
                 "amount": "0",
@@ -43,10 +43,10 @@ async def get_items(request: Request):
             }
         ],
         "total_amount": "0",
-        "note": "None",
+        "note": "",
         "invoice_info": {
-            "date": "None",
-            "number": "None"
+            "date": "",
+            "number": ""
         }
     }
 
