@@ -56,6 +56,7 @@ def extract_date(text):
                 return matches[0]
     return ""
 
+
 def extract_total_amount(text):
     # Define patterns or keywords for total amount extraction
     patterns = ['Total', 'TOTAL', 'Amount Due', 'Total Payable', 'Grand Total']
