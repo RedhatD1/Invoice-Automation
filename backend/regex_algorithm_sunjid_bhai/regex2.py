@@ -125,6 +125,7 @@ def extract_information_from_invoice(pdf_path):
         new_dict = {("amount" if "amount" in key.lower() else key): value for key, value in new_dict.items()}
         new_dict = {("discount" if "discount" in key.lower() else key): value for key, value in new_dict.items()}
         item_details.append(new_dict)
+
         invoice_info = {
             "invoice_info": {
               "date": str(invoice_date),
@@ -133,7 +134,13 @@ def extract_information_from_invoice(pdf_path):
         "total_amount": str(total_amount),
         "item_details": item_details,
         "note": "",
-        "customer_info": {}
+        "customer_info": {
+            "name": "None",
+            "phone": "None",
+            "email": "None",
+            "billing_address": "None",
+            "shipping_address": "None"
+        }
 
     }
     return invoice_info

@@ -39,9 +39,63 @@ def extract_invoice_number(text):
                 return ""
     return ""
 
+def standardize_date(text):
+    try:
+        date_obj = None
+        date_formats = [
+            "%d-%m-%y",
+            "%d-%m-%Y",
+            "%d/%m/%Y",
+            "%d/%m/%y",
+            "%d.%m.%Y",
+            "%d%m%Y",
+            "%d %b, %Y",
+            "%d %b %Y",
+            "%d %B, %Y",
+            "%d %B %Y",
+            "%B %d, %Y",
+            "%m-%d-%Y",
+            "%m/%d/%Y",
+            "%m-%d-%y",
+            "%B %d %Y",
+            "%b %d, %Y",
+            "%b %d %Y",
+            "%m%Y",
+
+            "%Y/%m/%d",
+            "%Y.%m.%d",
+            "%Y%m%d",
+            "%Y/%m/%d",
+            "%Y%m",
+            "%Y-%m-%d",
+            "%Y-%d-%m",
+            "%Y",
+            "%y",
+        ]
+
+        for format_string in date_formats:
+            try:
+                date_obj = datetime.strptime(text, format_string)
+                break  # Exit the loop if a valid date format is found
+            except ValueError:
+                continue  # Continue to the next format if the current one raises an exception
+
+        if date_obj is None:
+            return ""
+        else:
+            day = date_obj.day
+            month = date_obj.month
+            year = date_obj.year
+            formatted_date = f'{day}-{month}-{year}'
+            return formatted_date
+
+    except Exception as e:
+        return ""
+
 def extract_date(text):
     # Define patterns or keywords for invoice date extraction
     patterns = ['Invoice Date', 'Date of Issue', 'Billing Date', 'Order Date', 'Date']
+
     for pattern in patterns:
         match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
         if match:
@@ -55,6 +109,7 @@ def extract_date(text):
             else:
                 return matches[0]
     return ""
+
 
 def extract_total_amount(text):
     # Define patterns or keywords for total amount extraction
@@ -121,25 +176,3 @@ def extract_billing_address(text):
     pattern = ['billing address', 'bill to']
     billing_address = extract_address(text=text, patterns=pattern)
     return billing_address
-
-def get_human_names(text):
-
-
-    tokens = nltk.tokenize.word_tokenize(text)
-    pos = nltk.pos_tag(tokens)
-    sentt = nltk.ne_chunk(pos, binary = False)
-    person_list = []
-    person = []
-    name = ""
-    for subtree in sentt.subtrees(filter=lambda t: t.label() == 'PERSON'):
-        for leaf in subtree.leaves():
-            person.append(leaf[0])
-        if len(person) > 1: #avoid grabbing lone surnames
-            for part in person:
-                name += part + ' '
-            if name[:-1] not in person_list:
-                person_list.append(name[:-1])
-            name = ''
-        person = []
-    return person_list[0]
-

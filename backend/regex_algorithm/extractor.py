@@ -75,6 +75,11 @@ def get_json(df):
     json = df.to_dict('records')
     return json
 
+def get_formatted_date(text):
+    raw_data = details_utils.extract_date(text)
+    formatted_date = details_utils.standardize_date(raw_data)
+    return formatted_date
+
 def convert_to_json_template(df, name="", phone="", email="", billing_address="", shipping_address="", items=[], total_amount=0, note="", date="", number=""):
     items = get_json(df)
     json_data = {
@@ -106,6 +111,6 @@ def get_json_formatted(file_name):
                                          name=details_utils.extract_name(invoice_text),
                                          phone=details_utils.extract_phone(invoice_text),
                                          email=details_utils.extract_email(invoice_text),
-                                         date=details_utils.extract_date(invoice_text),
+                                         date=get_formatted_date(invoice_text),
                                          number=details_utils.extract_invoice_number(invoice_text))
     return json_data
