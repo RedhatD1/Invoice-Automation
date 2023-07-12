@@ -137,17 +137,3 @@ def extract_information_from_invoice(pdf_path):
 
     }
     return invoice_info
-
-    # def post(request):
-    #     if 'file' in request.FILES:
-    #         try:
-    #             invoice_pdf_path = request.FILES['file']
-    #             invoice_info = extract_information_from_invoice(invoice_pdf_path)
-    #             return Response(data=invoice_info, status=status.HTTP_200_OK)
-    #         except Exception as e:
-    #             return Response("Error while processing file", status=status.HTTP_400_BAD_REQUEST)
-    #     else:
-    #         return Response("File not found", status=status.HTTP_404_NOT_FOUND)
-
-data = extract_information_from_invoice("15.pdf")
-print(data)

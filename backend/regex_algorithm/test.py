@@ -20,13 +20,3 @@ def extract_billing_address(text):
     pattern = ['billing address', 'bill to']
     billing_address = extract_address(text=text, patterns=pattern)
     return billing_address
-
-text = reader.read_invoice("../invoices/3.pdf")
-print(text)
-shipping_address = extract_shipping_address(text=text)
-billing_address = extract_billing_address(text=text)
-print(f'shipping address: {shipping_address}\nbilling address: {billing_address}')
-
-number = "my number is 01833184152 dsfr"
-
-print("Total amount: ", details_utils.extract_phone(text))
