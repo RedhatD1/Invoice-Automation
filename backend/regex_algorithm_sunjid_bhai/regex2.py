@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import PyPDF2
 import json
 import numpy as np
@@ -40,8 +42,10 @@ def extract_invoice_date(text):
     for pattern in patterns:
         match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
         if match:
-            return match.group(1)
-    return None
+            date_string = str(match.group(1))
+            date_string = date_string.strip()
+            return date_string[1:].strip()
+    return ""
 
 
 # Extract Total Amount
@@ -146,6 +150,12 @@ def standardize_date(text):
             "%y",
         ]
 
+        updated_date_formats = []
+        for date_format in date_formats:
+            updated_date_formats.append("%I:%M %p, " + date_format)
+
+        date_formats += updated_date_formats
+
         for format_string in date_formats:
             try:
                 date_obj = datetime.strptime(text, format_string)
@@ -197,6 +207,7 @@ def extract_information_from_invoice(pdf_path):
         invoice_info = {
             "invoice_info": {
                 "date": standardize_date(str(invoice_date)),
+                # "date": str(invoice_date),
                 "number": str(invoice_number)
             },
             "total_amount": str(total_amount),
