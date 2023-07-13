@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.regex_algorithm import details_utils, reader, extractor, utils
 from backend.regex_algorithm_sunjid_bhai import regex2
 from backend.other import template
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 app.add_middleware(
@@ -15,6 +16,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+static_path = "invoices"
+app.mount("/static", StaticFiles(directory=static_path), name="static")
+
 
 
 @app.get("/")
