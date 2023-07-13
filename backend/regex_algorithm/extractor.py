@@ -12,6 +12,8 @@ def rename_df_name_column(df):
         # Check if 'description' column exists
         elif 'description' in df.columns:
             df = df.rename(columns={'description': 'name'})
+        elif 'product' in df.columns:
+            df = df.rename(columns={'product': 'name'})
         else:
             df.rename(columns=lambda x: 'name' if 'name' in x else x, inplace=True)
     return df
@@ -70,6 +72,8 @@ def standardize_df(df, currency="Taka"):
     df = rename_df_amount_column(df)
     df = rename_df_discount_column(df)
     df['currency'] = currency
+    df['unit_price'] = df['unit_price'].str.replace(r'[^\d.,]+', '', regex=True)
+
     return df
 def get_json(df):
     json = df.to_dict('records')
@@ -77,6 +81,7 @@ def get_json(df):
 
 def get_formatted_date(text):
     raw_data = details_utils.extract_date(text)
+    print(raw_data)
     formatted_date = details_utils.standardize_date(raw_data)
     return formatted_date
 

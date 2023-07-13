@@ -99,7 +99,9 @@ def extract_date(text):
     for pattern in patterns:
         match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
         if match:
-            return match.group(1)
+            date_string = str(match.group(1))
+            date_string = date_string.strip()
+            return date_string[1:].strip()
         else:
             pattern = r'\b(?:\d{1,2}(?:-|\/)\d{1,2}(?:-|\/)\d{4}|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4})\b'
             matches = re.findall(pattern, text)
@@ -156,9 +158,19 @@ def extract_email(text):
         return email
 
 def extract_name(text):
-    email = extract_email(text)
-    username = email.split('@')[0]
-    return username
+    # Define patterns or keywords for invoice number extraction
+    patterns = ['Name', 'Customer name', "Customer info", 'Receiver', 'Receiver Name', 'Receiver info', 'Recipient', 'Recipient name']
+    for pattern in patterns:
+        match = re.search(r'{}(\s*:\s*|\s+)(\w+)'.format(pattern), text, re.IGNORECASE)
+        # The code searches for specific patterns ('Invoice No.', 'Order No.', 'Invoice Number', 'Order #')
+        # followed by a colon or whitespace, followed by one or more word characters
+        # The code ignores case sensitivity
+        if match:
+            return match.group(2)
+        else:
+            email = extract_email(text)
+            username = email.split('@')[0]
+            return re.sub(r'[^a-zA-Z]+', '', username)
 def extract_address(text, patterns):
     for pattern in patterns:
         match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
@@ -176,3 +188,4 @@ def extract_billing_address(text):
     pattern = ['billing address', 'bill to']
     billing_address = extract_address(text=text, patterns=pattern)
     return billing_address
+
