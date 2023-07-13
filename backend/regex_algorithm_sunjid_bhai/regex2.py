@@ -190,7 +190,7 @@ def extract_information_from_invoice(pdf_path):
     item_details = []
     for dict in table:
         new_dict = {(
-                        "item" if key.lower() == "items" or key.lower() == "item" or key.lower() == "product" or key.lower() == "products" or key.lower() == "item name" or key.lower() == "product name" else key): value if value is not None else ""
+                        "name" if key.lower() == "items" or key.lower() == "item" or key.lower() == "product" or key.lower() == "products" or key.lower() == "item name" or key.lower() == "product name" else key): value if value is not None else ""
                     for key, value in dict.items()}
         new_dict = {("unit_price" if "unit" in key.lower() else key): value if value is not None else "" for key, value
                     in new_dict.items()}
