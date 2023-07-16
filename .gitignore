@@ -1,5 +1,6 @@
 invoices/
 Invoice_Automation/
+logs/
 /backend/old_regex/test.py
 .DS_Store
 .idea
