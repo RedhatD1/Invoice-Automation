@@ -6,6 +6,11 @@
         "start": 366,
         "end": 379,
         "label": "CUSTOMER"
+      },
+      {
+        "start": 140,
+        "end": 149,
+        "label": "SHOP"
       }
     ]
   },
@@ -16,6 +21,11 @@
         "start": 141,
         "end": 153,
         "label": "CUSTOMER"
+      },
+      {
+        "start": 0,
+        "end": 12,
+        "label": "SHOP"
       }
     ]
   },
@@ -26,6 +36,11 @@
         "start": 653,
         "end": 658,
         "label": "CUSTOMER"
+      },
+      {
+        "start": 140,
+        "end": 149,
+        "label": "SHOP"
       }
     ]
   },
@@ -36,6 +51,11 @@
         "start": 239,
         "end": 254,
         "label": "CUSTOMER"
+      },
+      {
+        "start": 0,
+        "end": 17,
+        "label": "SHOP"
       }
     ]
   },
@@ -47,11 +67,47 @@
         "end": 54,
         "label": "CUSTOMER"
       },
-        {
-            "start": 332,
-            "end": 342,
-            "label": "CUSTOMER"
-        }
+      {
+        "start": 332,
+        "end": 342,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 69,
+        "end": 76,
+        "label": "SHOP"
+      }
+    ]
+  },
+  {
+    "text": "TECH HUB STORE\nShop : 102/C (2nd Floor), Rahman Plaza\n5, Gulshan Avenue, Gulshan 1,\nDhaka.\n01899 – 554 823\n01752 – 321 956\nINVOICE\nRahima Islam Invoice Number: THS8742\nHouse: 54/2, Lake Circus, Kalabagan Invoice Date: 15-02-2023\nDhanmondi\nOrder Number: 78596\nDhaka\nOrder Date: 15-02-2023\n1213\n01312345567\nProduct Quantity Price\nLogitech M325 Wireless Mouse - Black 1 ৳ 780.00\nSKU: 67892\nWeight: 120g\nSandisk Ultra 64GB MicroSD Memory Card 2 ৳ 850.00\nSKU: 78932\nWeight: 50g\nSubtotal ৳ 1630.00\nDiscount -৳ 30.00\nShipping ৳ 60.00 via Express\nDelivery\nTotal ৳ 1660.00\nThank you for shopping with us. Please leave a review on techhubstore.com and get a chance to win exciting prizes.\n*For any delivery issues, contact us at 01899 – 554 823.\n*Tech Hub Store offers a 7-day return policy.",
+    "entities": [
+      {
+        "start": 131,
+        "end": 143,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 0,
+        "end": 14,
+        "label": "SHOP"
+      }
+    ]
+  },
+  {
+    "text": "BENGAL BOUTIQUE\nShop : 101, Jamuna Shopping Complex\nKakrail Road, Dhaka.\n01812 – 345 678\n01987 – 654 321\nINVOICE\nFatima Rahman Invoice Number: BB2023\nHouse: 45/2, Lake View Tower, Dhanmondi Invoice Date: 12-07-2023\nDhaka\nOrder Number: 78901\nOrder Date: 12-07-2023\n1212\n01787654321\nProduct Quantity Price\nWomen's Elegant Saree - Red 1 ৳ 2650.00\nSKU: 112233\nWeight: 500g\nMen's Formal Shirt - Blue 2 ৳ 1200.00\nSKU: 445566\nWeight: 300g\nSubtotal ৳ 3850.00\nDiscount -৳ 150.00\nShipping ৳ 100.00 via Home\nDelivery\nTotal ৳ 3800.00\nThank you for shopping with us. We would love to hear your thoughts on bengalboutique.com. Leave a review and win exciting prizes.\n*For any issues with your order, contact us at 01812 – 345 678.\n*Bengal Boutique offers a hassle-free 30-day return policy.",
+    "entities": [
+      {
+        "start": 113,
+        "end": 126,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 0,
+        "end": 15,
+        "label": "SHOP"
+      }
     ]
   }
+
 ]
