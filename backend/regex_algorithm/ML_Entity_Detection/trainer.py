@@ -13,7 +13,7 @@ with open(json_file_path, 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # Load the language model
-nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('en_core_web_sm')
 
 # Add the entity recognizer to the pipeline if it's not already there
 if 'ner' not in nlp.pipe_names:
@@ -35,7 +35,7 @@ for _ in range(n_iter):
         text, entities = example
         doc = nlp.make_doc(text)
         gold = Example.from_dict(doc, entities)
-        nlp.update([gold], drop=0.5)
+        nlp.update([gold], drop=0.3)
 
 
 output_dir = 'ML_Entity_Detection/model'
