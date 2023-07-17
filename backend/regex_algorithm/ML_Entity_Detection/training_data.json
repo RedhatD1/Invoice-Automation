@@ -3,14 +3,19 @@
     "text": "Government of the People's Republic of Bangladesh\nNational Board of Revenue\nTax Challan\n[See clauses (c) and (f) of Sub-Rule(1) of Rule 40]\nAgami LTD - Online Sales Division (SHOPOTH)\nRegistered Address : T-131, Wakil Tower\nLevel : 8, Middle Badda, Link Road, Dhaka, PO : 1212\nCentral Vat. Reg. No : 003279334-0101\nMushok 6.3\nCustomer Information\nOrder # 0000182406\nAlif Ashrafee\nalif.ashrafee@reddotdigitalit.com\nOrder Status : Ready to Ship From FC\n01833183583\nShipping Type : Home delivery\nNID : N/A\nDistributor : Virtual (Only For Home Delivery)\nBIN : N/A\nOrder Date : 6:07 PM, May 10, 2023\nTIN : N/A\nOrder Deadline : 6:07 PM, May 13, 2023\nShipping Address\nBashundhara R/A Receiver Info Payment\nGulshan\nJUAID RAKIN Type: Cash on delivery\nGulshan\n01521380543 Status: Pending\nDhaka\n01521380543\nITEM UNIT PRICE QUANTITY DISCOUNT AMOUNT (৳)\nPremium Pillow Cover - Messi 490.00 1 0.00 490.00\nSub-Total (inclusive of VAT @ 5% *) 490.00\nDiscount 0.00\nShipping Charge 12.00\nVAT@ 15% on Shipping Charge 2.00\nGrand Total 504.00\n*VAT @ 5% is on the differential between Sales & Purchase price",
     "entities": [
       {
+        "start": 140,
+        "end": 149,
+        "label": "SHOP"
+      },
+      {
         "start": 366,
         "end": 379,
         "label": "CUSTOMER"
       },
       {
-        "start": 140,
-        "end": 149,
-        "label": "SHOP"
+        "start": 661,
+        "end": 676,
+        "label": "ADDRESS"
       }
     ]
   },
@@ -18,14 +23,19 @@
     "text": "GEAR BUZZ BD\nShop : 271/A/1 (1st Floor), Motalib Plaza\n8, Poribag, Sonargaon Road, Hatirpool,\nDhaka.\n01614 – 351 315\n01852 – 251 215\nINVOICE\nTariq Faisal Invoice Number: GB2913\nHouse: 181/b, Jhilpar, Chowdhury Invoice Date: 26-07-2021\nPara Shishu Park, Matir Mosjid,\nOrder Number: 60557\nAbul Hotel\nOrder Date: 26-07-2021\nKhilgaon\nPayment Method: Cash on delivery\nDhaka\n1219\n01521533407\nProduct Quantity Price\nUIISII HM13 In-Ear Dynamic Earphone with Microphone - Blue 1 ৳ 390.00\nSKU: 39448\nWeight: 200g\nUIISII HM13 In-Ear Dynamic Earphone with Microphone - Black 1 ৳ 390.00\nSKU: 39448\nWeight: 200g\nSubtotal ৳ 780.00\nDiscount -৳ 10.00\nShipping ৳ 70.00 via Home\nDelivery\nTotal ৳ 840.00\nThanks for purchasing from us. Post a review of this product in gearbuzzbd.com and earn 50 points.\n*If you face any problem during delivery, call us at 01614 – 351 315.\n*Gear Buzz BD provides 3 days easy replacement policy.",
     "entities": [
       {
+        "start": 0,
+        "end": 12,
+        "label": "SHOP"
+      },
+      {
         "start": 141,
         "end": 153,
         "label": "CUSTOMER"
       },
       {
-        "start": 0,
-        "end": 12,
-        "label": "SHOP"
+        "start": 177,
+        "end": 209,
+        "label": "ADDRESS"
       }
     ]
   },
@@ -33,29 +43,29 @@
     "text": "Government of the People's Republic of Bangladesh\nNational Board of Revenue\nTax Challan\n[See clauses (c) and (f) of Sub-Rule(1) of Rule 40]\nAgami LTD - Online Sales Division (SHOPOTH)\nRegistered Address : T-131, Wakil Tower\nLevel : 8, Middle Badda, Link Road, Dhaka, PO : 1212\nCentral Vat. Reg. No : 003279334-0101\nMushok 6.3\nCustomer Information\nOrder # 0000183188\nOutlet One Gulsan\npartner_01@shopoth.com\nStatus :Partially Returned 01833184152\nDistributor :Reddot DH NID :N/A\nOrder Date :10:41 AM, Jul 4, 2023 BIN :N/A\nOrder Deadline :10:41 AM, Jul 7, 2023 TIN :N/A\nPick-up Point\nOutlet One Gulsan Receiver Info Payment\nShipping Type\n01833184152\nTest Nasir Type: Cash on delivery\nPick up point partner_01@shopoth.com\n01833184152 Status:Pending\nRoute Name : SR 1\nSection :D\nITEM UNIT PRICE QUANTITY DISCOUNT AMOUNT (৳)\nMeril Petroleum Jelly 50ml 59.00 4 0.00 236.00\nMeril Milk & Beli Soap Bar (Box Pack) 150gm 68.00 4 0.00 272.00\nSub-Total (inclusive of VAT @ 5% *) 508.00\nDiscount 0.00\nShipping Charge 16.00\nVAT@ 15% on Shipping Charge 2.00\nGrand Total 526.00\n*VAT @ 5% is on the differential between Sales & Purchase price",
     "entities": [
       {
-        "start": 653,
-        "end": 658,
-        "label": "CUSTOMER"
-      },
-      {
         "start": 140,
         "end": 149,
         "label": "SHOP"
+      },
+      {
+        "start": 653,
+        "end": 658,
+        "label": "CUSTOMER"
       }
     ]
   },
   {
-    "text": "NATIVE TECHNOLOGY\nShop#375-376, Level#3, Computer City Center,\nMultiplan, New Elephant Road, Dhaka-1205\nPhone: +8801627126870\nE-mail:nativetechnologybd@gmail.com\nONLINE SHOP : www.nativetechnologybd.com\nBILL TO: DUE Invoice No. 1035145\nName: ZAHID HOSSIN Date: 24-May-2023\nAddress: Sales CUSTOMER: MR. JOY\nMobile:\nSL NO. PRODUCT NAME QUANTITY PRICE DISCOUNT TAKA\nPLEXTONE G2 GAMING\n1 HEADPHONE 10 1,500.00 1 5,000.00\n07 DAYS WARRANTY -\n2 1MORE PISTONE FIT BLUETOOTH 10 2,000.00 2 0,000.00\n07 DAYS WARRANTY -\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\nReceived By:\nSUBTOTAL 35,000.00\nSALES TAX\nThirty-Five Thousand Taka Only TOTAL 35,000.00\nOfficial Products for:\nSignature\nN: B: Warranty will be void if there any physical damage or burn to the product or warranty sticker is removed.\nTHANK YOU FOR YOUR BUSINESS!",
+    "text": "NATIVE TECHNOLOGY\nShop#375-376, Level#3, Computer City Center,\nMultiplan, New Elephant Road, Dhaka-1205\nPhone: +8801627126870\nE-mail:nativetechnologybd@gmail.com\nONLINE SHOP : www.nativetechnologybd.com\nBILL TO: DUE Invoice No. 1035145\nName: ZAHID HOSSIN Date: 24-May-2023\nAddress: Sales CUSTOMER: MR. JOY\nMobile:\nSL NO. PRODUCT NAME QUANTITY PRICE DISCOUNT TAKA\nPLEXTONE G2 GAMING\n1 HEADPHONE 10 1,500.00 1 5,000.00\n07 DAYS WARRANTY -\n2 1MORE PISTONE FIT BLUETOOTH 10 2,000.00 2 0,000.00\n07 DAYS WARRANTY Received By:\nSUBTOTAL 35,000.00\nSALES TAX\nThirty-Five Thousand Taka Only TOTAL 35,000.00\nOfficial Products for:\nSignature\nN: B: Warranty will be void if there any physical damage or burn to the product or warranty sticker is removed.\nTHANK YOU FOR YOUR BUSINESS!",
     "entities": [
-      {
-        "start": 239,
-        "end": 254,
-        "label": "CUSTOMER"
-      },
       {
         "start": 0,
         "end": 17,
         "label": "SHOP"
+      },
+      {
+        "start": 239,
+        "end": 254,
+        "label": "CUSTOMER"
       }
     ]
   },
@@ -68,14 +78,24 @@
         "label": "CUSTOMER"
       },
       {
+        "start": 69,
+        "end": 76,
+        "label": "SHOP"
+      },
+      {
         "start": 332,
         "end": 342,
         "label": "CUSTOMER"
       },
       {
-        "start": 69,
-        "end": 76,
+        "start": 357,
+        "end": 364,
         "label": "SHOP"
+      },
+      {
+        "start": 365,
+        "end": 391,
+        "label": "ADDRESS"
       }
     ]
   },
@@ -83,14 +103,19 @@
     "text": "TECH HUB STORE\nShop : 102/C (2nd Floor), Rahman Plaza\n5, Gulshan Avenue, Gulshan 1,\nDhaka.\n01899 – 554 823\n01752 – 321 956\nINVOICE\nRahima Islam Invoice Number: THS8742\nHouse: 54/2, Lake Circus, Kalabagan Invoice Date: 15-02-2023\nDhanmondi\nOrder Number: 78596\nDhaka\nOrder Date: 15-02-2023\n1213\n01312345567\nProduct Quantity Price\nLogitech M325 Wireless Mouse - Black 1 ৳ 780.00\nSKU: 67892\nWeight: 120g\nSandisk Ultra 64GB MicroSD Memory Card 2 ৳ 850.00\nSKU: 78932\nWeight: 50g\nSubtotal ৳ 1630.00\nDiscount -৳ 30.00\nShipping ৳ 60.00 via Express\nDelivery\nTotal ৳ 1660.00\nThank you for shopping with us. Please leave a review on techhubstore.com and get a chance to win exciting prizes.\n*For any delivery issues, contact us at 01899 – 554 823.\n*Tech Hub Store offers a 7-day return policy.",
     "entities": [
       {
+        "start": 0,
+        "end": 14,
+        "label": "SHOP"
+      },
+      {
         "start": 131,
         "end": 143,
         "label": "CUSTOMER"
       },
       {
-        "start": 0,
-        "end": 14,
-        "label": "SHOP"
+        "start": 168,
+        "end": 203,
+        "label": "ADDRESS"
       }
     ]
   },
@@ -98,16 +123,40 @@
     "text": "BENGAL BOUTIQUE\nShop : 101, Jamuna Shopping Complex\nKakrail Road, Dhaka.\n01812 – 345 678\n01987 – 654 321\nINVOICE\nFatima Rahman Invoice Number: BB2023\nHouse: 45/2, Lake View Tower, Dhanmondi Invoice Date: 12-07-2023\nDhaka\nOrder Number: 78901\nOrder Date: 12-07-2023\n1212\n01787654321\nProduct Quantity Price\nWomen's Elegant Saree - Red 1 ৳ 2650.00\nSKU: 112233\nWeight: 500g\nMen's Formal Shirt - Blue 2 ৳ 1200.00\nSKU: 445566\nWeight: 300g\nSubtotal ৳ 3850.00\nDiscount -৳ 150.00\nShipping ৳ 100.00 via Home\nDelivery\nTotal ৳ 3800.00\nThank you for shopping with us. We would love to hear your thoughts on bengalboutique.com. Leave a review and win exciting prizes.\n*For any issues with your order, contact us at 01812 – 345 678.\n*Bengal Boutique offers a hassle-free 30-day return policy.",
     "entities": [
       {
+        "start": 0,
+        "end": 15,
+        "label": "SHOP"
+      },
+      {
         "start": 113,
         "end": 126,
         "label": "CUSTOMER"
       },
       {
+        "start": 150,
+        "end": 189,
+        "label": "ADDRESS"
+      }
+    ]
+  },
+  {
+    "text": "TechX Gadgets\nInvoice Value : 856.00\nClients Name Raisa Ahmed Business Name TechX\nHouse 104, Road 8, Block C\nAddress Line Date May 15, 2023, 3:30 p.m.\nBanani\nCity Dhaka Invoice No TX-15-05-23-856\nClient's Cell 01987654321 Web www.techxgadgets.com\nFB & Instagram TechXGadgets\nContact +880 1798-654321\nS.N Product Name Quantity Unit Price Amount\n1 Sony WH-1000XM4 Wireless Headphones - Black 1 790.00 790.00\n2 Apple AirPods Pro with Wireless Charging Case 1 630.00 630.00\nTotal Product Price 1420.00\nDiscounted Price 1420.000\nReceived 0.00\nDue 1420.00\nDelivery Charge 40.00\nAmount to be collected 1460.00\nDear Customer, for any assistance, please call us at 01798-654321 or email us at support@techxgadgets.com. Kindly review our terms and conditions for returns and exchanges on our website.\nAddress: TechX Gadgets Ltd., 20 Gulshan Avenue, Gulshan 1, Dhaka, Bangladesh. Email: support@techxgadgets.com",
+    "entities": [
+      {
         "start": 0,
-        "end": 15,
+        "end": 17,
         "label": "SHOP"
+      },
+      {
+        "start": 50,
+        "end": 61,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 82,
+        "end": 108,
+        "label": "ADDRESS"
       }
     ]
   }
-
 ]
