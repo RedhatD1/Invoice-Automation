@@ -13,7 +13,7 @@ python -m spacy download en_core_web_lg
 uvicorn fast_api:app --reload <br>
 
 You need to have java runtime installed
-
+Run the trainer.py to generate the model
 ### Parameters
 pdfFileName: invoice.pdf
 algorithm: "regex", "regex2", "ocr", "dl"

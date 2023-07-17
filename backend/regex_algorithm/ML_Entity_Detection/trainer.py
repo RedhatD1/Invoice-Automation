@@ -29,13 +29,13 @@ for example in data:
     training_data.append((text, {'entities': entities}))
 
 # Train the entity recognizer
-n_iter = 200
+n_iter = 100
 for _ in range(n_iter):
     for example in training_data:
         text, entities = example
         doc = nlp.make_doc(text)
         gold = Example.from_dict(doc, entities)
-        nlp.update([gold], drop=0.3)
+        nlp.update([gold], drop=0.5)
 
 
 output_dir = 'ML_Entity_Detection/model'
