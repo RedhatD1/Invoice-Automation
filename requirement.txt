@@ -1,0 +1,5 @@
+pdf2image
+pytesseract
+spacy
+invoice2data
+python -m spacy download en_core_web_sm

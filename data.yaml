@@ -1,0 +1,40 @@
+issuer: Aubry Kepe
+keywords:
+  - Curabitur c
+  - Houston, Te, 77055
+fields:
+  email:
+    - \w+@\w+.\w+
+  phone:
+    - \(\d{3}\)\s+\d{3}-\d{4}
+    # - \+?8?8?01\d{9}
+  amount:
+    - \s*[sub]*\s*\-*\s*total\:?\s*
+    - \s*[Sub]*\s*\-*\s*Total\:?\s*
+    - \s*[SUB]*\s*\-*\s*TOTAL\:?\s*
+    - \s*[grand]*\s*\-*\s*total\:?\s*
+    - \s*[Grand]*\s*\-*\s*Total\:?\s*
+    - \s*[GRAND]*\s*\-*\s*TOTAL\:?\s*
+  date:
+    - \(\\d{1,2}/\\d{1,2}/\\d{4})
+    - \\d{2}-[A-Za-z]{3}-\\d{4}
+    - [A-Za-z]-\\d{2}-\\d{4}
+  invoice_number:
+    - \\s+(\\w{2}\\d{6})
+    - Invoice\\s+No.\\s+(\\d{7})
+    - Order \# (\\d{10})
+lines:
+  start: \s+Description\s+Quantity\s+Unit\sPrice\s+Total
+  end: \s+Total:\s
+  first_line: \s\w\s(?P<description>.+)\s+(?P<qty>\d+)\s+(?P<unit_price>\d+)\s+(?P<price>\$\d+)
+  line: '^\s+(?P<desc>.+)$'
+  types:
+      qty: float
+      unit_price: float
+options:
+  remove_whitespace: false
+  currency: USD
+  date_formats:
+    - '%d/%m/%y'
+  languages:
+    - en

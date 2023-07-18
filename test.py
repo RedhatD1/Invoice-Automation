@@ -38,7 +38,7 @@ def extract_invoice_details(extracted_data):
 
     return invoice_json
 
-templates = read_templates('templates/')
+templates = read_templates('x/')
 #print(templates)
 result = extract_data('invoices/2.pdf', templates=templates)
 result = extract_invoice_details(result)
