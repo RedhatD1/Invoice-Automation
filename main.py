@@ -30,8 +30,8 @@ def sample_api():
     return {"message": "hello world"}
 
 
-@app.get("/items/")
-async def get_items(request: Request):
+@app.get("/items/{file_name}")
+async def get_items(request: Request, file_name: str, algorithm: str = 'regex'):
     response = {
         "customer_info": {
             "name": "",
@@ -57,13 +57,6 @@ async def get_items(request: Request):
             "number": ""
         }
     }
-
-    # Get the query parameters from the request
-    params = request.query_params
-
-    # Extract specific query parameters
-    file_name = params.get("pdfFileName")
-    algorithm = params.get("algorithm")
     try:
 
         if algorithm == "regex2":
