@@ -126,7 +126,6 @@
 
     ],
     "ner":[
-      "ADDRESS",
       "CARDINAL",
       "CUSTOMER",
       "DATE",
@@ -144,6 +143,7 @@
       "PERSON",
       "PRODUCT",
       "QUANTITY",
+      "SHIPPING_ADDRESS",
       "SHOP",
       "TIME",
       "WORK_OF_ART"

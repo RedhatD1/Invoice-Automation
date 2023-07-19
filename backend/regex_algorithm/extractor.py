@@ -1,6 +1,7 @@
 # Used for formatting the DataFrame and creating JSON
 
 from backend.regex_algorithm import details_utils, reader, utils
+from backend.regex_algorithm.ML_Entity_Detection import runner
 import re
 
 
@@ -88,7 +89,6 @@ def get_json(df):
     json = df.to_dict('records')
     return json
 
-
 def get_formatted_date(text):
     raw_data = details_utils.extract_date(text)
     print(raw_data)
@@ -96,8 +96,7 @@ def get_formatted_date(text):
     return formatted_date
 
 
-def convert_to_json_template(df, name="", phone="", email="", billing_address="", shipping_address="", items=[],
-                             total_amount=0, note="", date="", number=""):
+def convert_to_json_template(df, name="", shop_name="", phone="", email="", billing_address="", shipping_address="", items=[], total_amount=0, note="", date="", number=""):
     items = get_json(df)
     json_data = {
         "customer_info": {
@@ -111,8 +110,9 @@ def convert_to_json_template(df, name="", phone="", email="", billing_address=""
         "total_amount": total_amount,
         "note": note,
         "invoice_info": {
+            "shop_name": shop_name,
             "date": date,
-            "number": number
+            "number": number,
         }
     }
     return json_data
@@ -121,14 +121,32 @@ def convert_to_json_template(df, name="", phone="", email="", billing_address=""
 def get_json_formatted(file_name):
     file_path = "invoices/" + file_name
     invoice_text = reader.read_invoice(file_path)
+    ml_dict = runner.ner_extraction(invoice_text)
     invoice_tables = reader.read_tables(file_path)
     result_table = utils.extract_item_table(invoice_tables)
     result_table = standardize_df(result_table)
 
+    if ml_dict['CUSTOMER'] != '':
+        name = ml_dict['CUSTOMER']
+    else:
+        name = details_utils.extract_name(invoice_text)
+
+    shop_name = ml_dict['SHOP']
+
+    if ml_dict['SHIPPING_ADDRESS'] != '':
+        shipping_address = ml_dict['SHIPPING_ADDRESS']
+    else:
+        shipping_address = details_utils.extract_shipping_address(invoice_text)
+
+    billing_address = details_utils.extract_billing_address(invoice_text)
+
     json_data = convert_to_json_template(df=result_table,
-                                         name=details_utils.extract_name(invoice_text),
+                                         name=name,
+                                         shop_name=shop_name,
                                          phone=details_utils.extract_phone(invoice_text),
                                          email=details_utils.extract_email(invoice_text),
+                                         billing_address=billing_address,
+                                         shipping_address=shipping_address,
                                          date=get_formatted_date(invoice_text),
                                          number=details_utils.extract_invoice_number(invoice_text))
     return json_data

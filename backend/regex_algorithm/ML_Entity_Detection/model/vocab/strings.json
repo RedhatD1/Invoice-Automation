@@ -25,6 +25,7 @@
   "\t\u3000",
   "\n",
   "\n\t",
+  "\n\n",
   "\n\u000b",
   "\n\r",
   "\n\r\t",
@@ -580,6 +581,10 @@
   "-/",
   "-0",
   "-0.06",
+<<<<<<< HEAD
+=======
+  "-05",
+>>>>>>> origin/tariq
   "-10",
   "-11",
   "-12",
@@ -595,6 +600,10 @@
   "-21",
   "-22",
   "-24",
+<<<<<<< HEAD
+=======
+  "-25",
+>>>>>>> origin/tariq
   "-27",
   "-2C",
   "-2s",
@@ -982,6 +991,13 @@
   "0.00",
   "0.0002",
   "0.0015",
+<<<<<<< HEAD
+=======
+  "0.00\\nAmount",
+  "0.00\\nDue",
+  "0.00\\namount",
+  "0.00\\ndue",
+>>>>>>> origin/tariq
   "0.01",
   "0.02",
   "0.025",
@@ -1072,15 +1088,31 @@
   "01521533407",
   "016",
   "01614",
+<<<<<<< HEAD
   "01752",
   "01773046092",
   "01787654321",
+=======
+  "01678",
+  "01752",
+  "01765",
+  "01765432109",
+  "01773046092",
+  "01787",
+  "01787654321",
+  "01787654321\\nWebsite",
+  "01787654321\\nwebsite",
+>>>>>>> origin/tariq
   "01798",
   "018",
   "01812",
   "01833183583",
   "01833184152",
   "01852",
+<<<<<<< HEAD
+=======
+  "01876543210",
+>>>>>>> origin/tariq
   "01899",
   "019",
   "01987",
@@ -1121,6 +1153,10 @@
   "057",
   "059",
   "05:15:41",
+<<<<<<< HEAD
+=======
+  "06",
+>>>>>>> origin/tariq
   "060",
   "061",
   "062",
@@ -1541,6 +1577,10 @@
   "100.96",
   "1000",
   "1000's",
+<<<<<<< HEAD
+=======
+  "1000.00",
+>>>>>>> origin/tariq
   "10000",
   "1000th",
   "10043",
@@ -1759,9 +1799,17 @@
   "120.8",
   "1200",
   "1200.00",
+<<<<<<< HEAD
   "120th",
   "121",
   "121.2",
+=======
+  "12000.00",
+  "120th",
+  "121",
+  "121.2",
+  "1210",
+>>>>>>> origin/tariq
   "1212",
   "1213",
   "1219",
@@ -2087,6 +2135,10 @@
   "150.00",
   "150.7",
   "1500",
+<<<<<<< HEAD
+=======
+  "1500.00",
+>>>>>>> origin/tariq
   "1507.37",
   "150gm",
   "150th",
@@ -2178,6 +2230,11 @@
   "160,510",
   "1600",
   "1600's",
+<<<<<<< HEAD
+=======
+  "1600.00\\nTotal",
+  "1600.00\\ntotal",
+>>>>>>> origin/tariq
   "1601.5",
   "161",
   "1610",
@@ -2276,6 +2333,10 @@
   "1757",
   "176",
   "1761.0",
+<<<<<<< HEAD
+=======
+  "1765",
+>>>>>>> origin/tariq
   "177",
   "1772.6",
   "178",
@@ -2328,6 +2389,10 @@
   "180.7",
   "180.9",
   "1800",
+<<<<<<< HEAD
+=======
+  "18000.00",
+>>>>>>> origin/tariq
   "1800s",
   "1807",
   "1809",
@@ -2758,6 +2823,10 @@
   "200...@gmail.com<MSN%EF%BC%9A200...@gmail.com>",
   "200...@gmail.com<msn%ef%bc%9a200...@gmail.com",
   "200...@gmail.com<msn%ef%bc%9a200...@gmail.com>",
+<<<<<<< HEAD
+=======
+  "200.00",
+>>>>>>> origin/tariq
   "200.70",
   "2000",
   "2001",
@@ -3211,6 +3280,10 @@
   "280,000",
   "280.5",
   "2800",
+<<<<<<< HEAD
+=======
+  "2800.00",
+>>>>>>> origin/tariq
   "281",
   "281.2",
   "282",
@@ -3258,6 +3331,10 @@
   "291,890",
   "2917",
   "292",
+<<<<<<< HEAD
+=======
+  "29200.00",
+>>>>>>> origin/tariq
   "293.29",
   "294",
   "294.6",
@@ -3415,6 +3492,12 @@
   "300,000",
   "300-day",
   "3000",
+<<<<<<< HEAD
+=======
+  "3000.00",
+  "3000.00\\n2",
+  "30000.00",
+>>>>>>> origin/tariq
   "300ER",
   "300ZX",
   "300er",
@@ -3494,6 +3577,10 @@
   "320",
   "320.5",
   "3200",
+<<<<<<< HEAD
+=======
+  "3200.00",
+>>>>>>> origin/tariq
   "321",
   "321,000",
   "322",
@@ -3595,8 +3682,15 @@
   "35.5",
   "35.508",
   "35.9",
+<<<<<<< HEAD
   "350",
   "350,000",
+=======
+  "35/1",
+  "350",
+  "350,000",
+  "3500.00",
+>>>>>>> origin/tariq
   "35087.38",
   "351",
   "351.2",
@@ -3916,6 +4010,10 @@
   "400.0",
   "400.4",
   "4000",
+<<<<<<< HEAD
+=======
+  "4000.00",
+>>>>>>> origin/tariq
   "400000",
   "400s",
   "400th",
@@ -3977,6 +4075,19 @@
   "420",
   "420.68",
   "4200",
+<<<<<<< HEAD
+=======
+  "4200.00\\nCustomer",
+  "4200.00\\nDear",
+  "4200.00\\nDelivery",
+  "4200.00\\nReceived",
+  "4200.00\\ncustomer",
+  "4200.00\\ndear",
+  "4200.00\\ndelivery",
+  "4200.00\\nreceived",
+  "4200\\nCustomer",
+  "4200\\ncustomer",
+>>>>>>> origin/tariq
   "423",
   "423.3",
   "423.5",
@@ -4007,6 +4118,10 @@
   "430,700",
   "432",
   "432.6",
+<<<<<<< HEAD
+=======
+  "432109",
+>>>>>>> origin/tariq
   "432700",
   "433",
   "434",
@@ -4109,6 +4224,11 @@
   "460",
   "460.05",
   "460.98",
+<<<<<<< HEAD
+=======
+  "4600.00\\nDiscounted",
+  "4600.00\\ndiscounted",
+>>>>>>> origin/tariq
   "4608",
   "461,539,056",
   "461.6",
@@ -4312,6 +4432,10 @@
   "5.934",
   "5.94",
   "5.99",
+<<<<<<< HEAD
+=======
+  "5/1",
+>>>>>>> origin/tariq
   "5/1/1428",
   "5/100",
   "5/16",
@@ -4327,6 +4451,10 @@
   "50,005,000",
   "50,400",
   "50-something",
+<<<<<<< HEAD
+=======
+  "50.00",
+>>>>>>> origin/tariq
   "50.01",
   "50.3",
   "50.38",
@@ -4469,6 +4597,11 @@
   "55.7",
   "550",
   "550,000",
+<<<<<<< HEAD
+=======
+  "5500",
+  "5500.00",
+>>>>>>> origin/tariq
   "551",
   "552,302",
   "553",
@@ -4674,11 +4807,19 @@
   "60.9",
   "600",
   "600,000",
+<<<<<<< HEAD
+=======
+  "600.00",
+>>>>>>> origin/tariq
   "6000",
   "601",
   "602",
   "604.72",
   "605",
+<<<<<<< HEAD
+=======
+  "6050.00",
+>>>>>>> origin/tariq
   "60557",
   "606",
   "606540",
@@ -4745,6 +4886,10 @@
   "630,000",
   "630-something",
   "630.00",
+<<<<<<< HEAD
+=======
+  "6300.00",
+>>>>>>> origin/tariq
   "63007",
   "631",
   "631,163",
@@ -4762,6 +4907,10 @@
   "64.432",
   "64.5",
   "640",
+<<<<<<< HEAD
+=======
+  "6400.00",
+>>>>>>> origin/tariq
   "641.00",
   "641.000",
   "641.5",
@@ -4788,6 +4937,11 @@
   "654",
   "654.5",
   "654321",
+<<<<<<< HEAD
+=======
+  "654321\\nS.N",
+  "654321\\ns.n",
+>>>>>>> origin/tariq
   "655",
   "656",
   "656.5",
@@ -5172,6 +5326,10 @@
   "78.06",
   "78.13",
   "78.64",
+<<<<<<< HEAD
+=======
+  "78/4",
+>>>>>>> origin/tariq
   "780",
   "780.00",
   "782",
@@ -5339,6 +5497,10 @@
   "8/11/1427",
   "8/15",
   "8/32",
+<<<<<<< HEAD
+=======
+  "8/4",
+>>>>>>> origin/tariq
   "80",
   "80%-owned",
   "80%-plus",
@@ -5349,6 +5511,10 @@
   "800",
   "800,000",
   "800-462-9029",
+<<<<<<< HEAD
+=======
+  "800.00",
+>>>>>>> origin/tariq
   "801,835",
   "802",
   "803",
@@ -5481,6 +5647,10 @@
   "872",
   "874",
   "875",
+<<<<<<< HEAD
+=======
+  "876",
+>>>>>>> origin/tariq
   "877",
   "878",
   "879.98_880.58_B",
@@ -5642,6 +5812,10 @@
   "90.20",
   "900",
   "900,000",
+<<<<<<< HEAD
+=======
+  "900.00",
+>>>>>>> origin/tariq
   "9000",
   "901",
   "9029",
@@ -5652,6 +5826,10 @@
   "906",
   "908",
   "908.8",
+<<<<<<< HEAD
+=======
+  "90876",
+>>>>>>> origin/tariq
   "909",
   "90s",
   "90th",
@@ -5803,6 +5981,10 @@
   "985",
   "986",
   "987",
+<<<<<<< HEAD
+=======
+  "98765",
+>>>>>>> origin/tariq
   "988",
   "989",
   "99",
@@ -6073,6 +6255,7 @@
   "@",
   "@#^%",
   "@AIPAC",
+<<<<<<< HEAD
   "@NASA",
   "@SWIFT",
   "@XXXX",
@@ -6080,6 +6263,23 @@
   "@aipac",
   "@nasa",
   "@swift",
+=======
+  "@GreenThumbNursery",
+  "@NASA",
+  "@SWIFT",
+  "@SportsWorldOutfitters\\nContact",
+  "@TastyBitesCatering",
+  "@XXXX",
+  "@XxxxxXxxxxXxxxx",
+  "@XxxxxXxxxxXxxxx\\xXxxxx",
+  "@_@",
+  "@aipac",
+  "@greenthumbnursery",
+  "@nasa",
+  "@sportsworldoutfitters\\ncontact",
+  "@swift",
+  "@tastybitescatering",
+>>>>>>> origin/tariq
   "@x@xxxx",
   "@xxxx",
   "@z@aabal",
@@ -6155,7 +6355,10 @@
   "ADC",
   "ADD",
   "ADDITIONAL",
+<<<<<<< HEAD
   "ADDRESS",
+=======
+>>>>>>> origin/tariq
   "ADE",
   "ADIA",
   "ADMITTED",
@@ -6516,6 +6719,10 @@
   "Adha",
   "Adia",
   "Adiandor",
+<<<<<<< HEAD
+=======
+  "Adidas",
+>>>>>>> origin/tariq
   "Adjournment",
   "Adjust",
   "Adjusters",
@@ -7055,6 +7262,10 @@
   "Amorites",
   "Amos",
   "Amount",
+<<<<<<< HEAD
+=======
+  "Amount\\n1",
+>>>>>>> origin/tariq
   "Amounts",
   "Amoz",
   "Amparano",
@@ -7787,6 +7998,10 @@
   "Aye",
   "Ayer",
   "Ayers",
+<<<<<<< HEAD
+=======
+  "Ayesha",
+>>>>>>> origin/tariq
   "Ayu",
   "Ayyam",
   "Azaliah",
@@ -8733,6 +8948,10 @@
   "Birtcher",
   "Birth",
   "Birthday",
+<<<<<<< HEAD
+=======
+  "Biryani",
+>>>>>>> origin/tariq
   "Biscayne",
   "Biscuit",
   "Biscuits",
@@ -9678,6 +9897,10 @@
   "CSX",
   "CTA",
   "CTB",
+<<<<<<< HEAD
+=======
+  "CTB2023",
+>>>>>>> origin/tariq
   "CTBS",
   "CTCareer",
   "CTI",
@@ -10447,6 +10670,10 @@
   "Chiron",
   "Chishima",
   "Chitchat",
+<<<<<<< HEAD
+=======
+  "Chittagong",
+>>>>>>> origin/tariq
   "Chiu",
   "Chiuchiungken",
   "Chiung",
@@ -10484,6 +10711,10 @@
   "Chou",
   "Chow",
   "Chowdhury",
+<<<<<<< HEAD
+=======
+  "Chowmuhoni",
+>>>>>>> origin/tariq
   "Chretian",
   "Chris",
   "Christ",
@@ -10919,6 +11150,10 @@
   "Completely",
   "Completion",
   "Complex",
+<<<<<<< HEAD
+=======
+  "Complex\\nDate",
+>>>>>>> origin/tariq
   "Compliance",
   "Complying",
   "Compo",
@@ -11238,6 +11473,10 @@
   "Cosmair",
   "Cosmetic",
   "Cosmetics",
+<<<<<<< HEAD
+=======
+  "CosmoTrends",
+>>>>>>> origin/tariq
   "Cosmopolitan",
   "Cosmos",
   "Cost",
@@ -12197,6 +12436,10 @@
   "Dezhu",
   "Dhabi",
   "Dhaka",
+<<<<<<< HEAD
+=======
+  "Dhaka\\nBusiness",
+>>>>>>> origin/tariq
   "Dhanmondi",
   "Dhari",
   "Dharma",
@@ -12696,6 +12939,10 @@
   "Durney",
   "Dury",
   "Dusary",
+<<<<<<< HEAD
+=======
+  "Dusk",
+>>>>>>> origin/tariq
   "Dust",
   "Duston",
   "Dusty",
@@ -13164,6 +13411,10 @@
   "Embeke",
   "Embryo",
   "Emei",
+<<<<<<< HEAD
+=======
+  "Emerald",
+>>>>>>> origin/tariq
   "Emergency",
   "Emerging",
   "Emerson",
@@ -13591,6 +13842,10 @@
   "Eye",
   "EyeTV",
   "Eyes",
+<<<<<<< HEAD
+=======
+  "Eyeshadow",
+>>>>>>> origin/tariq
   "Eyewitnesses",
   "Ezekiel",
   "Ezion",
@@ -13755,6 +14010,10 @@
   "Fagots",
   "Fahd",
   "Fahd2000",
+<<<<<<< HEAD
+=======
+  "Fahima",
+>>>>>>> origin/tariq
   "Fahlawi",
   "Fahrenheit",
   "Failed",
@@ -13940,6 +14199,10 @@
   "Fengzhu",
   "Fenn",
   "Fenton",
+<<<<<<< HEAD
+=======
+  "Fenty",
+>>>>>>> origin/tariq
   "Fenway",
   "Fenyang",
   "Ferdie",
@@ -14018,6 +14281,10 @@
   "Film",
   "Filmed",
   "Films",
+<<<<<<< HEAD
+=======
+  "Filt'r",
+>>>>>>> origin/tariq
   "Filter",
   "Filtered",
   "Fima",
@@ -14605,6 +14872,10 @@
   "GRiD",
   "GRs",
   "GS430",
+<<<<<<< HEAD
+=======
+  "GT-25",
+>>>>>>> origin/tariq
   "GTE",
   "GUIDE",
   "GUN",
@@ -15017,6 +15288,10 @@
   "Gladkovich",
   "Gladys",
   "Glamorous",
+<<<<<<< HEAD
+=======
+  "Glamour",
+>>>>>>> origin/tariq
   "Glascoff",
   "Glaser",
   "Glasgow",
@@ -15259,6 +15534,10 @@
   "Greeks",
   "Green",
   "GreenKel",
+<<<<<<< HEAD
+=======
+  "GreenThumb",
+>>>>>>> origin/tariq
   "Greenback",
   "Greenbelt",
   "Greenberg",
@@ -16570,6 +16849,10 @@
   "Hucheng",
   "Huck",
   "Huckabee",
+<<<<<<< HEAD
+=======
+  "Huda",
+>>>>>>> origin/tariq
   "Hudbay",
   "Huddy",
   "Hudnut",
@@ -17087,6 +17370,10 @@
   "Indochina",
   "Indonesia",
   "Indonesian",
+<<<<<<< HEAD
+=======
+  "Indoor",
+>>>>>>> origin/tariq
   "Indosuez",
   "Industria",
   "Industrial",
@@ -17397,6 +17684,10 @@
   "Italy",
   "Itaru",
   "Itel",
+<<<<<<< HEAD
+=======
+  "Item",
+>>>>>>> origin/tariq
   "Items",
   "Ithra",
   "Ithream",
@@ -17468,6 +17759,10 @@
   "JDS",
   "JERSEY",
   "JET",
+<<<<<<< HEAD
+=======
+  "JEWELS",
+>>>>>>> origin/tariq
   "JFK",
   "JG",
   "JIA",
@@ -18379,6 +18674,10 @@
   "Khamenei",
   "Khamis",
   "Khan",
+<<<<<<< HEAD
+=======
+  "Khan\\nHouse",
+>>>>>>> origin/tariq
   "Kharek",
   "Khareq",
   "Kharis",
@@ -20379,6 +20678,10 @@
   "Mattatha",
   "Mattathias",
   "Mattausch",
+<<<<<<< HEAD
+=======
+  "Matte",
+>>>>>>> origin/tariq
   "Mattel",
   "Matters",
   "Matthan",
@@ -20682,6 +20985,10 @@
   "Mentally",
   "Mentioned",
   "Mentor",
+<<<<<<< HEAD
+=======
+  "Menu",
+>>>>>>> origin/tariq
   "Menuhin",
   "Meow",
   "Mephibosheth",
@@ -21811,6 +22118,10 @@
   "Nebrusi",
   "Nebuchadnezzar",
   "Nebuzaradan",
+<<<<<<< HEAD
+=======
+  "Necklace",
+>>>>>>> origin/tariq
   "Neco",
   "Ned",
   "Nedelya",
@@ -22234,6 +22545,10 @@
   "Nuremberg",
   "Nuremburg",
   "Nurse",
+<<<<<<< HEAD
+=======
+  "Nursery",
+>>>>>>> origin/tariq
   "Nursing",
   "Nurture",
   "Nusbaum",
@@ -22639,6 +22954,10 @@
   "Orchard",
   "Orchestra",
   "Orchestration",
+<<<<<<< HEAD
+=======
+  "Orchid",
+>>>>>>> origin/tariq
   "Order",
   "Orders",
   "Ordinances",
@@ -22735,6 +23054,11 @@
   "Out",
   "Outdoors",
   "Outer",
+<<<<<<< HEAD
+=======
+  "Outfitters",
+  "Outfitters\\nInvoice",
+>>>>>>> origin/tariq
   "Outflows",
   "Outgoing",
   "Outgrowths",
@@ -23018,6 +23342,10 @@
   "Palestine",
   "Palestinian",
   "Palestinians",
+<<<<<<< HEAD
+=======
+  "Palette",
+>>>>>>> origin/tariq
   "Palfrey",
   "Pali",
   "Palifen",
@@ -23052,6 +23380,10 @@
   "Panda",
   "Pandemic",
   "Pandora",
+<<<<<<< HEAD
+=======
+  "Paneer",
+>>>>>>> origin/tariq
   "Panel",
   "Panelists",
   "Panelli",
@@ -24217,6 +24549,10 @@
   "Puffing",
   "Pui",
   "Pul",
+<<<<<<< HEAD
+=======
+  "Pulao",
+>>>>>>> origin/tariq
   "Puli",
   "Pulitzer",
   "Pulitzers",
@@ -24546,6 +24882,10 @@
   "RISK",
   "RIT",
   "RIs",
+<<<<<<< HEAD
+=======
+  "RJ2023",
+>>>>>>> origin/tariq
   "RJR",
   "RLD",
   "RLLY",
@@ -24570,6 +24910,10 @@
   "ROOT",
   "ROSS",
   "ROX",
+<<<<<<< HEAD
+=======
+  "ROYAL",
+>>>>>>> origin/tariq
   "ROs",
   "RP",
   "RP$",
@@ -24686,6 +25030,11 @@
   "Rajaaa100@Hotmail.Com",
   "Rajihi",
   "Rajiv",
+<<<<<<< HEAD
+=======
+  "Rajshahi",
+  "Rajshahi\\nInvoice",
+>>>>>>> origin/tariq
   "Rake",
   "Raleigh",
   "Rally",
@@ -25740,6 +26089,10 @@
   "SHEVARDNADZE",
   "SHIBUMI",
   "SHIELD",
+<<<<<<< HEAD
+=======
+  "SHIPPING_ADDRESS",
+>>>>>>> origin/tariq
   "SHN",
   "SHOP",
   "SHOPOTH",
@@ -25849,6 +26202,10 @@
   "SUSPECT",
   "SUV",
   "SW",
+<<<<<<< HEAD
+=======
+  "SW-05",
+>>>>>>> origin/tariq
   "SWAPO",
   "SWIFT",
   "SWITCHING",
@@ -26866,6 +27223,10 @@
   "Shorted",
   "Shorter",
   "Shortly",
+<<<<<<< HEAD
+=======
+  "Shorts",
+>>>>>>> origin/tariq
   "Shoshana",
   "Shostakovich",
   "Shot",
@@ -27101,6 +27462,10 @@
   "Skase",
   "Skeptical",
   "Skeptics",
+<<<<<<< HEAD
+=======
+  "Skewers",
+>>>>>>> origin/tariq
   "Ski",
   "Skibo",
   "Skies",
@@ -27270,6 +27635,10 @@
   "Solidarity",
   "Solidlights",
   "Solihull",
+<<<<<<< HEAD
+=======
+  "Solitaire",
+>>>>>>> origin/tariq
   "Solo",
   "Solomon",
   "Solomonic",
@@ -27480,6 +27849,11 @@
   "Sport",
   "Sporting",
   "Sports",
+<<<<<<< HEAD
+=======
+  "SportsWorld",
+  "SportsWorld\\nAddress",
+>>>>>>> origin/tariq
   "Sportsmen",
   "Spotlight",
   "Spots",
@@ -27584,6 +27958,10 @@
   "Staring",
   "Stark",
   "Starke",
+<<<<<<< HEAD
+=======
+  "Starlit",
+>>>>>>> origin/tariq
   "Starr",
   "Stars",
   "Start",
@@ -28034,6 +28412,10 @@
   "Sydney",
   "Syeb",
   "Sykes",
+<<<<<<< HEAD
+=======
+  "Sylhet",
+>>>>>>> origin/tariq
   "Sylmar",
   "Sylvester",
   "Sylvia",
@@ -28092,6 +28474,10 @@
   "TAR",
   "TAX",
   "TAXPAYERS",
+<<<<<<< HEAD
+=======
+  "TB-10",
+>>>>>>> origin/tariq
   "TBA",
   "TBAD",
   "TBS",
@@ -28438,6 +28824,10 @@
   "Taste",
   "Taster",
   "Tastes",
+<<<<<<< HEAD
+=======
+  "TastyBites",
+>>>>>>> origin/tariq
   "Tat",
   "Tata",
   "Tate",
@@ -28833,6 +29223,10 @@
   "Tigris",
   "Tigue",
   "Tijuana",
+<<<<<<< HEAD
+=======
+  "Tikka",
+>>>>>>> origin/tariq
   "Tikong",
   "Tikrit",
   "Tikvah",
@@ -29871,6 +30265,10 @@
   "Vegan",
   "Vegans",
   "Vegas",
+<<<<<<< HEAD
+=======
+  "Vegetable",
+>>>>>>> origin/tariq
   "Vegetables",
   "Vehicle",
   "Vehicles",
@@ -31249,6 +31647,10 @@
   "XxxxXxxxx",
   "XxxxXxxxxXxxxXxxx$",
   "XxxxXxxxxXxxxx$",
+<<<<<<< HEAD
+=======
+  "Xxxx\\xXxxxx",
+>>>>>>> origin/tariq
   "Xxxxdddd",
   "Xxxxx",
   "Xxxxx!",
@@ -31277,6 +31679,13 @@
   "XxxxxXxxxXxx",
   "XxxxxXxxxx",
   "XxxxxXxxxx.xxx",
+<<<<<<< HEAD
+=======
+  "XxxxxXxxxx\\xXxxxx",
+  "Xxxxx\\xXxxx",
+  "Xxxxx\\xXxxxx",
+  "Xxxxx\\xd",
+>>>>>>> origin/tariq
   "Xxxxxd",
   "Xxxxxd.xxxxX",
   "XxxxxdXxxx",
@@ -31306,6 +31715,10 @@
   "YAC",
   "YAH",
   "YAHOO",
+<<<<<<< HEAD
+=======
+  "YAL",
+>>>>>>> origin/tariq
   "YALE",
   "YDE",
   "YEARS",
@@ -31981,6 +32394,11 @@
   "\\",
   "\\\")",
   "\\n",
+<<<<<<< HEAD
+=======
+  "\\n1",
+  "\\n2",
+>>>>>>> origin/tariq
   "\\t",
   "\\x",
   "]",
@@ -32625,6 +33043,10 @@
   "adi",
   "adia",
   "adiandor",
+<<<<<<< HEAD
+=======
+  "adidas",
+>>>>>>> origin/tariq
   "adjacent",
   "adjective",
   "adjectives",
@@ -33723,6 +34145,10 @@
   "amortize",
   "amos",
   "amount",
+<<<<<<< HEAD
+=======
+  "amount\\n1",
+>>>>>>> origin/tariq
   "amounted",
   "amounting",
   "amounts",
@@ -35479,6 +35905,10 @@
   "aye",
   "ayer",
   "ayers",
+<<<<<<< HEAD
+=======
+  "ayesha",
+>>>>>>> origin/tariq
   "ayf",
   "ayi",
   "ayn",
@@ -36912,6 +37342,10 @@
   "birthdays",
   "birthplace",
   "births",
+<<<<<<< HEAD
+=======
+  "biryani",
+>>>>>>> origin/tariq
   "bis",
   "bisay",
   "biscayne",
@@ -39875,6 +40309,10 @@
   "chit",
   "chitchat",
   "chitin",
+<<<<<<< HEAD
+=======
+  "chittagong",
+>>>>>>> origin/tariq
   "chiu",
   "chiuchiungken",
   "chiung",
@@ -39942,6 +40380,10 @@
   "chou",
   "chow",
   "chowdhury",
+<<<<<<< HEAD
+=======
+  "chowmuhoni",
+>>>>>>> origin/tariq
   "chretian",
   "chris",
   "christ",
@@ -41050,6 +41492,10 @@
   "completion",
   "completions",
   "complex",
+<<<<<<< HEAD
+=======
+  "complex\\ndate",
+>>>>>>> origin/tariq
   "complexes",
   "complexify",
   "complexions",
@@ -41975,6 +42421,11 @@
   "cosmonaut",
   "cosmopolitan",
   "cosmos",
+<<<<<<< HEAD
+=======
+  "cosmotrends",
+  "cosmotrendsbeauty.com",
+>>>>>>> origin/tariq
   "cosseted",
   "cost",
   "costa",
@@ -42562,6 +43013,10 @@
   "ct.",
   "cta",
   "ctb",
+<<<<<<< HEAD
+=======
+  "ctb2023",
+>>>>>>> origin/tariq
   "ctbs",
   "ctcareer",
   "cti",
@@ -42713,6 +43168,10 @@
   "customary",
   "customer",
   "customers",
+<<<<<<< HEAD
+=======
+  "customization",
+>>>>>>> origin/tariq
   "customized",
   "customs",
   "cut",
@@ -42829,6 +43288,11 @@
   "d.d-xxxx",
   "d.dX",
   "d.dd",
+<<<<<<< HEAD
+=======
+  "d.dd\\xXxx",
+  "d.dd\\xXxxxx",
+>>>>>>> origin/tariq
   "d.ddd",
   "d.dddd",
   "d.dx",
@@ -43230,6 +43694,12 @@
   "dddd.",
   "dddd.d",
   "dddd.dd",
+<<<<<<< HEAD
+=======
+  "dddd.dd\\xXxxx",
+  "dddd.dd\\xXxxxx",
+  "dddd.dd\\xd",
+>>>>>>> origin/tariq
   "dddd.dd_dddd.dd_X",
   "dddd.dd_dddd.dd_X:",
   "dddd.dd_dddd.dd_x:",
@@ -43238,6 +43708,11 @@
   "dddd/dddd",
   "dddd:ddd",
   "ddddX",
+<<<<<<< HEAD
+=======
+  "dddd\\xX.X",
+  "dddd\\xXxxxx",
+>>>>>>> origin/tariq
   "ddddx",
   "ddddxx",
   "dddx",
@@ -44192,6 +44667,10 @@
   "dhabas",
   "dhabi",
   "dhaka",
+<<<<<<< HEAD
+=======
+  "dhaka\\nbusiness",
+>>>>>>> origin/tariq
   "dhanmondi",
   "dhari",
   "dharma",
@@ -48067,6 +48546,10 @@
   "fah",
   "fahd",
   "fahd2000",
+<<<<<<< HEAD
+=======
+  "fahima",
+>>>>>>> origin/tariq
   "fahlawi",
   "fahrenheit",
   "fai",
@@ -48486,6 +48969,10 @@
   "fenn",
   "fennel",
   "fenton",
+<<<<<<< HEAD
+=======
+  "fenty",
+>>>>>>> origin/tariq
   "fenugreek",
   "fenway",
   "fenyang",
@@ -48714,6 +49201,10 @@
   "filmmaker",
   "filmmakers",
   "films",
+<<<<<<< HEAD
+=======
+  "filt'r",
+>>>>>>> origin/tariq
   "filter",
   "filtered",
   "filtering",
@@ -51273,6 +51764,10 @@
   "greensboro",
   "greenshields",
   "greenspan",
+<<<<<<< HEAD
+=======
+  "greenthumb",
+>>>>>>> origin/tariq
   "greenville",
   "greenwald",
   "greenwich",
@@ -51467,6 +51962,10 @@
   "gsi",
   "gst",
   "gsu",
+<<<<<<< HEAD
+=======
+  "gt-25",
+>>>>>>> origin/tariq
   "gte",
   "gth",
   "gtu",
@@ -53521,6 +54020,10 @@
   "huckabee",
   "huckstering",
   "hud",
+<<<<<<< HEAD
+=======
+  "huda",
+>>>>>>> origin/tariq
   "hudbay",
   "huddled",
   "huddling",
@@ -56922,6 +57425,10 @@
   "khamis",
   "khamri",
   "khan",
+<<<<<<< HEAD
+=======
+  "khan\\nhouse",
+>>>>>>> origin/tariq
   "kharek",
   "khareq",
   "kharis",
@@ -60087,6 +60594,10 @@
   "mattathias",
   "mattausch",
   "mattcollins",
+<<<<<<< HEAD
+=======
+  "matte",
+>>>>>>> origin/tariq
   "mattel",
   "matter",
   "mattered",
@@ -64869,6 +65380,11 @@
   "outfit",
   "outfits",
   "outfitted",
+<<<<<<< HEAD
+=======
+  "outfitters",
+  "outfitters\\ninvoice",
+>>>>>>> origin/tariq
   "outflow",
   "outflows",
   "outfly",
@@ -65245,6 +65761,11 @@
   "p.m",
   "p.m.",
   "p.m.-midnight",
+<<<<<<< HEAD
+=======
+  "p.m.\\nCity",
+  "p.m.\\ncity",
+>>>>>>> origin/tariq
   "p.r",
   "p.r.",
   "p0340",
@@ -65437,6 +65958,10 @@
   "pandits",
   "pandora",
   "pane",
+<<<<<<< HEAD
+=======
+  "paneer",
+>>>>>>> origin/tariq
   "panel",
   "paneled",
   "paneling",
@@ -68590,6 +69115,10 @@
   "pui",
   "puk",
   "pul",
+<<<<<<< HEAD
+=======
+  "pulao",
+>>>>>>> origin/tariq
   "pulchritude",
   "puli",
   "pulitzer",
@@ -69238,6 +69767,11 @@
   "rajaaa100@hotmail.com",
   "rajihi",
   "rajiv",
+<<<<<<< HEAD
+=======
+  "rajshahi",
+  "rajshahi\\ninvoice",
+>>>>>>> origin/tariq
   "rak",
   "rake",
   "raked",
@@ -71405,6 +71939,10 @@
   "riz",
   "rizpah",
   "rizzo",
+<<<<<<< HEAD
+=======
+  "rj2023",
+>>>>>>> origin/tariq
   "rji",
   "rjr",
   "rk-",
@@ -71776,6 +72314,10 @@
   "roy",
   "royal",
   "royalist",
+<<<<<<< HEAD
+=======
+  "royaljewels.com",
+>>>>>>> origin/tariq
   "royally",
   "royals",
   "royalties",
@@ -74478,6 +75020,10 @@
   "sketching",
   "sketchy",
   "skewed",
+<<<<<<< HEAD
+=======
+  "skewers",
+>>>>>>> origin/tariq
   "skf",
   "ski",
   "skibo",
@@ -75049,6 +75595,10 @@
   "solidly",
   "solihull",
   "soliloquies",
+<<<<<<< HEAD
+=======
+  "solitaire",
+>>>>>>> origin/tariq
   "solitary",
   "solo",
   "soloist",
@@ -75556,6 +76106,11 @@
   "sports",
   "sportsmen",
   "sportswear",
+<<<<<<< HEAD
+=======
+  "sportsworld",
+  "sportsworld\\naddress",
+>>>>>>> origin/tariq
   "sporty",
   "spot",
   "spotlight",
@@ -75855,6 +76410,10 @@
   "starke",
   "starkly",
   "starlets",
+<<<<<<< HEAD
+=======
+  "starlit",
+>>>>>>> origin/tariq
   "starr",
   "starred",
   "starring",
@@ -76944,6 +77503,12 @@
   "supply",
   "supplying",
   "support",
+<<<<<<< HEAD
+=======
+  "support@greenthumbnursery.com",
+  "support@sportsworldoutfitters.com",
+  "support@tastybitescatering.com",
+>>>>>>> origin/tariq
   "support@techxgadgets.com",
   "supportable",
   "supported",
@@ -77095,6 +77660,10 @@
   "sventek",
   "sverdlovsk",
   "sw",
+<<<<<<< HEAD
+=======
+  "sw-05",
+>>>>>>> origin/tariq
   "swabs",
   "swagger",
   "swaine",
@@ -77221,6 +77790,10 @@
   "sydney",
   "syeb",
   "sykes",
+<<<<<<< HEAD
+=======
+  "sylhet",
+>>>>>>> origin/tariq
   "syllable",
   "syllabus",
   "syllogistic",
@@ -77322,6 +77895,10 @@
   "t'",
   "t'aint",
   "t'd",
+<<<<<<< HEAD
+=======
+  "t'r",
+>>>>>>> origin/tariq
   "t's",
   "t(e",
   "t(s",
@@ -77691,6 +78268,10 @@
   "tastier",
   "tasting",
   "tasty",
+<<<<<<< HEAD
+=======
+  "tastybites",
+>>>>>>> origin/tariq
   "tat",
   "tata",
   "tate",
@@ -77737,6 +78318,10 @@
   "taylor",
   "taymani",
   "tayyip",
+<<<<<<< HEAD
+=======
+  "tb-10",
+>>>>>>> origin/tariq
   "tba",
   "tbad",
   "tbilisi",
@@ -78499,6 +79084,10 @@
   "tigue",
   "tijuana",
   "tik",
+<<<<<<< HEAD
+=======
+  "tikka",
+>>>>>>> origin/tariq
   "tikki",
   "tikong",
   "tikrit",
@@ -82241,6 +82830,11 @@
   "webpages",
   "webs",
   "website",
+<<<<<<< HEAD
+=======
+  "website.\\nAddress",
+  "website.\\naddress",
+>>>>>>> origin/tariq
   "websites",
   "webster",
   "wed",
@@ -83162,9 +83756,19 @@
   "www.career.com",
   "www.europeaninternet.com",
   "www.fordvehicles.comdealerships",
+<<<<<<< HEAD
   "www.ibb.gov/editorials",
   "www.mcoa.cn",
   "www.ninecommentaries.com",
+=======
+  "www.greenthumbnursery.com",
+  "www.ibb.gov/editorials",
+  "www.mcoa.cn",
+  "www.ninecommentaries.com",
+  "www.sportsworldoutfitters.com\\nSocial",
+  "www.sportsworldoutfitters.com\\nsocial",
+  "www.tastybitescatering.com",
+>>>>>>> origin/tariq
   "www.techxgadgets.com",
   "www.u5lazarus.com",
   "www.vitac.com",
@@ -83230,6 +83834,10 @@
   "x.x.-d:dd",
   "x.x.-x.x.x.x",
   "x.x.-xxxx",
+<<<<<<< HEAD
+=======
+  "x.x.\\xXxxx",
+>>>>>>> origin/tariq
   "x.x.x",
   "x.x.x.",
   "x.x.x.x",
@@ -83522,6 +84130,10 @@
   "xxx.xxx/xxxx",
   "xxx.xxxx.xx",
   "xxx.xxxx.xxx",
+<<<<<<< HEAD
+=======
+  "xxx.xxxx.xxx\\xXxxxx",
+>>>>>>> origin/tariq
   "xxx.xxxx.xxxx",
   "xxx.xxxx.xxxx.xxxx",
   "xxx/d",
@@ -83594,6 +84206,10 @@
   "xxxx...@ddd.xxx",
   "xxxx...@xxxx.xxx",
   "xxxx.:d.dd",
+<<<<<<< HEAD
+=======
+  "xxxx.\\xXxxxx",
+>>>>>>> origin/tariq
   "xxxx.xx",
   "xxxx.xxx",
   "xxxx.xxx.",
