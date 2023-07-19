@@ -51,7 +51,7 @@ def df_first_row_to_header(df):
     df = df[1:] #take the data less the header row
     df.columns = new_header.str.lower() #set the header row as the df header
     df.columns = df.columns.str.replace('\n', '\\') # Remove newline characters from header
-    df.replace('\n', ' ', regex=True, inplace=True)
+    df = df.replace('\n', ' ', regex=True)
     df = df.reset_index(drop=True)
     return df
 

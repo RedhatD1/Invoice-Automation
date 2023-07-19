@@ -2,15 +2,8 @@
 
 from datetime import datetime
 import re
-import spacy
 
-ml_results = {'SHOP': '', 'CUSTOMER': '', 'ADDRESS': ''}
-def ner_extraction(text):
-    nlp = spacy.load('backend/regex_algorithm/ML_Entity_Detection/model')
-    doc = nlp(text)
-
-    for ent in doc.ents:
-        ml_results[ent.label_] = ent.text
+import nltk
 
 
 def extract_invoice_number(text):
@@ -46,13 +39,69 @@ def extract_invoice_number(text):
                 return ""
     return ""
 
+def standardize_date(text):
+    try:
+        date_obj = None
+        date_formats = [
+            "%d-%m-%y",
+            "%d-%m-%Y",
+            "%d/%m/%Y",
+            "%d/%m/%y",
+            "%d.%m.%Y",
+            "%d%m%Y",
+            "%d %b, %Y",
+            "%d %b %Y",
+            "%d %B, %Y",
+            "%d %B %Y",
+            "%B %d, %Y",
+            "%m-%d-%Y",
+            "%m/%d/%Y",
+            "%m-%d-%y",
+            "%B %d %Y",
+            "%b %d, %Y",
+            "%b %d %Y",
+            "%m%Y",
+
+            "%Y/%m/%d",
+            "%Y.%m.%d",
+            "%Y%m%d",
+            "%Y/%m/%d",
+            "%Y%m",
+            "%Y-%m-%d",
+            "%Y-%d-%m",
+            "%Y",
+            "%y",
+        ]
+
+        for format_string in date_formats:
+            try:
+                date_obj = datetime.strptime(text, format_string)
+                break  # Exit the loop if a valid date format is found
+            except ValueError:
+                continue  # Continue to the next format if the current one raises an exception
+
+        if date_obj is None:
+            return ""
+        else:
+            day = date_obj.day
+            month = date_obj.strftime("%B")
+            year = date_obj.year
+            formatted_date = f'{day} {month}, {year}'
+            return formatted_date
+
+    except Exception as e:
+        return ""
+
 def extract_date(text):
     # Define patterns or keywords for invoice date extraction
     patterns = ['Invoice Date', 'Date of Issue', 'Billing Date', 'Order Date', 'Date']
+
     for pattern in patterns:
         match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
         if match:
-            return match.group(1)
+            date_string = str(match.group(1))
+            date_string = date_string.strip()
+            return date_string[1:].strip()
         else:
             pattern = r'\b(?:\d{1,2}(?:-|\/)\d{1,2}(?:-|\/)\d{4}|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4})\b'
             matches = re.findall(pattern, text)
@@ -109,33 +158,25 @@ def extract_email(text):
         return email
 
 def extract_name(text):
-<<<<<<< Updated upstream
-    email = extract_email(text)
-    username = email.split('@')[0]
-    return username
-=======
-    if ml_results['NAME'] != '':
-        return ml_results['NAME']
-    else:
-        # Define patterns or keywords for invoice number extraction
-        patterns = ['Name', 'Customer name', "Customer info", 'Receiver', 'Receiver Name', 'Receiver info', 'Recipient', 'Recipient name']
-        for pattern in patterns:
-            match = re.search(r'{}(\s*:\s*|\s+)(\w+)'.format(pattern), text, re.IGNORECASE)
-            # The code searches for specific patterns ('Invoice No.', 'Order No.', 'Invoice Number', 'Order #')
-            # followed by a colon or whitespace, followed by one or more word characters
-            # The code ignores case sensitivity
-            if match:
-                return match.group(2)
->>>>>>> Stashed changes
+    # Define patterns or keywords for invoice number extraction
+    patterns = ['Name', 'Customer name', "Customer info", 'Receiver', 'Receiver Name', 'Receiver info', 'Recipient', 'Recipient name']
+    for pattern in patterns:
+        match = re.search(r'{}(\s*:\s*|\s+)(\w+)'.format(pattern), text, re.IGNORECASE)
+        # The code searches for specific patterns ('Invoice No.', 'Order No.', 'Invoice Number', 'Order #')
+        # followed by a colon or whitespace, followed by one or more word characters
+        # The code ignores case sensitivity
+        if match:
+            return match.group(2)
+        else:
+            email = extract_email(text)
+            username = email.split('@')[0]
+            return re.sub(r'[^a-zA-Z]+', '', username)
 def extract_address(text, patterns):
-    if ml_results['ADDRESS'] != '':
-        return ml_results['ADDRESS']
-    else:
-        for pattern in patterns:
-            match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
-            if match:
-                address = match.group(2)
-                return address.strip()  # Return the extracted shipping address
+    for pattern in patterns:
+        match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
+        if match:
+            address = match.group(2)
+            return address.strip()  # Return the extracted shipping address
     return ""  # Return "" if no shipping address is found
 
 def extract_shipping_address(text):
@@ -148,29 +189,3 @@ def extract_billing_address(text):
     billing_address = extract_address(text=text, patterns=pattern)
     return billing_address
 
-<<<<<<< Updated upstream
-def get_human_names(text):
-
-
-    tokens = nltk.tokenize.word_tokenize(text)
-    pos = nltk.pos_tag(tokens)
-    sentt = nltk.ne_chunk(pos, binary = False)
-    person_list = []
-    person = []
-    name = ""
-    for subtree in sentt.subtrees(filter=lambda t: t.label() == 'PERSON'):
-        for leaf in subtree.leaves():
-            person.append(leaf[0])
-        if len(person) > 1: #avoid grabbing lone surnames
-            for part in person:
-                name += part + ' '
-            if name[:-1] not in person_list:
-                person_list.append(name[:-1])
-            name = ''
-        person = []
-    return person_list[0]
-
-=======
-def extract_shop_name(text):
-    return ml_results['SHOP']
->>>>>>> Stashed changes

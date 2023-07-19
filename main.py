@@ -6,6 +6,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.regex_algorithm import details_utils, reader, extractor, utils
 from backend.regex_algorithm_sunjid_bhai import regex2
 from backend.other import template
+from fastapi.staticfiles import StaticFiles
+import json
+from helpers.date_manipulator import get_date
+from helpers.log import log_write
+
 
 app = FastAPI()
 app.add_middleware(
@@ -16,64 +21,59 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+static_path = "invoices"
+app.mount("/static", StaticFiles(directory=static_path), name="static")
+
 
 @app.get("/")
 def sample_api():
     return {"message": "hello world"}
 
 
-@app.get("/items/")
-async def get_items(request: Request):
-    default_response = {
+@app.get("/items/{file_name}")
+async def get_items(request: Request, file_name: str, algorithm: str = 'regex'):
+    response = {
         "customer_info": {
-            "name": "None",
-            "phone": "None",
-            "email": "None",
-            "billing_address": "None",
-            "shipping_address": "None"
+            "name": "",
+            "phone": "",
+            "email": "",
+            "billing_address": "",
+            "shipping_address": ""
         },
         "item_details": [
             {
-                "name": "None",
-                "description": "None",
-                "quantity": 0,
-                "unit_price": 0,
-                "amount": "0",
-                "currency": "0"
+                "name": "",
+                "description": "",
+                "quantity": "",
+                "unit_price": "",
+                "amount": "",
+                "currency": ""
             }
         ],
-        "total_amount": "0",
-        "note": "None",
+        "total_amount": "",
+        "note": "",
         "invoice_info": {
-<<<<<<< Updated upstream
-            "date": "None",
-            "number": "None"
-=======
-            "shop_name": "",
             "date": "",
             "number": ""
->>>>>>> Stashed changes
         }
     }
-
-    # Get the query parameters from the request
-    params = request.query_params
-
-    # Extract specific query parameters
-    file_name = params.get("pdfFileName")
-    algorithm = params.get("algorithm")
     try:
-        if algorithm == "regex":
-            json_data = extractor.get_json_formatted(file_name)  # new regex, does error handling
-        elif algorithm == "regex2":
-            json_data = regex2.extract_information_from_invoice(file_name)
+
+        if algorithm == "regex2":
+            response = regex2.extract_information_from_invoice(file_name)
         elif algorithm == "ocr":
-            json_data = template.other(file_name)  # template, does error handling
+            response = template.other(file_name)  # template, does error handling
         elif algorithm == "dl":
-            json_data = template.other(file_name)
+            response = template.other(file_name)
         else:
-            json_data = template.other(file_name)
-        return JSONResponse(content=json_data)
+            response = extractor.get_json_formatted(file_name)  # new regex, does error handling
+
+        return JSONResponse(content=response)
     except Exception as e:
-        # print(e)
-        return JSONResponse(content=default_response)
+        print(e)
+        return JSONResponse(content=response)
+    finally:
+        file_name = f"./logs/document_extraction_req_res_{get_date('%d-%m-%Y')}.txt"
+        log_content = f"{get_date('%d-%m-%Y %H:%I:%S')} | req_url {str(request.url)} | res {json.dumps(response)} \n"
+        log_write(file_name, log_content)
+
