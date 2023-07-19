@@ -2,8 +2,15 @@
 
 from datetime import datetime
 import re
+import spacy
 
-import nltk
+ml_results = {'SHOP': '', 'CUSTOMER': '', 'ADDRESS': ''}
+def ner_extraction(text):
+    nlp = spacy.load('backend/regex_algorithm/ML_Entity_Detection/model')
+    doc = nlp(text)
+
+    for ent in doc.ents:
+        ml_results[ent.label_] = ent.text
 
 
 def extract_invoice_number(text):
@@ -102,15 +109,33 @@ def extract_email(text):
         return email
 
 def extract_name(text):
+<<<<<<< Updated upstream
     email = extract_email(text)
     username = email.split('@')[0]
     return username
+=======
+    if ml_results['NAME'] != '':
+        return ml_results['NAME']
+    else:
+        # Define patterns or keywords for invoice number extraction
+        patterns = ['Name', 'Customer name', "Customer info", 'Receiver', 'Receiver Name', 'Receiver info', 'Recipient', 'Recipient name']
+        for pattern in patterns:
+            match = re.search(r'{}(\s*:\s*|\s+)(\w+)'.format(pattern), text, re.IGNORECASE)
+            # The code searches for specific patterns ('Invoice No.', 'Order No.', 'Invoice Number', 'Order #')
+            # followed by a colon or whitespace, followed by one or more word characters
+            # The code ignores case sensitivity
+            if match:
+                return match.group(2)
+>>>>>>> Stashed changes
 def extract_address(text, patterns):
-    for pattern in patterns:
-        match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
-        if match:
-            address = match.group(2)
-            return address.strip()  # Return the extracted shipping address
+    if ml_results['ADDRESS'] != '':
+        return ml_results['ADDRESS']
+    else:
+        for pattern in patterns:
+            match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
+            if match:
+                address = match.group(2)
+                return address.strip()  # Return the extracted shipping address
     return ""  # Return "" if no shipping address is found
 
 def extract_shipping_address(text):
@@ -123,6 +148,7 @@ def extract_billing_address(text):
     billing_address = extract_address(text=text, patterns=pattern)
     return billing_address
 
+<<<<<<< Updated upstream
 def get_human_names(text):
 
 
@@ -144,3 +170,7 @@ def get_human_names(text):
         person = []
     return person_list[0]
 
+=======
+def extract_shop_name(text):
+    return ml_results['SHOP']
+>>>>>>> Stashed changes

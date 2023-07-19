@@ -75,7 +75,17 @@ def get_json(df):
     json = df.to_dict('records')
     return json
 
+<<<<<<< Updated upstream
 def convert_to_json_template(df, name="", phone="", email="", billing_address="", shipping_address="", items=[], total_amount=0, note="", date="", number=""):
+=======
+def get_formatted_date(text):
+    raw_data = details_utils.extract_date(text)
+    print(raw_data)
+    formatted_date = details_utils.standardize_date(raw_data)
+    return formatted_date
+
+def convert_to_json_template(df, name="", shop_name="", phone="", email="", billing_address="", shipping_address="", items=[], total_amount=0, note="", date="", number=""):
+>>>>>>> Stashed changes
     items = get_json(df)
     json_data = {
         "customer_info": {
@@ -89,6 +99,7 @@ def convert_to_json_template(df, name="", phone="", email="", billing_address=""
         "total_amount": total_amount,
         "note": note,
         "invoice_info": {
+            "shop_name": shop_name,
             "date": date,
             "number": number
         }
@@ -98,12 +109,14 @@ def convert_to_json_template(df, name="", phone="", email="", billing_address=""
 def get_json_formatted(file_name):
     file_path = "invoices/" + file_name
     invoice_text = reader.read_invoice(file_path)
+    # details_utils.ner_extraction(invoice_text)  # ML
     invoice_tables = reader.read_tables(file_path)
     result_table = utils.extract_item_table(invoice_tables)
     result_table = standardize_df(result_table)
 
     json_data = convert_to_json_template(df=result_table,
                                          name=details_utils.extract_name(invoice_text),
+                                         # shop_name=details_utils.extract_shop_name(invoice_text),
                                          phone=details_utils.extract_phone(invoice_text),
                                          email=details_utils.extract_email(invoice_text),
                                          date=details_utils.extract_date(invoice_text),

@@ -45,8 +45,14 @@ async def get_items(request: Request):
         "total_amount": "0",
         "note": "None",
         "invoice_info": {
+<<<<<<< Updated upstream
             "date": "None",
             "number": "None"
+=======
+            "shop_name": "",
+            "date": "",
+            "number": ""
+>>>>>>> Stashed changes
         }
     }
 
