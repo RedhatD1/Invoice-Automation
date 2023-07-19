@@ -233,5 +233,165 @@
         "label": "CUSTOMER"
       }
     ]
+  },
+  {
+    "text": "\"TechGenius Electronics\\nShop: 401, Giga Mall\\nTech Street, Dhaka.\\n01899 – 543 210\\n01787 – 654 321\\nINVOICE\\nCustomer Name: Emad Hasan\\nInvoice Number: TG2023\\nAddress: House: 15, Smart Avenue\\nInvoice Date: 07-09-2023\\nCity: Dhaka\\nOrder Number: 75321\\nOrder Date: 07-09-2023\\n1210\\n01987654321\\nProduct Quantity Price\\nApple iPhone 14 Pro Max - Midnight Blue 1 ৳ 125000.00\\nSKU: 112233\\nWeight: 250g\\nSamsung Galaxy Watch 4 - Black 1 ৳ 23000.00\\nSKU: 445566\\nWeight: 100g\\nSubtotal ৳ 148000.00\\nDiscount -৳ 5000.00\\nShipping ৳ 0.00 (Free Shipping)\\nTotal ৳ 143000.00\\nThank you for shopping with us. We would love to hear your thoughts on techgeniuselectronics.com. Leave a review and win exciting prizes.\\nFor any issues with your order, contact us at 01899 – 543 210.\\nTechGenius Electronics offers a 1-year warranty on all electronics.\"\n\n",
+    "entities": [
+      {
+        "start": 0,
+        "end": 22,
+        "label": "SHOP"
+      },
+      {
+        "start": 119,
+        "end": 129,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 162,
+        "end": 185,
+        "label": "ADDRESS"
+      }
+    ]
+  },
+  {
+    "text": "FashionFusion Boutique\nShop: 302, Vogue Plaza\nTrendy Street, Dhaka.\n01678 – 543 210\n01987 – 654 321\nINVOICE\nCustomer Name: Foyez Ullah\nInvoice Number: FF2023\nAddress: House: 25, Style Avenue\nInvoice Date: 18-10-2023\nCity: Dhaka\nOrder Number: 90876\nOrder Date: 18-10-2023\n1210\n01876543210\nProduct Quantity Price\nMen's Classic Suit - Charcoal Gray 1 ৳ 8000.00\nSKU: 112233\nWeight: 1kg\nWomen's Party Dress - Ruby Red 1 ৳ 6500.00\nSKU: 445566\nWeight: 500g\nSubtotal ৳ 14500.00\nDiscount -৳ 500.00\nShipping ৳ 100.00 via Home Delivery\nTotal ৳ 14000.00\nThank you for shopping with us. We would love to hear your thoughts on fashionfusionboutique.com. Leave a review and win exciting prizes.\nFor any issues with your order, contact us at 01678 – 543 210.\nFashionFusion Boutique offers a 10-day return policy.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 22,
+        "label": "SHOP"
+      },
+      {
+        "start": 123,
+        "end": 134,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 167,
+        "end": 190,
+        "label": "ADDRESS"
+      }
+    ]
+  },
+  {
+    "text": "TechHub Electronics\nShop: 501, Digital Arcade\nGadget Street, Dhaka.\n01899 – 543 210\n01787 – 654 321\nINVOICE\nCustomer Name: Sunjid Chowdhury\nInvoice Number: TH2023\nAddress: House: 10, Tech Park Road\nInvoice Date: 25-11-2023\nCity: Dhaka\nOrder Number: 98765\nOrder Date: 25-11-2023\n1210\n01987654321\nProduct Quantity Price\nSony PlayStation 5 Console 1 ৳ 45000.00\nSKU: 112233\nWeight: 4.5kg\nXbox Series X Console 1 ৳ 40000.00\nSKU: 445566\nWeight: 5kg\nSubtotal ৳ 85000.00\nDiscount -৳ 2000.00\nShipping ৳ 0.00 (Free Shipping)\nTotal ৳ 83000.00\nThank you for shopping with us. We would love to hear your thoughts on techhubelectronics.com. Leave a review and win exciting prizes.\nFor any issues with your order, contact us at 01899 – 543 210.\nTechHub Electronics offers a 1-year warranty on all electronics.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 19,
+        "label": "SHOP"
+      },
+      {
+        "start": 123,
+        "end": 139,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 172,
+        "end": 197,
+        "label": "ADDRESS"
+      }
+    ]
+  },
+  {
+    "text": "StyleHaven Boutique\nShop: 201, Fashion Street\nChic Plaza, Dhaka.\n01678 – 543 210\n01987 – 654 321\nINVOICE\nCustomer Name: Arifur Rahman\nInvoice Number: SHB2023\nAddress: House: 12, Trendy Avenue\nInvoice Date: 05-08-2023\nCity: Dhaka\nOrder Number: 75321\nOrder Date: 05-08-2023\n1210\n01876543210\nProduct Quantity Price\nWomen's Floral Maxi Dress - Pastel Pink 1 ৳ 3500.00\nSKU: 112233\nWeight: 300g\nMen's Casual Shirt - Striped 1 ৳ 1800.00\nSKU: 445566\nWeight: 250g\nSubtotal ৳ 5300.00\nDiscount -৳ 200.00\nShipping ৳ 50.00 via Home Delivery\nTotal ৳ 5050.00\nThank you for shopping with us. We would love to hear your thoughts on stylehavenboutique.com. Leave a review and win exciting prizes.\nFor any issues with your order, contact us at 01678 – 543 210.\nStyleHaven Boutique offers a 14-day return policy.",
+    "entities": [
+      {
+          "start": 0,
+          "end": 19,
+          "label": "SHOP"
+      },
+      {
+          "start": 120,
+          "end": 133,
+          "label": "CUSTOMER"
+      },
+      {
+          "start": 174,
+          "end": 191,
+          "label": "ADDRESS"
+      }
+    ]
+  },
+  {
+    "text": "SportsElite Outdoors\nShop: 402, Sports Arena\nAdrenaline Street, Dhaka.\n01899 – 543 210\n01787 – 654 321\nINVOICE\nCustomer Name: Ziaur Rahman\nInvoice Number: SE2023\nAddress: House: 8, Victory Road\nInvoice Date: 15-09-2023\nCity: Dhaka\nOrder Number: 90876\nOrder Date: 15-09-2023\n1210\n01987654321\nProduct Quantity Price\nAdidas Performance Soccer Ball - Size 5 1 ৳ 2500.00\nSKU: 112233\nWeight: 500g\nNike Air Zoom Pegasus Running Shoes - Black 1 ৳ 5000.00\nSKU: 445566\nWeight: 800g\nSubtotal ৳ 7500.00\nDiscount -৳ 1000.00\nShipping ৳ 100.00 via Home Delivery\nTotal ৳ 7400.00\nThank you for shopping with us. We would love to hear your thoughts on sportseliteoutdoors.com. Leave a review and win exciting prizes.\nFor any issues with your order, contact us at 01899 – 543 210.\nSportsElite Outdoors offers a 30-day return policy.",
+    "entities": [
+      {
+          "start": 0,
+          "end": 20,
+          "label": "SHOP"
+      },
+      {
+          "start": 126,
+          "end": 138,
+          "label": "CUSTOMER"
+      },
+      {
+          "start": 171,
+          "end": 193,
+          "label": "ADDRESS"
+      }
+    ]
+  },
+  {
+    "text": "2025-82\nInvoice Value: 812.50\nCustomer Name: Safia Rahman Business Name: AquaShine\nHouse 309, Road 6, Block C\nAddress Line Date June 12, 2025, 2:15 p.m.\nBanani Dhaka\nCity Dhaka Invoice No AQUA-12-06-25-82\nCustomer's Cell 01987654321 Web www.aquashine.com\nFB & Instagram AquaShineBD\nContact +880 1777-654321\nInvoice 2025-82\nCustomer Name: Safia Rahman Business Name: AquaShine\nHouse 309, Road 6, Block C\nAddress Line Date June 12, 2025, 2:15 p.m.\nBanani Dhaka\nCity Dhaka Invoice No AQUA-12-06-25-82\nCustomer's Cell 01987654321 Web www.aquashine.com\nFB & Instagram AquaShineBD\nContact +880 1777-654321\nS.N Product Name Quantity Unit Price Amount\n1 Urban Decay Naked Reloaded Eyeshadow Palette 1 810 810\n2 Fenty Beauty Gloss Bomb Universal Lip Luminizer 1 300 300\nTotal Product Price 1110.00\nDiscounted Price 1110.00\nReceived 0.00\nDue 1110.00\nDelivery Charge 0.00\nAmount to be collected 1110.00\nDear Customer, for any assistance, please call us at 01777-654321 or email us at support@aquashine.com. Kindly review our terms and conditions for returns and exchanges on our website.\nAddress: AquaShine Limited, 25-30 South Gulshan, Western Gulshan Complex, 1200, Dhaka, Bangladesh. Email: support@aquashine.com",
+    "entities": [
+      {
+        "start": 45,
+        "end": 57,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 73,
+        "end": 82,
+        "label": "SHOP"
+      },
+      {
+        "start": 83,
+        "end": 109,
+        "label": "ADDRESS"
+      }
+    ]
+  },
+  {
+    "text": "2026-125\nInvoice Value: 980.00\nCustomer Name: Samir Ahmed Business Name: CosmoGlam\nHouse 512, Road 9, Block B\nAddress Line Date August 28, 2026, 11:30 a.m.\nDhanmondi Dhaka\nCity Dhaka Invoice No COSMO-28-08-26-125\nCustomer's Cell 01678903214 Web www.cosmoglam.com\nFB & Instagram CosmoGlamOfficial\nContact +880 1789-654321\nInvoice 2026-125\nCustomer Name: Samir Ahmed Business Name: CosmoGlam\nHouse 512, Road 9, Block B\nAddress Line Date August 28, 2026, 11:30 a.m.\nDhanmondi Dhaka\nCity Dhaka Invoice No COSMO-28-08-26-125\nCustomer's Cell 01678903214 Web www.cosmoglam.com\nFB & Instagram CosmoGlamOfficial\nContact +880 1789-654321\nS.N Product Name Quantity Unit Price Amount\n1 MAC Studio Fix Fluid Foundation SPF 15 - NW45 1 820.00 820.00\n2 NYX Professional Makeup Soft Matte Lip Cream - Cannes 1 380.00 380.00\nTotal Product Price 1200.00\nDiscounted Price 1200.00\nReceived 0.00\nDue 1200.00\nDelivery Charge 0.00\nAmount to be collected 1200.00\nDear Customer, thank you for choosing CosmoGlam. For any beauty advice or product inquiries, please call us at 01789-654321 or email us at info@cosmoglam.com. Kindly review our return and exchange policy on our website.\nAddress: CosmoGlam Limited, 45-50 East Bashundhara, Central Bashundhara Complex, 1212, Dhaka, Bangladesh. Email: info@cosmoglam.com",
+    "entities": [
+      {
+        "start": 46,
+        "end": 57,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 73,
+        "end": 82,
+        "label": "SHOP"
+      },
+      {
+        "start": 83,
+        "end": 109,
+        "label": "ADDRESS"
+      }
+    ]
+  },
+  {
+    "text": "2030-40\nInvoice Value: 650.00\nCustomer Name: Sana Ali Business Name: TrendyChic\nHouse 203, Road 5, Block D\nAddress Line Date March 15, 2030, 2:00 p.m.\nGulshan Dhaka\nCity Dhaka Invoice No CHIC-15-03-30-40\nCustomer's Cell 01987654321 Web www.trendychic.com\nFB & Instagram TrendyChicOfficial\nContact +880 1999-654321\nInvoice 2030-40\nCustomer Name: Sana Ali Business Name: TrendyChic\nHouse 203, Road 5, Block D\nAddress Line Date March 15, 2030, 2:00 p.m.\nGulshan Dhaka\nCity Dhaka Invoice No CHIC-15-03-30-40\nCustomer's Cell 01987654321 Web www.trendychic.com\nFB & Instagram TrendyChicOfficial\nContact +880 1999-654321\nS.N Product Name Quantity Unit Price Amount\n1 ZARA Ribbed Knit Dress - Mustard 1 450.00 450.00\n2 H&M Tailored Blazer - Black 1 600.00 600.00\nTotal Product Price 1050.00\nDiscounted Price 1050.00\nReceived 0.00\nDue 1050.00\nDelivery Charge 400.00\nAmount to be collected 1450.00\nDear Customer, thank you for choosing TrendyChic. For any fashion advice or product inquiries, please call us at 01999-654321 or email us at support@trendychic.com. Kindly review our return and exchange policy on our website.\nAddress: TrendyChic Limited, 30-35 West Uttara, Northern Uttara Complex, 1230, Dhaka, Bangladesh. Email: support@trendychic.com",
+    "entities": [
+      {
+        "start": 45,
+        "end": 53,
+        "label": "CUSTOMER"
+      },
+      {
+        "start": 69,
+        "end": 79,
+        "label": "SHOP"
+      },
+      {
+        "start": 80,
+        "end": 106,
+        "label": "ADDRESS"
+      }
+    ]
   }
 ]
