@@ -126,6 +126,7 @@
 
     ],
     "ner":[
+      "ADDRESS",
       "CARDINAL",
       "CUSTOMER",
       "DATE",
