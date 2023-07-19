@@ -1,6 +1,7 @@
 # Used for formatting the DataFrame and creating JSON
 
 from backend.regex_algorithm import details_utils, reader, utils
+from backend.regex_algorithm.ML_Entity_Detection import runner
 import re
 def rename_df_name_column(df):
     if 'name' not in df.columns:
@@ -85,6 +86,9 @@ def get_formatted_date(text):
     return formatted_date
 
 def convert_to_json_template(df, name="", shop_name="", phone="", email="", billing_address="", shipping_address="", items=[], total_amount=0, note="", date="", number=""):
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     items = get_json(df)
     json_data = {
@@ -101,7 +105,8 @@ def convert_to_json_template(df, name="", shop_name="", phone="", email="", bill
         "invoice_info": {
             "shop_name": shop_name,
             "date": date,
-            "number": number
+            "number": number,
+            "shop_name": shop_name
         }
     }
     return json_data
@@ -109,16 +114,44 @@ def convert_to_json_template(df, name="", shop_name="", phone="", email="", bill
 def get_json_formatted(file_name):
     file_path = "invoices/" + file_name
     invoice_text = reader.read_invoice(file_path)
+<<<<<<< Updated upstream
     # details_utils.ner_extraction(invoice_text)  # ML
+=======
+    ml_dict = runner.ner_extraction(invoice_text)
+>>>>>>> Stashed changes
     invoice_tables = reader.read_tables(file_path)
     result_table = utils.extract_item_table(invoice_tables)
     result_table = standardize_df(result_table)
 
+    if ml_dict['CUSTOMER'] != '':
+        name = ml_dict['CUSTOMER']
+    else:
+        name = details_utils.extract_name(invoice_text)
+
+    shop_name = ml_dict['SHOP']
+
+    if ml_dict['SHIPPING_ADDRESS'] != '':
+        shipping_address = ml_dict['SHIPPING_ADDRESS']
+    else:
+        shipping_address = details_utils.extract_shipping_address(invoice_text)
+
+    billing_address = details_utils.extract_billing_address(invoice_text)
+
     json_data = convert_to_json_template(df=result_table,
+<<<<<<< Updated upstream
                                          name=details_utils.extract_name(invoice_text),
                                          # shop_name=details_utils.extract_shop_name(invoice_text),
                                          phone=details_utils.extract_phone(invoice_text),
                                          email=details_utils.extract_email(invoice_text),
                                          date=details_utils.extract_date(invoice_text),
+=======
+                                         name=name,
+                                         shop_name=shop_name,
+                                         phone=details_utils.extract_phone(invoice_text),
+                                         email=details_utils.extract_email(invoice_text),
+                                         billing_address=billing_address,
+                                         shipping_address=shipping_address,
+                                         date=get_formatted_date(invoice_text),
+>>>>>>> Stashed changes
                                          number=details_utils.extract_invoice_number(invoice_text))
     return json_data
