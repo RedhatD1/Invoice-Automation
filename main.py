@@ -1,15 +1,14 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
-
-from backend.regex_algorithm import details_utils, reader, extractor, utils
+from backend.regex_algorithm import extractor
 from backend.regex_algorithm_sunjid_bhai import regex2
 from backend.other import template
 from fastapi.staticfiles import StaticFiles
 import json
 from helpers.date_manipulator import get_date
 from helpers.log import log_write
+from schemas.invoice import InvoiceExtractionFormat, WelcomeMessage
+from general_response import general_response
 
 
 app = FastAPI()
@@ -25,40 +24,15 @@ static_path = "invoices"
 app.mount("/static", StaticFiles(directory=static_path), name="static")
 
 
-@app.get("/")
+@app.get("/", response_model=WelcomeMessage, status_code=status.HTTP_200_OK)
 def sample_api():
-    return {"message": "hello world"}
+    return {"name": "FastAPI", "version": "0.99.1"}
 
 
-@app.get("/items/{file_name}")
+@app.get("/invoice-extraction/{file_name}", response_model=InvoiceExtractionFormat)
 async def get_items(request: Request, file_name: str, algorithm: str = 'regex'):
-    response = {
-        "customer_info": {
-            "name": "",
-            "phone": "",
-            "email": "",
-            "billing_address": "",
-            "shipping_address": ""
-        },
-        "item_details": [
-            {
-                "name": "",
-                "description": "",
-                "quantity": "",
-                "unit_price": "",
-                "amount": "",
-                "currency": ""
-            }
-        ],
-        "total_amount": "",
-        "note": "",
-        "invoice_info": {
-            "date": "",
-            "number": ""
-        }
-    }
+    response = general_response
     try:
-
         if algorithm == "regex2":
             response = regex2.extract_information_from_invoice(file_name)
         elif algorithm == "ocr":
@@ -67,11 +41,10 @@ async def get_items(request: Request, file_name: str, algorithm: str = 'regex'):
             response = template.other(file_name)
         else:
             response = extractor.get_json_formatted(file_name)  # new regex, does error handling
-
-        return JSONResponse(content=response)
+        return response
     except Exception as e:
         # print(e)
-        return JSONResponse(content=response)
+        return response
     finally:
         file_name = f"./logs/document_extraction_req_res_{get_date('%d-%m-%Y')}.txt"
         log_content = f"{get_date('%d-%m-%Y %H:%I:%S')} | req_url {str(request.url)} | res {json.dumps(response)} \n"

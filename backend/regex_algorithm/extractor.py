@@ -2,6 +2,8 @@
 
 from backend.regex_algorithm import details_utils, reader, utils
 import re
+
+
 def rename_df_name_column(df):
     if 'name' not in df.columns:
         # Check if 'items' column exists
@@ -18,6 +20,7 @@ def rename_df_name_column(df):
             df.rename(columns=lambda x: 'name' if 'name' in x else x, inplace=True)
     return df
 
+
 def rename_unit_price_column(df):
     if 'unit_price' not in df.columns:
         # Check if 'items' column exists
@@ -28,6 +31,7 @@ def rename_unit_price_column(df):
         else:
             df.rename(columns=lambda x: 'unit_price' if 'unit_price' in x else x, inplace=True)
     return df
+
 
 def rename_df_quantity_column(df):
     if 'quantity' not in df.columns:
@@ -40,6 +44,7 @@ def rename_df_quantity_column(df):
         else:
             df.rename(columns=lambda x: 'quantity' if 'quantity' in x else x, inplace=True)
     return df
+
 
 def rename_df_amount_column(df):
     if 'amount' not in df.columns:
@@ -54,8 +59,8 @@ def rename_df_amount_column(df):
             df.rename(columns=lambda x: 'amount' if 'amount' in x else x, inplace=True)
     return df
 
-def rename_df_discount_column(df):
 
+def rename_df_discount_column(df):
     if 'discount' not in df.columns:
         # Check if 'items' column exists
         if 'discount amount' in df.columns:
@@ -65,6 +70,8 @@ def rename_df_discount_column(df):
         else:
             df.rename(columns=lambda x: 'discount' if 'discount' in x else x, inplace=True)
     return df
+
+
 def standardize_df(df, currency="Taka"):
     df = rename_df_name_column(df)
     df = rename_unit_price_column(df)
@@ -75,9 +82,12 @@ def standardize_df(df, currency="Taka"):
     df['unit_price'] = df['unit_price'].str.replace(r'[^\d.,]+', '', regex=True)
 
     return df
+
+
 def get_json(df):
     json = df.to_dict('records')
     return json
+
 
 def get_formatted_date(text):
     raw_data = details_utils.extract_date(text)
@@ -85,7 +95,9 @@ def get_formatted_date(text):
     formatted_date = details_utils.standardize_date(raw_data)
     return formatted_date
 
-def convert_to_json_template(df, name="", phone="", email="", billing_address="", shipping_address="", items=[], total_amount=0, note="", date="", number=""):
+
+def convert_to_json_template(df, name="", phone="", email="", billing_address="", shipping_address="", items=[],
+                             total_amount=0, note="", date="", number=""):
     items = get_json(df)
     json_data = {
         "customer_info": {
@@ -104,6 +116,7 @@ def convert_to_json_template(df, name="", phone="", email="", billing_address=""
         }
     }
     return json_data
+
 
 def get_json_formatted(file_name):
     file_path = "invoices/" + file_name
