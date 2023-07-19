@@ -41,6 +41,7 @@ async def get_items(request: Request, file_name: str, algorithm: str = 'regex'):
             response = template.other(file_name)
         else:
             response = extractor.get_json_formatted(file_name)  # new regex, does error handling
+        # print(response)
         return response
     except Exception as e:
         # print(e)
