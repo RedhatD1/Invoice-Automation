@@ -13,13 +13,15 @@ general_response = {
                 "quantity": "",
                 "unit_price": "",
                 "amount": "",
+                "discount": "",
                 "currency": "BDT"
             }
         ],
-        "total_amount": "",
+        "total_amount": 0.0,
         "note": "",
         "invoice_info": {
             "date": "",
-            "number": ""
+            "number": "",
+            "shop_name": ""
         }
     }

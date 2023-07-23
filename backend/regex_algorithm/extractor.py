@@ -2,6 +2,7 @@
 
 from backend.regex_algorithm import details_utils, reader, utils
 from backend.regex_algorithm.ML_Entity_Detection import runner
+from helpers.general_helper import remove_space_from_text
 import re
 
 
@@ -98,6 +99,7 @@ def get_formatted_date(text):
 
 def convert_to_json_template(df, name="", shop_name="", phone="", email="", billing_address="", shipping_address="", items=[], total_amount=0, note="", date="", number=""):
     items = get_json(df)
+    # print(items)
     json_data = {
         "customer_info": {
             "name": name,
@@ -107,7 +109,7 @@ def convert_to_json_template(df, name="", shop_name="", phone="", email="", bill
             "shipping_address": shipping_address
         },
         "item_details": items,
-        "total_amount": total_amount,
+        "total_amount": remove_space_from_text(total_amount),
         "note": note,
         "invoice_info": {
             "shop_name": shop_name,

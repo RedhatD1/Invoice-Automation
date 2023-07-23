@@ -10,16 +10,17 @@ class Customer(BaseModel):
 
 
 class Invoice(BaseModel):
-    number: str
+    number: str = ''
     date: str = ''
+    shop_name: str = ''
 
 
 class ItemDetail(BaseModel):
     name: str = ''
-    unit_price: str = ''
-    quantity: str = ''
-    discount: str = ''
-    amount: str = ''
+    unit_price: float | str = ''
+    quantity: int | str = ''
+    discount: float | str = ''
+    amount: float | str = ''
     currency: str = 'Taka'
 
 
@@ -27,7 +28,7 @@ class InvoiceExtractionFormat(BaseModel):
     customer_info: Customer
     invoice_info: Invoice
     item_details: list[ItemDetail] = []
-    total_amount: str = 0.0
+    total_amount: float | str = 0.0
     note: str = ''
 
 

@@ -24,14 +24,15 @@ static_path = "invoices"
 app.mount("/static", StaticFiles(directory=static_path), name="static")
 
 
-@app.get("/", response_model=WelcomeMessage, status_code=status.HTTP_200_OK)
+@app.get("/", response_model=WelcomeMessage, status_code=status.HTTP_200_OK, tags=['Welcome'], summary='Welcome API')
 def sample_api():
     return {"name": "FastAPI", "version": "0.99.1"}
 
 
-@app.get("/invoice-extraction/{file_name}", response_model=InvoiceExtractionFormat)
+@app.get("/invoice-extraction/{file_name}", response_model=InvoiceExtractionFormat, tags=['Invoice Extraction'],
+         summary='Extract data from invoice')
 async def get_items(request: Request, file_name: str, algorithm: str = 'regex'):
-    response = general_response
+    response: InvoiceExtractionFormat = general_response
     try:
         if algorithm == "regex2":
             response = regex2.extract_information_from_invoice(file_name)
@@ -44,7 +45,7 @@ async def get_items(request: Request, file_name: str, algorithm: str = 'regex'):
         # print(response)
         return response
     except Exception as e:
-        # print(e)
+        print(e)
         return response
     finally:
         file_name = f"./logs/document_extraction_req_res_{get_date('%d-%m-%Y')}.txt"
