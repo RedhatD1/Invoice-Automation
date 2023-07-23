@@ -1,6 +1,5 @@
 import spacy
 
-
 # Replace 'path_to_saved_model' with the actual path where you saved the model
 def ner_extraction(text):
     nlp = spacy.load('backend/regex_algorithm/ML_Entity_Detection/model')
