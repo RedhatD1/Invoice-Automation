@@ -168,3 +168,4 @@ cython_debug/
 
 #/backend/regex_algorithm/ML_Entity_Detection/model/
 /logs/
+/cv/
