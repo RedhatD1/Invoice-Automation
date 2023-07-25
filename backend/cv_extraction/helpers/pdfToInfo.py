@@ -1,13 +1,14 @@
-from backend.cv_extraction.helpers import pdfToHtml, htmlParser, \
-    parsedHtmlToSectionedDocument, applicantNameExtractor, sectionExtractor, \
+from backend.cv_extraction.helpers import pdfReader, htmlParser, \
+    parsedHtmlToSectionedDocument, candidateInfoExtractor, sectionExtractor, \
     sectionToDict, cvScoring
 
-def extractInfo(pdfFile, jobDescriptionFile):
-    html = pdfToHtml.read(pdfFile)
+def extractInfo(pdfFilePath, jobDescription):
+    html = pdfReader.readAsHTML(pdfFilePath)
     parsedHtml = htmlParser.parse(html)
     sectionedDocument = parsedHtmlToSectionedDocument.convert(parsedHtml, html)
-    name = applicantNameExtractor.getName(sectionedDocument, pdfFile)
-    print(f'Name: {name}')
+    cvTextOnly = pdfReader.readAsText(pdfFilePath)
+    print(f'{cvTextOnly}')
+    applicantName, applicantPhone, applicantEmail = candidateInfoExtractor.getcandidateinfo(sectionedDocument, cvTextOnly, pdfFilePath)
     sections = sectionExtractor.extract_sections(sectionedDocument, parsedHtml)
 
     dict = sectionToDict.extract(sections)
@@ -15,23 +16,14 @@ def extractInfo(pdfFile, jobDescriptionFile):
     # Uncomment to see which values are being extracted properly
     # for key, value in dict.items():
     #     print(f'{key}: {value}')
-
-    # Open the file in read mode
-    with open(jobDescriptionFile, "r") as file:
-        # Read the entire content of the file
-        jd = file.read()
-
-    # Display the content of the file
-    # print(jd)
-
     score = cvScoring.generate_match_score(dict['experience'] + dict['skills'] +
-                                           dict['projects'] + dict['course'], jd)
+                                           dict['projects'] + dict['course'], jobDescription)
 
     return {
         "candidate_info": {
-            "name": name,
-            "phone": "",
-            "email": "",
+            "name": applicantName,
+            "phone": applicantPhone,
+            "email": applicantEmail,
             "present_address": "",
             "permanent_address": ""
         },
