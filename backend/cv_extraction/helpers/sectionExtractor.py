@@ -37,10 +37,9 @@ def extract_sections(semantic_snippets, snippets):
             else:
                 end_idx, next_heading = len(snippets), ''
 
-            print(f'{heading_text} is between {start_idx} and {end_idx}')
+            # print(f'{heading_text} is between {start_idx} and {end_idx}')
             content = ''
             for i in range(start_idx, end_idx):
                 content += snippets[i][0]
             section_titles_with_content.append((heading_text.lower(), content))
-            print(section_titles_with_content)
     return section_titles_with_content
