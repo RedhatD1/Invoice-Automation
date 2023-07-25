@@ -1,4 +1,4 @@
-general_response = {
+invoice_response = {
         "customer_info": {
             "name": "",
             "phone": "",
@@ -25,3 +25,27 @@ general_response = {
             "shop_name": ""
         }
     }
+
+individual_cv_response = {
+        "candidate_info": {
+            "name": "",
+            "phone": "",
+            "email": "",
+            "present_address": "",
+            "permanent_address": ""
+        },
+        "education_info": {
+                "institution": "",
+                "department": "",
+                "cgpa": 0.0
+        },
+        "experience": 0.0,
+        "score": 0.0,
+        "rank": "--"
+    }
+cv_response = {
+    "status: bool": True,
+    "cv_list": [individual_cv_response],
+    "message": "File extraction successfully done."
+}
+
