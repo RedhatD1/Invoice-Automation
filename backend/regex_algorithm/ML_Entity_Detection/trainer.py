@@ -4,7 +4,7 @@ import json
 from spacy.training.example import Example
 import os
 
-print(os.getcwd())
+# print(os.getcwd())
 
 # Assuming your JSON file is named 'training_data.json'
 json_file_path = 'ML_Entity_Detection/training_data.json'

@@ -168,3 +168,5 @@ cython_debug/
 
 #/backend/regex_algorithm/ML_Entity_Detection/model/
 /logs/
+/backend/cv_extraction/cv/
+/backend/cv_extraction/jobDescriptions/

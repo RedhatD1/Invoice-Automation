@@ -85,4 +85,7 @@ def extract_item_table(tables):
     header_keywords = ["item", "product", "description", "quantity", "discount", "unit", "price", "amount", "total"]
     item_table, starting_index, starting_column, ending_column = extract_table(tables, header_keywords)
     result_table = crop_table(item_table, starting_index, starting_column, ending_column)
+
+
+
     return result_table

@@ -73,7 +73,7 @@ def rename_df_discount_column(df):
             df.rename(columns=lambda x: 'discount' if 'discount' in x else x, inplace=True)
     return df
 
-
+from helpers import general_helper
 def standardize_df(df, currency="Taka"):
     df = rename_df_name_column(df)
     df = rename_unit_price_column(df)
@@ -81,7 +81,33 @@ def standardize_df(df, currency="Taka"):
     df = rename_df_amount_column(df)
     df = rename_df_discount_column(df)
     df['currency'] = currency
-    df['unit_price'] = df['unit_price'].str.replace(r'[^\d.,]+', '', regex=True)
+
+    # Adding empty columns if they don't exist
+    columns_to_fill = ['unit_price', 'quantity', 'amount', 'discount']
+    for column in columns_to_fill:
+        if column not in df.columns:
+            # If the column doesn't exist, create it with empty strings as default value
+            df[column] = ''
+
+
+    if df['unit_price'].dtype == 'object':
+        df['unit_price'] = df['unit_price'].str.replace(r'[^\d.,]+', '', regex=True)
+
+
+    df[['unit_price', 'quantity', 'amount', 'discount']] = df[['unit_price', 'quantity', 'amount', 'discount']].replace('', 0)
+
+    # Converting all cells to string datatype for streamlining the process
+    df = df.astype(str)
+
+    # Cleaning multiple entries in the dataframe
+    df['unit_price'] = df['unit_price'].str.split().str[0]
+    df['quantity'] = df['quantity'].str.split().str[0]
+    df['amount'] = df['amount'].str.split().str[0]
+
+    # Whitespace cleaning
+    df['unit_price'] = df['unit_price'].apply(lambda x: general_helper.remove_space_from_text(x))
+    df['quantity'] = df['quantity'].apply(lambda x: general_helper.remove_space_from_text(x))
+    df['amount'] = df['amount'].apply(lambda x: general_helper.remove_space_from_text(x))
 
     return df
 
@@ -92,7 +118,7 @@ def get_json(df):
 
 def get_formatted_date(text):
     raw_data = details_utils.extract_date(text)
-    print(raw_data)
+    # print(raw_data)
     formatted_date = details_utils.standardize_date(raw_data)
     return formatted_date
 
