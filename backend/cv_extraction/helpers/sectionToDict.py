@@ -56,6 +56,33 @@ def extractAbout(tuple_list):
             about += item[1]
     return about
 
+def extractResearch(tuple_list):
+    research = ''
+    for item in tuple_list:
+        if 'research' in item[0].lower():
+            research += item[1]
+    return research
+
+def extractThesis(tuple_list):
+    thesis = ''
+    for item in tuple_list:
+        if 'thesis' in item[0].lower():
+            thesis += item[1]
+    return thesis
+
+def extractPublications(tuple_list):
+    publications = ''
+    for item in tuple_list:
+        if 'publications' in item[0].lower():
+            publications += item[1]
+    return publications
+
+def extractCourse(tuple_list):
+    course = ''
+    for item in tuple_list:
+        if 'course' in item[0].lower():
+            course += item[1]
+    return course
 
 def extract(tuple_list):
     dict = {
@@ -67,5 +94,9 @@ def extract(tuple_list):
         'certifications': extractCertifications(tuple_list),
         'award': extractAward(tuple_list),
         'about': extractAbout(tuple_list),
+        'research': extractResearch(tuple_list),
+        'publications': extractPublications(tuple_list),
+        'course': extractCourse(tuple_list),
+        'thesis': extractThesis(tuple_list)
     }
     return dict

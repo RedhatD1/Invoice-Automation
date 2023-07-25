@@ -3,7 +3,8 @@ Takes a PDF as an input and returns a form with the extracted data.
 
 ### Usage
 Put invoices in "/invoices/" directory
-Put cv in "/cv/" directory
+Put cv.pdf in "backend/cv_extraction/cv" directory --> PDF File
+put job descriptions.txt in "backend/cv_extraction/jobDescriptions" directory --> Txt File
 
 ### Setup
 python3 -m venv env <br>
