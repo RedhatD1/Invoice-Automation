@@ -154,17 +154,27 @@ def get_json_formatted(file_name):
     result_table = utils.extract_item_table(invoice_tables)
     result_table = standardize_df(result_table)
 
-    if ml_dict['CUSTOMER'] != '':
-        name = ml_dict['CUSTOMER']
-    else:
-        name = details_utils.extract_name(invoice_text)
+    # try catch block for ML
+    try:
+        if ml_dict['CUSTOMER'] != '':
+            name = ml_dict['CUSTOMER']
+        else:
+            name = details_utils.extract_name(invoice_text)
+    except Exception as e:
+        name = ''
 
-    shop_name = ml_dict['SHOP']
+    try:
+        shop_name = ml_dict['SHOP']
+    except Exception as e:
+        shop_name = ''
 
-    if ml_dict['SHIPPING_ADDRESS'] != '':
-        shipping_address = ml_dict['SHIPPING_ADDRESS']
-    else:
-        shipping_address = details_utils.extract_shipping_address(invoice_text)
+    try:
+        if ml_dict['SHIPPING_ADDRESS'] != '':
+            shipping_address = ml_dict['SHIPPING_ADDRESS']
+        else:
+            shipping_address = details_utils.extract_shipping_address(invoice_text)
+    except Exception as e:
+        shipping_address = ''
 
     billing_address = details_utils.extract_billing_address(invoice_text)
 
