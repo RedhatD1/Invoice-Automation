@@ -24,12 +24,17 @@ class ItemDetail(BaseModel):
     currency: str = 'Taka'
 
 
-class InvoiceExtractionFormat(BaseModel):
+class IndividualPdfParsingResponse(BaseModel):
     customer_info: Customer
     invoice_info: Invoice
     item_details: list[ItemDetail] = []
     total_amount: float | str = 0.0
     note: str = ''
+
+
+class InvoiceParsingResponse(BaseModel):
+    status: bool = True
+    extract_data: IndividualPdfParsingResponse
 
 
 class WelcomeMessage(BaseModel):

@@ -147,7 +147,7 @@ def convert_to_json_template(df, name="", shop_name="", phone="", email="", bill
 
 
 def get_json_formatted(file_name):
-    file_path = "invoices/" + file_name
+    file_path = "documents/invoices/" + file_name
     invoice_text = reader.read_invoice(file_path)
     ml_dict = runner.ner_extraction(invoice_text)
     invoice_tables = reader.read_tables(file_path)
