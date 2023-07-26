@@ -1,0 +1,113 @@
+#EngineeringMajors
+Aerospace Engineering
+Agricultural Engineering
+Architecture
+Biomedical Engineering
+Chemical Engineering
+Civil Engineering
+Computer Engineering
+Electrical Engineering
+Environmental Engineering
+Industrial and Production Engineering
+Materials and Metallurgical Engineering
+Mechanical Engineering
+Naval Architecture and Marine Engineering
+Nuclear Engineering
+Petroleum and Mineral Resources Engineering
+Software Engineering
+Robotics Engineering
+Automotive Engineering
+Marine Engineering
+Aerospace Systems Engineering
+Biomechanical Engineering
+Environmental Health Engineering
+Geotechnical Engineering
+Structural Engineering
+Water Resources Engineering
+Power Systems Engineering
+Control Systems Engineering
+Telecommunications Engineering
+Network Engineering
+Mechatronics Engineering
+Renewable Energy Engineering
+Sustainable Engineering
+Manufacturing Engineering
+Process Engineering
+Computer Science and Engineering
+Computer Science and Systems Engineering
+Computer Science and Electrical Engineering
+Computer Science and Mechanical Engineering
+Computer Science and Aerospace Engineering
+Computer Science and Biomedical Engineering
+Computer Science and Environmental Engineering
+Information Technology
+Information Systems
+Information Science
+Information Technology Management
+Information Technology Engineering
+Information Security
+Cybersecurity
+Network and Information Technology
+Engineering Management
+#ScienceMajors
+Biology
+Chemistry
+Physics
+Mathematics
+Environmental Science
+Geology
+Astronomy
+Computer Science
+Neuroscience
+Psychology
+Biochemistry
+Microbiology
+Marine Biology
+Genetics
+Ecology
+Zoology
+Biotechnology
+Nutrition and Dietetics
+Materials Science
+Environmental Engineering
+#CommerceMajors
+Accounting
+Finance
+Marketing
+Economics
+Business Administration
+Human Resource Management
+International Business
+Entrepreneurship
+Supply Chain Management
+Corporate Finance
+Banking and Finance
+Real Estate
+Risk Management
+Business Analytics
+Sales and Retail Management
+Hospitality and Tourism Management
+E-commerce
+Advertising and Public Relations
+Operations Management
+Project Management
+#ArtsMajors
+English Literature
+History
+Political Science
+Sociology
+Anthropology
+Philosophy
+Fine Arts
+Theater and Drama
+Music
+Film Studies
+Media and Communication
+Journalism
+Creative Writing
+Linguistics
+Visual Arts
+Graphic Design
+Cultural Studies
+Gender Studies
+Archaeology
