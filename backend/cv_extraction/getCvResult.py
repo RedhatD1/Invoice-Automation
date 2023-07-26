@@ -1,9 +1,11 @@
 from backend.cv_extraction.helpers import pdfToInfo
 
+
 def getJSON(pdfFileName, jobDescription, algorithm='default'):
     pdfFilePath = 'backend/cv_extraction/cv/' + pdfFileName
     output = pdfToInfo.extractInfo(pdfFilePath, jobDescription)
     return output
+
 
 # Example Usage
 pdfFileName = 'anirudh.pdf'

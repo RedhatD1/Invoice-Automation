@@ -3,20 +3,20 @@ import re
 def detect_university(cvText):
     cvText = " ".join(cvText.replace('&', 'and').replace(',', ' ').replace('.',' ').split())
     cvText = cvText.lower()
-    # Read the university names from the txt file and store them in a list
+    # Read the institution names from the txt file and store them in a list
     with open('backend/cv_extraction/helpers/ugcList.txt', 'r') as file:
         universities_list = [line.strip() for line in file]
 
     # Initialize an empty list to store matched universities and their indices
     matches = []
 
-    # Check each university name in the list and see if it's partially present in the text
-    for university in universities_list:
-        # Create a regex pattern to allow partial matches within the university names
-        regex_pattern = re.compile(rf'(?i)\b.*{re.escape(university)}.*\b')
+    # Check each institution name in the list and see if it's partially present in the text
+    for institution in universities_list:
+        # Create a regex pattern to allow partial matches within the institution names
+        regex_pattern = re.compile(rf'(?i)\b.*{re.escape(institution)}.*\b')
         for match in re.finditer(regex_pattern, cvText):
             match_info = {
-                "university": university,
+                "institution": institution,
                 "startIndex": match.start()
             }
             matches.append(match_info)
@@ -25,24 +25,24 @@ def detect_university(cvText):
 
 
 def detectMajor(cvText):
-    # Read the university names from the txt file and store them in a list
+    print("detecting major")
+    print(cvText)
+    # Read the institution names from the txt file and store them in a list
     with open('backend/cv_extraction/helpers/majorList.txt', 'r') as file:
         major_list = [line.strip() for line in file]
 
         # Convert major_list to lowercase
-        lowercased_major_list = [major.lower() for major in major_list]
+        lowercased_major_list = [department.lower() for department in major_list]
 
         # Convert cv_text to lowercase for case-insensitive matching
         cv_text_lower = cvText.lower()
 
-        # Create a regex pattern to match each major in the lowercased_major_list
-        regex_pattern = re.compile(rf'(?i)\b(?:{"|".join(map(re.escape, lowercased_major_list))})\b')
+        # Check each major in the list and see if it's present in the text
+        for major in lowercased_major_list:
 
-        # Find the first major that matches the regex pattern
-        match = regex_pattern.search(cv_text_lower)
-        if match:
-            return match.group()
-
+            if major in cv_text_lower:
+                print(major)
+                return major
         return ""  # Return empty string if no match is found
 
 
@@ -56,7 +56,7 @@ def detect_cgpa(cvText):
         return 0.00
 
 
-def detect_cgpa_between_matches(detectedUniversities, cvText):
+def detect_between_matches(detectedUniversities, cvText):
 
     if len(detectedUniversities) > 1:
         for i in range(len(detectedUniversities) - 1):
@@ -66,23 +66,29 @@ def detect_cgpa_between_matches(detectedUniversities, cvText):
             universityContext = " ".join(universityContext.split())
             cgpa = detect_cgpa(universityContext)
             detectedUniversities[i]["cgpa"] = cgpa
-            major = detectMajor(universityContext)
-            detectedUniversities[i]["major"] = major
+            print(f'University context: {startIndex} to {endIndex} : {universityContext}')
+            department = detectMajor(universityContext)
+            detectedUniversities[i]["department"] = department
 
-        universityContext = cvText[detectedUniversities[-1]["endIndex"]:].replace('&', 'and').replace(',', ' ').strip()
+        universityContext = cvText[detectedUniversities[-1]["startIndex"]:].replace('&', 'and').replace(',', ' ').strip()
         universityContext = " ".join(universityContext.split())
         cgpa = detect_cgpa(universityContext)
         detectedUniversities[-1]["cgpa"] = cgpa
-        major = detectMajor(universityContext)
-        detectedUniversities[-1]["major"] = major
+        department = detectMajor(universityContext)
+        detectedUniversities[-1]["department"] = department
     elif len(detectedUniversities) == 1:
         universityContext = cvText[detectedUniversities[0]["startIndex"]:].replace('&', 'and').replace(',', ' ').strip()
         universityContext = " ".join(universityContext.split())
         cgpa = detect_cgpa(universityContext)
         detectedUniversities[0]["cgpa"] = cgpa
-        major = detectMajor(universityContext)
-        detectedUniversities[0]["major"] = major
+        department = detectMajor(universityContext)
+        detectedUniversities[0]["department"] = department
     return detectedUniversities
+
+def get(cvText):
+    detected_universities = detect_university(cvText)
+    detected_universities = detect_between_matches(detected_universities, cvText)
+    return detected_universities
 
 #  Example usage
 #  Sample string to search for universities
@@ -90,10 +96,13 @@ cvText = """
 EDUCATION
 Bachelor of Business Administration (BBA) (Undergraduate)
 Institution: Independent University , Bangladesh. Department: Human Resources Management Higher Secondary Certificate (H.S.C.) Institution: Adamjee Cantonment College , Dhaka Group: Business Studies (4.25 out of 5.00)
+Passing Year: 2017
+EDUCATION
+Bachelor of Business Administration (BBA) (Undergraduate)
+Institution: Dhaka University , Bangladesh. Department: Human Resources Management Higher Secondary Certificate (H.S.C.) Institution: Adamjee Cantonment College , Dhaka Group: Business Studies (4.25 out of 5.00)
 Passing Year: 2017"""
 #  Detect universities in the sample string
-detected_universities = detect_university(cvText)
-detected_universities = detect_cgpa_between_matches(detected_universities, cvText)
-print("Detected universities:")
-print(detected_universities)
+education = get(cvText)
+print("Detected education:")
+print(education)
 

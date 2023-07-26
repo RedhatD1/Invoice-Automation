@@ -95,10 +95,13 @@ Central University of Science and Technology
 Tagore University of Creative Arts
 #PublicUniversities
 University of Dhaka
+Dhaka University
 University of Rajshahi
+Rajhsahi University
 Bangladesh Agricultural University
 Bangladesh University of Engineering and Technology
 University of Chittagong
+Chittagong University
 Jahangirnagar University
 Islamic University
 Shahjalal University of Science and Technology
@@ -128,6 +131,7 @@ Bangladesh University of Professionals
 Bangabandhu Sheikh Mujibur Rahman Science and Technology University
 Bangladesh University of Textiles
 University of Barishal
+Barishal University
 Rangamati Science and Technology University
 Bangabandhu Sheikh Mujibur Rahman Maritime University
 Islamic Arabic University
