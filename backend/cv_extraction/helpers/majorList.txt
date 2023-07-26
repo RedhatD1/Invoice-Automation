@@ -1,4 +1,19 @@
 #EngineeringMajors
+Computer Science and Engineering
+Computer Science and Systems Engineering
+Computer Science and Electrical Engineering
+Computer Science and Mechanical Engineering
+Computer Science and Aerospace Engineering
+Computer Science and Biomedical Engineering
+Computer Science and Environmental Engineering
+Electrical and Electronics Engineering
+Electrical Engineering
+Information Technology
+Information Systems
+Information Science
+Information Technology Management
+Information Technology Engineering
+Information Security
 Aerospace Engineering
 Agricultural Engineering
 Architecture
@@ -6,7 +21,6 @@ Biomedical Engineering
 Chemical Engineering
 Civil Engineering
 Computer Engineering
-Electrical Engineering
 Environmental Engineering
 Industrial and Production Engineering
 Materials and Metallurgical Engineering
@@ -33,19 +47,6 @@ Renewable Energy Engineering
 Sustainable Engineering
 Manufacturing Engineering
 Process Engineering
-Computer Science and Engineering
-Computer Science and Systems Engineering
-Computer Science and Electrical Engineering
-Computer Science and Mechanical Engineering
-Computer Science and Aerospace Engineering
-Computer Science and Biomedical Engineering
-Computer Science and Environmental Engineering
-Information Technology
-Information Systems
-Information Science
-Information Technology Management
-Information Technology Engineering
-Information Security
 Cybersecurity
 Network and Information Technology
 Engineering Management

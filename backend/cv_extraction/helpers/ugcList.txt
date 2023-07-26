@@ -4,10 +4,10 @@ Asian University for Women
 #PrivateUniversities
 South Asian University
 North South University
-University of Science & Technology Chittagong
+University of Science and Technology Chittagong
 Independent University Bangladesh
 Central Women's University
-International University of Business Agriculture & Technology
+International University of Business Agriculture and Technology
 International Islamic University Chittagong
 Ahsanullah University of Science and Technology
 American International University Bangladesh
@@ -34,7 +34,7 @@ Prime University
 Northern University Bangladesh
 Southern University Bangladesh
 Green University of Bangladesh
-Pundra University of Science & Technology
+Pundra University of Science and Technology
 World University of Bangladesh
 Shanto-Mariam University of Creative Technology
 The Millennium University
@@ -44,24 +44,24 @@ Uttara University
 United International University
 University of South Asia
 Victoria University of Bangladesh
-Bangladesh University of Business & Technology
+Bangladesh University of Business and Technology
 Presidency University
-University of Information Technology & Sciences
+University of Information Technology and Sciences
 Primeasia University
 Royal University of Dhaka
 University of Liberal Arts Bangladesh
-Atish Dipankar University of Science & Technology
+Atish Dipankar University of Science and Technology
 Bangladesh Islami University
 ASA University Bangladesh
 East Delta University
 European University of Bangladesh
 Varendra University
 Hamdard University Bangladesh
-BGMEA University of Fashion & Technology
+BGMEA University of Fashion and Technology
 North East University Bangladesh
 First Capital University of Bangladesh
 Ishakha International University
-Z.H Sikder University of Science & Technology
+Z.H Sikder University of Science and Technology
 Exim Bank Agricultural University Bangladesh
 North Western University
 Khwaja Yunus Ali University
@@ -75,20 +75,20 @@ Notre Dame University Bangladesh
 Times University Bangladesh
 North Bengal International University
 Fareast International University
-Rajshahi Science & Technology University
+Rajshahi Science and Technology University
 Sheikh Fazilatunnesa Mujib University
 Cox's Bazar International University
 R. P. Shaha University
 German University Bangladesh
 Global University Bangladesh
-CCN University of Science & Technology
+CCN University of Science and Technology
 Bangladesh Army University of Science and Technology
 Bangladesh Army University of Engineering and Technology
-Bangladesh Army International University of Science & Technology
+Bangladesh Army International University of Science and Technology
 The International University of Scholars
 Canadian University of Bangladesh
 N.P.I University of Bangladesh
-Northern University of Business & Technology
+Northern University of Business and Technology
 Rabindra Maitree University
 University of Creative Technology
 Central University of Science and Technology
@@ -97,35 +97,35 @@ Tagore University of Creative Arts
 University of Dhaka
 University of Rajshahi
 Bangladesh Agricultural University
-Bangladesh University of Engineering & Technology
+Bangladesh University of Engineering and Technology
 University of Chittagong
 Jahangirnagar University
 Islamic University
-Shahjalal University of Science & Technology
+Shahjalal University of Science and Technology
 Khulna University
 National University
 Bangladesh Open University
 Bangabandhu Sheikh Mujib Medical University
 Bangabandhu Sheikh Mujibur Rahman Agricultural University
-Hajee Mohammad Danesh Science & Technology University
-Mawlana Bhashani Science & Technology University
+Hajee Mohammad Danesh Science and Technology University
+Mawlana Bhashani Science and Technology University
 Patuakhali Science And Technology University
 Sher-e-Bangla Agricultural University
-Chittagong University of Engineering & Technology
-Rajshahi University of Engineering & Technology
-Khulna University of Engineering & Technology
-Dhaka University of Engineering & Technology
-Noakhali Science & Technology University
+Chittagong University of Engineering and Technology
+Rajshahi University of Engineering and Technology
+Khulna University of Engineering and Technology
+Dhaka University of Engineering and Technology
+Noakhali Science and Technology University
 Jagannath University
 Comilla University
 Jatiya Kabi Kazi Nazrul Islam University
 Chittagong Veterinary and Animal Sciences University
 Sylhet Agricultural University
-Jessore University of Science & Technology
+Jessore University of Science and Technology
 Pabna University of Science and Technology
 Begum Rokeya University
 Bangladesh University of Professionals
-Bangabandhu Sheikh Mujibur Rahman Science & Technology University
+Bangabandhu Sheikh Mujibur Rahman Science and Technology University
 Bangladesh University of Textiles
 University of Barishal
 Rangamati Science and Technology University
@@ -146,5 +146,5 @@ Hobiganj Agricultural University
 Sheikh Hasina Medical University
 Kurigram Agricultural University
 Sunamganj Science and Technology University
-Bangabandhu Sheikh Mujibur Rahman Science & Technology University
+Bangabandhu Sheikh Mujibur Rahman Science and Technology University
 Bangabandhu Sheikh Mujibur Rahman University
