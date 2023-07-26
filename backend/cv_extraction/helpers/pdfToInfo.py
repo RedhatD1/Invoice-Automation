@@ -1,13 +1,13 @@
 from backend.cv_extraction.helpers import pdfReader, htmlParser, \
     parsedHtmlToSectionedDocument, candidateInfoExtractor, sectionExtractor, \
-    sectionToDict, cvScoring
+    sectionToDict, cvScoring, educationInfoExtractor
 
 def extractInfo(pdfFilePath, jobDescription):
     html = pdfReader.readAsHTML(pdfFilePath)
     parsedHtml = htmlParser.parse(html)
     sectionedDocument = parsedHtmlToSectionedDocument.convert(parsedHtml, html)
     cvTextOnly = pdfReader.readAsText(pdfFilePath)
-    print(f'{cvTextOnly}')
+    # print(f'{cvTextOnly}')
     applicantName, applicantPhone, applicantEmail = candidateInfoExtractor.getcandidateinfo(sectionedDocument, cvTextOnly, pdfFilePath)
     sections = sectionExtractor.extract_sections(sectionedDocument, parsedHtml)
 
@@ -18,7 +18,7 @@ def extractInfo(pdfFilePath, jobDescription):
     #     print(f'{key}: {value}')
     score = cvScoring.generate_match_score(dict['experience'] + dict['skills'] +
                                            dict['projects'] + dict['course'], jobDescription)
-
+    education = educationInfoExtractor.get(dict['education'])
     return {
         "candidate_info": {
             "name": applicantName,
@@ -27,11 +27,7 @@ def extractInfo(pdfFilePath, jobDescription):
             "present_address": "",
             "permanent_address": ""
         },
-        "education_info": {
-                "institution": "",
-                "department": "",
-                "cgpa": 0.0
-        },
+        "education_info": education,
         "experience": 0.0,
         "score": score,
         "rank": "--"
