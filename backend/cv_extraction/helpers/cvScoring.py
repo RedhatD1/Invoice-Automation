@@ -5,4 +5,4 @@ def generate_match_score(applicant_cv, job_description):
     cv = CountVectorizer()
     matrix = cv.fit_transform([applicant_cv, job_description])
     similarity_matrix = cosine_similarity(matrix)
-    return similarity_matrix[0][1]*100
+    return round(similarity_matrix[0][1]*100,2)

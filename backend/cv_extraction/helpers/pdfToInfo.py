@@ -13,7 +13,7 @@ def extractInfo(pdfFilePath, jobDescription):
 
     dict = sectionToDict.extract(sections)
 
-    # Uncomment to see which values are being extracted properly
+    # # Uncomment to see which values are being extracted properly
     # for key, value in dict.items():
     #     print(f'{key}: {value}')
     score = cvScoring.generate_match_score(dict['experience'] + dict['skills'] +
