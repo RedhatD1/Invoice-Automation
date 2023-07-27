@@ -73,7 +73,10 @@ def rename_df_discount_column(df):
             df.rename(columns=lambda x: 'discount' if 'discount' in x else x, inplace=True)
     return df
 
+
 from helpers import general_helper
+
+
 def standardize_df(df, currency="Taka"):
     df = rename_df_name_column(df)
     df = rename_unit_price_column(df)
@@ -89,12 +92,11 @@ def standardize_df(df, currency="Taka"):
             # If the column doesn't exist, create it with empty strings as default value
             df[column] = ''
 
-
     if df['unit_price'].dtype == 'object':
         df['unit_price'] = df['unit_price'].str.replace(r'[^\d.,]+', '', regex=True)
 
-
-    df[['unit_price', 'quantity', 'amount', 'discount']] = df[['unit_price', 'quantity', 'amount', 'discount']].replace('', 0)
+    df[['unit_price', 'quantity', 'amount', 'discount']] = df[['unit_price', 'quantity', 'amount', 'discount']].replace(
+        '', 0)
 
     # Converting all cells to string datatype for streamlining the process
     df = df.astype(str)
@@ -116,6 +118,7 @@ def get_json(df):
     json = df.to_dict('records')
     return json
 
+
 def get_formatted_date(text):
     raw_data = details_utils.extract_date(text)
     # print(raw_data)
@@ -123,7 +126,8 @@ def get_formatted_date(text):
     return formatted_date
 
 
-def convert_to_json_template(df, name="", shop_name="", phone="", email="", billing_address="", shipping_address="", items=[], total_amount=0, note="", date="", number=""):
+def convert_to_json_template(df, name="", shop_name="", phone="", email="", billing_address="", shipping_address="",
+                             items=[], total_amount=0, note="", date="", number=""):
     items = get_json(df)
     # print(items)
     json_data = {
@@ -147,7 +151,7 @@ def convert_to_json_template(df, name="", shop_name="", phone="", email="", bill
 
 
 def get_json_formatted(file_name):
-    file_path = "invoices/" + file_name
+    file_path = "documents/invoices/" + file_name
     invoice_text = reader.read_invoice(file_path)
     ml_dict = runner.ner_extraction(invoice_text)
     invoice_tables = reader.read_tables(file_path)

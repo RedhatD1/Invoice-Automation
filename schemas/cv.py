@@ -23,7 +23,7 @@ class Education(BaseModel):
 
 class IndividualCvParsingResponse(BaseModel):
     candidate_info: Candidate
-    education_info: Education
+    education_info: list[Education]
     experience: float | str = ""
     score: float = 0.0
     rank: int | str = "--"
@@ -31,5 +31,9 @@ class IndividualCvParsingResponse(BaseModel):
 
 class CvParsingResponse(BaseModel):
     status: bool = True
-    cv_list: list[IndividualCvParsingResponse] = []
-    message: str = 'File extraction successfully done.'
+    cv_list: list[IndividualCvParsingResponse]
+
+
+class ErrorResponse(BaseModel):
+    status: bool = False
+    message: str = 'Something is wrong, Please try again later.'
