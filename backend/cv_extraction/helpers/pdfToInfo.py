@@ -1,6 +1,6 @@
 from backend.cv_extraction.helpers import pdfReader, htmlParser, \
     parsedHtmlToSectionedDocument, candidateInfoExtractor, sectionExtractor, \
-    sectionToDict, cvScoring, educationInfoExtractor
+    sectionToDict, cvScoring, educationInfoExtractor, experienceExtractor
 
 def extractInfo(pdfFilePath, jobDescription):
     html = pdfReader.readAsHTML(pdfFilePath)
@@ -19,6 +19,7 @@ def extractInfo(pdfFilePath, jobDescription):
     score = cvScoring.generate_match_score(dict['experience'] + dict['skills'] +
                                            dict['projects'] + dict['course'], jobDescription)
     education = educationInfoExtractor.get(dict['education'])
+    experience = experienceExtractor.extractDateRanges(dict['experience'])
     return {
         "candidate_info": {
             "name": applicantName,
@@ -28,7 +29,7 @@ def extractInfo(pdfFilePath, jobDescription):
             "permanent_address": ""
         },
         "education_info": education,
-        "experience": 0.0,
+        "experience": experience,
         "score": score,
         "rank": "--"
     }

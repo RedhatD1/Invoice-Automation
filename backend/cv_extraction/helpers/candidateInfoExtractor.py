@@ -1,4 +1,17 @@
 import os
+def clip_string(input_string):
+    # Find the index of the first occurrence of "\n"
+    newline_index = input_string.find("\n")
+
+    # If "\n" is found, take the substring from the start to the first "\n"
+    if newline_index != -1:
+        clipped_string = input_string[:newline_index]
+    else:
+        # If no "\n" is found, take the whole string
+        clipped_string = input_string
+
+    return clipped_string
+
 
 def getFileName(pdfFilePath):
     file_name = os.path.basename(pdfFilePath)
@@ -22,6 +35,8 @@ def getName(sectionedDocument, pdfFilePath):
         applicant_name = getFileName(pdfFilePath)
 
     # print(f'Applicant Name: {applicant_name}')
+    applicant_name = applicant_name.lstrip("\n")
+    applicant_name = clip_string(applicant_name)
     return applicant_name.strip()
 
 import re

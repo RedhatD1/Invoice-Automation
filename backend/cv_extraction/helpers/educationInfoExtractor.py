@@ -1,7 +1,7 @@
 import re
 
 def detect_university(cvText):
-    cvText = " ".join(cvText.replace('&', 'and').replace(',', ' ').replace('.', ' ').split())
+    cvText = " ".join(cvText.replace('&', 'and').replace(',', ' ').replace('.', ' ').replace('-',' ').split())
     cvText = cvText.lower()
 
     # Read the institution names from the txt file and store them in a list
@@ -45,7 +45,6 @@ def detectMajor(cvText):
         for major in lowercased_major_list:
 
             if major in cv_text_lower:
-                print(major)
                 return major
         return ""  # Return empty string if no match is found
 
@@ -69,7 +68,7 @@ def detect_between_matches(detectedUniversities, cvText):
             universityContext = " ".join(universityContext.split())
             cgpa = detect_cgpa(universityContext)
             detectedUniversities[i]["cgpa"] = cgpa
-            print(f'University context: {startIndex} to {endIndex} : {universityContext}')
+            # print(f'University context: {startIndex} to {endIndex} : {universityContext}')
             department = detectMajor(universityContext)
             detectedUniversities[i]["department"] = department
 
@@ -95,22 +94,21 @@ def get(cvText):
     detected_universities = detect_between_matches(detected_universities, cvText)
     return detected_universities
 
-#
-# #  Example usage
-# #  Sample string to search for universities
-# cvText = """
-# BSC United International University (UIU) Computer Science
-# [2017] – [Continue]
-# Fall 2017 -
-# CGPA: 2.23 ( On scale of 4.00) Trimester: 11th
-# Year: 4th
-# Bachelor of Business Administration United International University
-# • 1st Major - Human Resources Management • 2nd Major - Marketing
-# • CGPA-3.50
-# •
-# From December 2017 to December 2022
-# """
+
+#  Example usage
+#  Sample string to search for universities
+cvText = """
+BSC United International University (UIU) Computer Science
+[2017] – [Continue]
+Fall 2017 -
+CGPA: 2.23 ( On scale of 4.00) Trimester: 11th
+Year: 4th
+Bachelor of Business Administration United International University
+• 1st Major - Human Resources Management • 2nd Major - Marketing
+• CGPA-3.50
+•
+From December 2017 to December 2022
+"""
 # #  Detect universities in the sample string
 # education = get(cvText)
-# print("Detected education:")
 # print(education)

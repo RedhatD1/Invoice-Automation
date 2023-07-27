@@ -2,9 +2,8 @@ from backend.cv_extraction.helpers import pdfToInfo
 
 
 def getJSON(pdfFileName, jobDescription, algorithm='default'):
-    pdfFilePath = 'backend/cv_extraction/cv/' + pdfFileName
-    output = pdfToInfo.extractInfo(pdfFilePath, jobDescription)
-    return output
+    pdfFilePath = f"documents/cv/{pdfFileName}"
+    return pdfToInfo.extractInfo(pdfFilePath, jobDescription)
 
 
 # Example Usage
@@ -42,8 +41,8 @@ Prior experience with API integration and third-party services.
 Familiarity with web development best practices and coding standards.
 """
 
-output = getJSON(pdfFileName, jobDescription)
+# output = getJSON(pdfFileName, jobDescription)
 # add an optional argument 'algorithm' to specify which algorithm to use
 # currently no other algorithm is implemented
-for key, value in output.items():
-    print(f'{key}: {value}')
+# for key, value in output.items():
+#     print(f'{key}: {value}')
