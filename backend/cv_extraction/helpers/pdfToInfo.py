@@ -1,3 +1,5 @@
+import math
+
 from backend.cv_extraction.helpers import pdfReader, htmlParser, \
     parsedHtmlToSectionedDocument, candidateInfoExtractor, sectionExtractor, \
     sectionToDict, cvScoring, educationInfoExtractor, experienceExtractor
@@ -20,6 +22,7 @@ def extractInfo(pdfFilePath, jobDescription):
                                            dict['projects'] + dict['course'], jobDescription)
     education = educationInfoExtractor.get(dict['education'])
     experience = experienceExtractor.extractDateRanges(dict['experience'])
+    score = math.sqrt(score * experience*experience) + score
     return {
         "candidate_info": {
             "name": applicantName,
