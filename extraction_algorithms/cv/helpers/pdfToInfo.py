@@ -4,35 +4,43 @@ from extraction_algorithms.cv.helpers import pdfReader, htmlParser, \
     parsedHtmlToSectionedDocument, candidateInfoExtractor, sectionExtractor, \
     sectionToDict, cvScoring, educationInfoExtractor, experienceExtractor
 
-def extractInfo(pdfFilePath, jobDescription):
-    html = pdfReader.readAsHTML(pdfFilePath)
-    parsedHtml = htmlParser.parse(html)
-    sectionedDocument = parsedHtmlToSectionedDocument.convert(parsedHtml, html)
-    cvTextOnly = pdfReader.readAsText(pdfFilePath)
-    # print(f'{cvTextOnly}')
-    applicantName, applicantPhone, applicantEmail = candidateInfoExtractor.getcandidateinfo(sectionedDocument, cvTextOnly, pdfFilePath)
-    sections = sectionExtractor.extract_sections(sectionedDocument, parsedHtml)
 
-    dict = sectionToDict.extract(sections)
+def extract_info(pdf_file_path, job_description):
+    html = pdfReader.read_as_html(pdf_file_path)
+    parsed_html = htmlParser.parse(html)
+    sectioned_document = parsedHtmlToSectionedDocument.convert(parsed_html, html)
 
-    # # Uncomment to see which values are being extracted properly
-    # for key, value in dict.items():
-    #     print(f'{key}: {value}')
-    score = cvScoring.generate_match_score(dict['experience'] + dict['skills'] +
-                                           dict['projects'] + dict['course'] +
-                                           dict['summary'], jobDescription)
+    cv_text_only = pdfReader.read_as_text(pdf_file_path)
+    applicant_name, applicant_phone, applicant_email = \
+        candidateInfoExtractor.get_candidate_info(sectioned_document,
+                                                  cv_text_only, pdf_file_path)
 
-    education = educationInfoExtractor.get(dict['education'])
-    experience = experienceExtractor.extractDateRanges(dict['experience'])
-    score = math.sqrt(score * experience) + score
+    sections = sectionExtractor.extract_sections(sectioned_document, parsed_html)
+    info_dict = sectionToDict.extract(sections)
+
+    score = cvScoring.generate_match_score(info_dict['experience'] + info_dict['skills'] +
+                                           info_dict['projects'] + info_dict['course'] +
+                                           info_dict['summary'], job_description)
+
+    education = educationInfoExtractor.get(info_dict['education'])
+    experience = experienceExtractor.extract_date_ranges(info_dict['experience'])
+
+    # adjust to increase weight of experience
+    score = math.sqrt(score * experience * 1.5) + score
+
+    # adjust to increase penalty for no experience
+    if experience == 0:
+        score = score / 1.5
+
+    # Clipping result to 100% max
     if score > 100.0:
         score = 100.0
 
     return {
         "candidate_info": {
-            "name": applicantName,
-            "phone": applicantPhone,
-            "email": applicantEmail,
+            "name": applicant_name,
+            "phone": applicant_phone,
+            "email": applicant_email,
             "present_address": "",
             "permanent_address": ""
         },

@@ -1,6 +1,7 @@
 import re
 from datetime import datetime
 
+
 def standardize_date(date_string):
     date_range_pattern = r"\s*\d{2}/\d{4}"
     month_year_pattern = r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b"
@@ -22,6 +23,7 @@ def standardize_date(date_string):
     # Return the original date if it doesn't match any of the patterns
     return date_string
 
+
 def convert_to_fraction_of_year(date_string):
     try:
         # Parse the date string into a datetime object with format 'Month Year'
@@ -36,6 +38,7 @@ def convert_to_fraction_of_year(date_string):
     except ValueError:
         # If the input date_string is in an invalid format, handle the error as needed
         return 0
+
 
 def preprocess(date_string):
     date_format = "%B %Y"
@@ -62,13 +65,15 @@ def preprocess(date_string):
     else:
         return 0
 
+
 def sum_experience(experience_list):
     sum = 0
     for exp in experience_list:
         sum += exp
     return sum
 
-def extractDateRanges(input_text):
+
+def extract_date_ranges(input_text):
     input_text = input_text.replace('\xa0', ' ')
     date_range_pattern = r"\d{2}/\d{4}\s*-\s*(?:present|\d{2}/\d{4})"
     month_year_pattern = r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b\s*-\s*(?:present|\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b)"
@@ -76,9 +81,9 @@ def extractDateRanges(input_text):
 
     matches = re.findall(combined_pattern, input_text, re.IGNORECASE)
     print(input_text)
-    standardMatches = [preprocess(match) for match in matches]
-    expYears = sum_experience(standardMatches)
-    return round(expYears,2)
+    standard_matches = [preprocess(match) for match in matches]
+    exp_years = sum_experience(standard_matches)
+    return round(exp_years, 2)
 
 # input_text = """
 # 09/2018 - 08/2019

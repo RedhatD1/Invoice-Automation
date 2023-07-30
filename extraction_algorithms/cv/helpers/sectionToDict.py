@@ -1,110 +1,123 @@
 #  It extracts experience from the extracted section
 
-def extractExperience(tuple_list):
+def extract_experience(tuple_list):
     experience = ''
     for item in tuple_list:
         if 'experience' in item[0].lower():
             experience += item[1]
     return experience
 
-def extractEducation(tuple_list):
+
+def extract_education(tuple_list):
     education = ''
     for item in tuple_list:
         if 'education' in item[0].lower():
             education += item[1]
     return education
 
-def extractSkills(tuple_list):
+
+def extract_skills(tuple_list):
     skills = ''
     for item in tuple_list:
         if 'skills' in item[0].lower():
             skills += item[1]
     return skills
 
-def extractProjects(tuple_list):
+
+def extract_projects(tuple_list):
     projects = ''
     for item in tuple_list:
         if 'projects' in item[0].lower():
             projects += item[1]
     return projects
 
-def extractAchievements(tuple_list):
+
+def extract_achievements(tuple_list):
     achievements = ''
     for item in tuple_list:
         if 'achievements' in item[0].lower():
             achievements += item[1]
     return achievements
 
-def extractCertifications(tuple_list):
+
+def extract_certifications(tuple_list):
     certifications = ''
     for item in tuple_list:
         if 'certifications' in item[0].lower():
             certifications += item[1]
     return certifications
 
-def extractAward(tuple_list):
+
+def extract_award(tuple_list):
     awards = ''
     for item in tuple_list:
         if 'award' in item[0].lower():
             awards += item[1]
     return awards
 
-def extractAbout(tuple_list):
+
+def extract_about(tuple_list):
     about = ''
     for item in tuple_list:
         if 'about' in item[0].lower():
             about += item[1]
     return about
 
-def extractResearch(tuple_list):
+
+def extract_research(tuple_list):
     research = ''
     for item in tuple_list:
         if 'research' in item[0].lower():
             research += item[1]
     return research
 
-def extractThesis(tuple_list):
+
+def extract_thesis(tuple_list):
     thesis = ''
     for item in tuple_list:
         if 'thesis' in item[0].lower():
             thesis += item[1]
     return thesis
 
-def extractPublications(tuple_list):
+
+def extract_publications(tuple_list):
     publications = ''
     for item in tuple_list:
         if 'publications' in item[0].lower():
             publications += item[1]
     return publications
 
-def extractCourse(tuple_list):
+
+def extract_course(tuple_list):
     course = ''
     for item in tuple_list:
         if 'course' in item[0].lower():
             course += item[1]
     return course
 
-def extractSummary(tuple_list):
+
+def extract_summary(tuple_list):
     summary = ''
     for item in tuple_list:
         if 'summary' in item[0].lower():
             summary += item[1]
     return summary
 
+
 def extract(tuple_list):
-    dict = {
-        'experience': extractExperience(tuple_list),
-        'education': extractEducation(tuple_list),
-        'skills': extractSkills(tuple_list),
-        'projects': extractProjects(tuple_list),
-        'achievements': extractAchievements(tuple_list),
-        'certifications': extractCertifications(tuple_list),
-        'award': extractAward(tuple_list),
-        'about': extractAbout(tuple_list),
-        'research': extractResearch(tuple_list),
-        'publications': extractPublications(tuple_list),
-        'course': extractCourse(tuple_list),
-        'thesis': extractThesis(tuple_list),
-        'summary': extractSummary(tuple_list)
+    info_dict = {
+        'experience': extract_experience(tuple_list),
+        'education': extract_education(tuple_list),
+        'skills': extract_skills(tuple_list),
+        'projects': extract_projects(tuple_list),
+        'achievements': extract_achievements(tuple_list),
+        'certifications': extract_certifications(tuple_list),
+        'award': extract_award(tuple_list),
+        'about': extract_about(tuple_list),
+        'research': extract_research(tuple_list),
+        'publications': extract_publications(tuple_list),
+        'course': extract_course(tuple_list),
+        'thesis': extract_thesis(tuple_list),
+        'summary': extract_summary(tuple_list)
     }
-    return dict
+    return info_dict

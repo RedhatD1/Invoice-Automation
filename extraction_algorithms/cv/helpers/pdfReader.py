@@ -1,5 +1,7 @@
 from langchain.document_loaders import PDFMinerPDFasHTMLLoader, PDFMinerLoader
-def readAsHTML(pdf_file):
+
+
+def read_as_html(pdf_file):
     # Using PDFminer, we are extracting the PDF as a HTML file
     # This process retains the necessary formatting info of the original PDF
     # Now we can use features like checking font size, style etc
@@ -9,7 +11,9 @@ def readAsHTML(pdf_file):
     # The first item is stored at the 0th index
     data = loader.load()[0]
     return data
-def readAsText(pdf_path):
+
+
+def read_as_text(pdf_path):
     loader = PDFMinerLoader(pdf_path)
     data = loader.load()
     text = ""

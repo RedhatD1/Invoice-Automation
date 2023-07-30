@@ -1,8 +1,8 @@
-def extract_sections(sectionedDocument, snippets):
+def extract_sections(sectioned_document, snippets):
     section_titles_with_content = []  # For storing titles and their corresponding content
-    # In the below condition, if no text>len 2 is detected then try another algo
-    if len(sectionedDocument) >= 2:  # More than just the title has been captured
-        sorted_snippets = sorted(sectionedDocument, key=lambda x: x.metadata['heading_font'], reverse=True)
+    # In the below condition, if no text>len 2 is detected, then try another algo
+    if len(sectioned_document) >= 2:  # More than just the title has been captured
+        sorted_snippets = sorted(sectioned_document, key=lambda x: x.metadata['heading_font'], reverse=True)
         # This ensures that snippets with the largest heading font come first in the sorted list
 
         second_largest_heading_font = sorted_snippets[1].metadata['heading_font']

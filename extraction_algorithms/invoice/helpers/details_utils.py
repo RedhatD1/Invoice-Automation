@@ -1,9 +1,17 @@
-# Used for extracting information other than table data
-
 from datetime import datetime
 import re
 
-import nltk
+"""
+Used to extract the following
+1. Invoice Number
+2. Invoice Date
+3. Total Amount
+4. Shipping Address
+5. Billing Address
+6. Phone Number
+7. Email
+8. Name
+"""
 
 
 def extract_invoice_number(text):
@@ -19,25 +27,28 @@ def extract_invoice_number(text):
         else:
             try:
                 text = text.lower()
-                patterns = [
+                new_patterns = [
                     r'\binv-\w+\b',  # Matches words starting with "INV-" followed by one or more word characters
-                    # Matches words containing at least one alphabetical character, one or more digits, and a combination of alphabetical characters and digits
+                    # Matches words containing at least one alphabetical character, one or more digits,
+                    # and a combination of alphabetical characters and digits
                     r'\b[a-z]+\d+[a-z\d]+\b',
-                    # Matches "Invoice No" followed by a colon or period, optional whitespace, and captures a single word, including characters, numbers and hyphens
+                    # Matches "Invoice No" followed by a colon or period, optional whitespace, and captures a single
+                    # word, including characters, numbers and hyphens
                     r'(?i)invoice no[:.]\s*(\w+(?:[\w-]*\w)?)',
                     r'(?<=#)\d+',  # Matches one or more digits preceded by a hash symbol (#)
                     # Matches one or more word characters preceded by a hash symbol (#) and a whitespace character
                     r'(?<=#\s)\w+'
                 ]
 
-                for pattern in patterns:
-                    matches = re.findall(pattern, text)
-                    if matches:
-                        return matches[0].upper()
+                for new_pattern in new_patterns:
+                    new_match = re.findall(new_pattern, text)
+                    if new_match:
+                        return new_match[0].upper()
 
             except IndexError:
                 return ""
     return ""
+
 
 def standardize_date(text):
     try:
@@ -92,6 +103,7 @@ def standardize_date(text):
     except Exception as e:
         return ""
 
+
 def extract_date(text):
     # Define patterns or keywords for invoice date extraction
     patterns = ['Invoice Date', 'Date of Issue', 'Billing Date', 'Order Date', 'Date']
@@ -108,6 +120,7 @@ def extract_date(text):
             if not matches:
                 today = datetime.today()
                 formatted_date = today.strftime("%d-%m-%Y")
+                return formatted_date
             else:
                 return matches[0]
     return ""
@@ -138,6 +151,7 @@ def extract_total_amount(text):
                     return 0
     return 0
 
+
 def extract_phone(text):
     pattern = r"(?:(?:\+|00)88|01)?\d{11}"
     matches = re.findall(pattern, text)
@@ -157,13 +171,15 @@ def extract_email(text):
         email = matches[-1]
         return email
 
+
 def extract_name(text):
     # Define patterns or keywords for invoice number extraction
-    patterns = ['Name', 'Customer name', "Customer info", 'Receiver', 'Receiver Name', 'Receiver info', 'Recipient', 'Recipient name']
+    patterns = ['Name', 'Customer name', "Customer info", 'Receiver', 'Receiver Name', 'Receiver info', 'Recipient',
+                'Recipient name']
     for pattern in patterns:
         match = re.search(r'{}(\s*:\s*|\s+)(\w+)'.format(pattern), text, re.IGNORECASE)
         # The code searches for specific patterns ('Invoice No.', 'Order No.', 'Invoice Number', 'Order #')
-        # followed by a colon or whitespace, followed by one or more word characters
+        # followed by a colon or space, followed by one or more word characters
         # The code ignores case sensitivity
         if match:
             return match.group(2)
@@ -171,6 +187,8 @@ def extract_name(text):
             email = extract_email(text)
             username = email.split('@')[0]
             return re.sub(r'[^a-zA-Z]+', '', username)
+
+
 def extract_address(text, patterns):
     for pattern in patterns:
         match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
@@ -179,13 +197,14 @@ def extract_address(text, patterns):
             return address.strip()  # Return the extracted shipping address
     return ""  # Return "" if no shipping address is found
 
+
 def extract_shipping_address(text):
-    pattern = ['shipping address', 'ship to',  "delivery address", "receiver address", "customer address"]
+    pattern = ['shipping address', 'ship to', "delivery address", "receiver address", "customer address"]
     shipping_address = extract_address(text=text, patterns=pattern)
     return shipping_address
+
 
 def extract_billing_address(text):
     pattern = ['billing address', 'bill to']
     billing_address = extract_address(text=text, patterns=pattern)
     return billing_address
-
