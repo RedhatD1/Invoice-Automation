@@ -125,8 +125,8 @@ def get_formatted_date(text):
     return formatted_date
 
 
-def convert_to_json_template(df, name="", shop_name="", phone="", email="", billing_address="", shipping_address="",
-                             items=[], total_amount=0, note="", date="", number=""):
+def convert_to_json_template(df, name="", shop_name="", phone="", email="", billing_address="", shipping_address=""
+                             , total_amount=0, note="", date="", number=""):
     items = get_json(df)
     # print(items)
     json_data = {
@@ -188,6 +188,8 @@ def get_json_formatted(file_name):
                                          email=details_utils.extract_email(invoice_text),
                                          billing_address=billing_address,
                                          shipping_address=shipping_address,
+                                         total_amount=details_utils.extract_total_amount(invoice_text),
+                                         note='',
                                          date=get_formatted_date(invoice_text),
                                          number=details_utils.extract_invoice_number(invoice_text))
     return json_data

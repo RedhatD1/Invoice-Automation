@@ -135,8 +135,8 @@ def extract_total_amount(text):
                 if numbers:
                     return numbers[-1]
                 else:
-                    return ""
-    return ""
+                    return 0
+    return 0
 
 def extract_phone(text):
     pattern = r"(?:(?:\+|00)88|01)?\d{11}"
