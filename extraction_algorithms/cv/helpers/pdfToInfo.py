@@ -19,10 +19,15 @@ def extractInfo(pdfFilePath, jobDescription):
     # for key, value in dict.items():
     #     print(f'{key}: {value}')
     score = cvScoring.generate_match_score(dict['experience'] + dict['skills'] +
-                                           dict['projects'] + dict['course'], jobDescription)
+                                           dict['projects'] + dict['course'] +
+                                           dict['summary'], jobDescription)
+
     education = educationInfoExtractor.get(dict['education'])
     experience = experienceExtractor.extractDateRanges(dict['experience'])
-    score = math.sqrt(score * experience*experience) + score
+    score = math.sqrt(score * experience) + score
+    if score > 100.0:
+        score = 100.0
+
     return {
         "candidate_info": {
             "name": applicantName,

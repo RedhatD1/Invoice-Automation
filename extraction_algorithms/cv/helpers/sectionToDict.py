@@ -84,6 +84,13 @@ def extractCourse(tuple_list):
             course += item[1]
     return course
 
+def extractSummary(tuple_list):
+    summary = ''
+    for item in tuple_list:
+        if 'summary' in item[0].lower():
+            summary += item[1]
+    return summary
+
 def extract(tuple_list):
     dict = {
         'experience': extractExperience(tuple_list),
@@ -97,6 +104,7 @@ def extract(tuple_list):
         'research': extractResearch(tuple_list),
         'publications': extractPublications(tuple_list),
         'course': extractCourse(tuple_list),
-        'thesis': extractThesis(tuple_list)
+        'thesis': extractThesis(tuple_list),
+        'summary': extractSummary(tuple_list)
     }
     return dict
