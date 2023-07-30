@@ -5,7 +5,13 @@ from schemas.invoice import WelcomeMessage
 from routers import invoice, cv
 
 
-app = FastAPI()
+app = FastAPI(
+    title="Document extraction API collection",
+    summary="Extract content from the PDF and CV",
+    version="1.0.0",
+    docs_url="/api-documentation",
+    openapi_url="/api/openapi.json"
+)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
