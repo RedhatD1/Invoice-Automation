@@ -1,7 +1,7 @@
 documents/
 Invoice_Automation/
 logs/
-/backend/old_regex/test.py
+/extraction_algorithms/old_regex/test.py
 .DS_Store
 .idea
 

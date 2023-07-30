@@ -1,6 +1,6 @@
 import math
 
-from backend.cv_extraction.helpers import pdfReader, htmlParser, \
+from extraction_algorithms.cv.helpers import pdfReader, htmlParser, \
     parsedHtmlToSectionedDocument, candidateInfoExtractor, sectionExtractor, \
     sectionToDict, cvScoring, educationInfoExtractor, experienceExtractor
 

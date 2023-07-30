@@ -5,7 +5,7 @@ def detect_university(cvText):
     cvText = cvText.lower()
 
     # Read the institution names from the txt file and store them in a list
-    with open('backend/cv_extraction/helpers/ugcList.txt', 'r') as file:
+    with open('extraction_algorithms/cv/helpers/ugcList.txt', 'r') as file:
         universities_list = [line.strip() for line in file]
 
     # Initialize an empty list to store matched universities and their indices
@@ -32,7 +32,7 @@ def detect_university(cvText):
 
 def detectMajor(cvText):
     # Read the institution names from the txt file and store them in a list
-    with open('backend/cv_extraction/helpers/majorList.txt', 'r') as file:
+    with open('extraction_algorithms/cv/helpers/majorList.txt', 'r') as file:
         major_list = [line.strip() for line in file]
 
         # Convert major_list to lowercase

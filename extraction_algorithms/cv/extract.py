@@ -1,4 +1,4 @@
-from backend.cv_extraction.helpers import pdfToInfo
+from extraction_algorithms.cv.helpers import pdfToInfo
 
 
 def getJSON(pdfFileName, jobDescription, algorithm='default'):

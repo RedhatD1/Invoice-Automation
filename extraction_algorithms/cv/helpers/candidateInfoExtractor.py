@@ -1,4 +1,11 @@
 import os
+
+"""
+A candidate name can get captured as a paragraph if the font size is 
+not much different from nearby text. This can also happen if the paragraphs are very
+close in the document. In order to clip only the name, we need to check for the
+first occurrence of name because usually a name is the title or a one line text
+"""
 def clip_string(input_string):
     # Find the index of the first occurrence of "\n"
     newline_index = input_string.find("\n")
@@ -12,7 +19,11 @@ def clip_string(input_string):
 
     return clipped_string
 
-
+"""
+This is a backup method in case we couldnt detect the name from the PDF
+The logic is that most people will have their name in the file name
+So we can extract the name from the file name
+"""
 def getFileName(pdfFilePath):
     file_name = os.path.basename(pdfFilePath)
     return file_name

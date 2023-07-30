@@ -5,7 +5,7 @@ from schemas.cv import CvRequestModel, CvParsingResponse, ErrorResponse
 from helpers.general_helper import unlink_file, check_file_existence
 from fastapi.encoders import jsonable_encoder
 from typing import Union
-from backend.cv_extraction.getCvResult import getJSON
+from extraction_algorithms.cv.extract import getJSON
 
 
 router = APIRouter()

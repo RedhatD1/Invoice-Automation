@@ -1,9 +1,8 @@
 # Used for formatting the DataFrame and creating JSON
 
-from backend.regex_algorithm import details_utils, reader, utils
-from backend.regex_algorithm.ML_Entity_Detection import runner
+from extraction_algorithms.invoice.helpers import utils, details_utils, reader
+from extraction_algorithms.invoice.helpers.ML_Entity_Detection import runner
 from helpers.general_helper import remove_space_from_text
-import re
 
 
 def rename_df_name_column(df):

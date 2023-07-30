@@ -1,7 +1,6 @@
-from backend.regex_algorithm import extractor
-from backend.regex_algorithm_sunjid_bhai import regex2
-from backend.other import template
-
+from extraction_algorithms.regex_algorithm_sunjid_bhai import regex2
+from extraction_algorithms.other import template
+from extraction_algorithms.invoice import extract
 
 def process_pdf(file_name: str, algorithm: str):
     if algorithm == "regex2":
@@ -11,5 +10,5 @@ def process_pdf(file_name: str, algorithm: str):
     elif algorithm == "dl":
         response = template.other(file_name)
     else:
-        response = extractor.get_json_formatted(file_name)  # new regex, does error handling
+        response = extract.get_json_formatted(file_name)  # new regex, does error handling
     return response
