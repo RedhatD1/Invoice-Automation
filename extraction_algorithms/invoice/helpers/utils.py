@@ -31,7 +31,12 @@ def lru_crop_df(df, row, first_column, last_column):  # Left Right Up crop DataF
 
 
 def lower_crop_df(df):
-    column_data = df.iloc[:, 0]
+    try:
+        # Assuming df is your DataFrame
+        column_data = df.iloc[:, 0]
+    except IndexError:
+        # Handle the case when the DataFrame is empty or the column index is out of range
+        column_data = pd.DataFrame()
     index = 0
     # Printing all rows of the column
     for row in column_data:
@@ -46,17 +51,23 @@ def lower_crop_df(df):
 
 
 def df_first_row_to_header(df):
-    # df.loc[len(df)] = pd.Series() # Add empty row at the end
-    new_header = df.iloc[0]  # grab the first row for the header
-    new_header = pd.Series([re.sub(r'[^a-zA-Z]', '', name) for name in
-                            new_header])  # Convert the list to a Pandas Series and remove non-alphabetic characters
+    try:
+        if df.empty:
+            # Handle the case when the DataFrame is empty
+            return pd.DataFrame()
 
-    df = df[1:]  # take the data less the header row
-    df.columns = new_header.str.lower()  # set the header row as the df header
-    df.columns = df.columns.str.replace('\n', '\\')  # Remove newline characters from header
-    df = df.replace('\n', ' ', regex=True)
-    df = df.reset_index(drop=True)
-    return df
+        new_header = df.iloc[0]  # grab the first row for the header
+        new_header = pd.Series([re.sub(r'[^a-zA-Z]', '', name) for name in new_header])
+
+        df = df[1:]  # take the data less the header row
+        df.columns = new_header.str.lower()  # set the header row as the df header
+        df.columns = df.columns.str.replace('\n', '\\')  # Remove newline characters from header
+        df = df.replace('\n', ' ', regex=True)
+        df = df.reset_index(drop=True)
+        return df
+    except IndexError:
+        # Handle any other potential errors here if needed
+        return pd.DataFrame()
 
 
 def extract_table(tables, header_keywords):
@@ -84,6 +95,7 @@ def crop_table(table, top_index, left_index, right_index):
     left_right_up_cropped_table = lru_crop_df(table, top_index, left_index, right_index)
     left_right_up_down_cropped_table = lower_crop_df(left_right_up_cropped_table)
     result_table = df_first_row_to_header(left_right_up_down_cropped_table)
+    print('header passed')
     return result_table
 
 

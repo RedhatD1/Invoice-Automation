@@ -18,12 +18,12 @@ def get(file_name):
             name = ml_dict['CUSTOMER']
         else:
             name = details_utils.extract_name(invoice_text)
-    except Exception as e:
+    except KeyError:
         name = ''
 
     try:
         shop_name = ml_dict['SHOP']
-    except Exception as e:
+    except KeyError:
         shop_name = ''
 
     try:
@@ -31,7 +31,7 @@ def get(file_name):
             shipping_address = ml_dict['SHIPPING_ADDRESS']
         else:
             shipping_address = details_utils.extract_shipping_address(invoice_text)
-    except Exception as e:
+    except KeyError:
         shipping_address = ''
 
     billing_address = details_utils.extract_billing_address(invoice_text)
