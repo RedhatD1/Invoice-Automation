@@ -1,12 +1,10 @@
 # Used for formatting the DataFrame and creating JSON
-
-from backend.regex_algorithm import details_utils, reader, utils
-from backend.regex_algorithm.ML_Entity_Detection import runner
-from helpers.general_helper import remove_space_from_text
-import re
+import pandas as pd
+from helpers import general_helper
+from extraction_algorithms.invoice.helpers import details_utils
 
 
-def rename_df_name_column(df):
+def rename_df_name_column(df: pd.DataFrame) -> pd.DataFrame:
     if 'name' not in df.columns:
         # Check if 'items' column exists
         if 'items' in df.columns:
@@ -23,7 +21,7 @@ def rename_df_name_column(df):
     return df
 
 
-def rename_unit_price_column(df):
+def rename_unit_price_column(df: pd.DataFrame) -> pd.DataFrame:
     if 'unit_price' not in df.columns:
         # Check if 'items' column exists
         if 'price' in df.columns:
@@ -35,7 +33,7 @@ def rename_unit_price_column(df):
     return df
 
 
-def rename_df_quantity_column(df):
+def rename_df_quantity_column(df: pd.DataFrame) -> pd.DataFrame:
     if 'quantity' not in df.columns:
         # Check if 'items' column exists
         if 'qty' in df.columns:
@@ -48,7 +46,7 @@ def rename_df_quantity_column(df):
     return df
 
 
-def rename_df_amount_column(df):
+def rename_df_amount_column(df: pd.DataFrame) -> pd.DataFrame:
     if 'amount' not in df.columns:
         # Check if 'items' column exists
         if 'total' in df.columns:
@@ -62,7 +60,7 @@ def rename_df_amount_column(df):
     return df
 
 
-def rename_df_discount_column(df):
+def rename_df_discount_column(df: pd.DataFrame) -> pd.DataFrame:
     if 'discount' not in df.columns:
         # Check if 'items' column exists
         if 'discount amount' in df.columns:
@@ -74,10 +72,9 @@ def rename_df_discount_column(df):
     return df
 
 
-from helpers import general_helper
 
 
-def standardize_df(df, currency="Taka"):
+def standardize_df(df: pd.DataFrame, currency="Taka") -> pd.DataFrame:
     df = rename_df_name_column(df)
     df = rename_unit_price_column(df)
     df = rename_df_quantity_column(df)
@@ -114,81 +111,12 @@ def standardize_df(df, currency="Taka"):
     return df
 
 
-def get_json(df):
-    json = df.to_dict('records')
-    return json
+def get_item_list(df: pd.DataFrame) -> list:
+    item_list = df.to_dict('records')
+    return item_list
 
 
-def get_formatted_date(text):
+def get_formatted_date(text: str) -> str:
     raw_data = details_utils.extract_date(text)
-    # print(raw_data)
     formatted_date = details_utils.standardize_date(raw_data)
     return formatted_date
-
-
-def convert_to_json_template(df, name="", shop_name="", phone="", email="", billing_address="", shipping_address="",
-                             items=[], total_amount=0, note="", date="", number=""):
-    items = get_json(df)
-    # print(items)
-    json_data = {
-        "customer_info": {
-            "name": name,
-            "phone": phone,
-            "email": email,
-            "billing_address": billing_address,
-            "shipping_address": shipping_address
-        },
-        "item_details": items,
-        "total_amount": remove_space_from_text(total_amount),
-        "note": note,
-        "invoice_info": {
-            "shop_name": shop_name,
-            "date": date,
-            "number": number,
-        }
-    }
-    return json_data
-
-
-def get_json_formatted(file_name):
-    file_path = "documents/invoices/" + file_name
-    invoice_text = reader.read_invoice(file_path)
-    ml_dict = runner.ner_extraction(invoice_text)
-    invoice_tables = reader.read_tables(file_path)
-    result_table = utils.extract_item_table(invoice_tables)
-    result_table = standardize_df(result_table)
-
-    # try catch block for ML
-    try:
-        if ml_dict['CUSTOMER'] != '':
-            name = ml_dict['CUSTOMER']
-        else:
-            name = details_utils.extract_name(invoice_text)
-    except Exception as e:
-        name = ''
-
-    try:
-        shop_name = ml_dict['SHOP']
-    except Exception as e:
-        shop_name = ''
-
-    try:
-        if ml_dict['SHIPPING_ADDRESS'] != '':
-            shipping_address = ml_dict['SHIPPING_ADDRESS']
-        else:
-            shipping_address = details_utils.extract_shipping_address(invoice_text)
-    except Exception as e:
-        shipping_address = ''
-
-    billing_address = details_utils.extract_billing_address(invoice_text)
-
-    json_data = convert_to_json_template(df=result_table,
-                                         name=name,
-                                         shop_name=shop_name,
-                                         phone=details_utils.extract_phone(invoice_text),
-                                         email=details_utils.extract_email(invoice_text),
-                                         billing_address=billing_address,
-                                         shipping_address=shipping_address,
-                                         date=get_formatted_date(invoice_text),
-                                         number=details_utils.extract_invoice_number(invoice_text))
-    return json_data

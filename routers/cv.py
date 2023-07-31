@@ -5,7 +5,7 @@ from schemas.cv import CvRequestModel, CvParsingResponse, ErrorResponse
 from helpers.general_helper import unlink_file, check_file_existence
 from fastapi.encoders import jsonable_encoder
 from typing import Union
-from backend.cv_extraction.getCvResult import getJSON
+from extraction_algorithms.cv.extract import get_json
 
 
 router = APIRouter()
@@ -25,7 +25,7 @@ async def extract_cv(request: Request, cv_model: CvRequestModel):
             print(file_name)
             file_path = f"documents/cv/{file_name}"
             if check_file_existence(file_path):
-                individual_cv_response = getJSON(file_name, job_description, algorithm)
+                individual_cv_response = get_json(file_name, job_description, algorithm)
                 print(individual_cv_response)
                 parse_cv.append(individual_cv_response)
                 unlink_file(file_path)

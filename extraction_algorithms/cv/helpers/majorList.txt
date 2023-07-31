@@ -6,6 +6,8 @@ Computer Science and Mechanical Engineering
 Computer Science and Aerospace Engineering
 Computer Science and Biomedical Engineering
 Computer Science and Environmental Engineering
+Database Management
+Information Technology
 Electrical and Electronics Engineering
 Electrical Engineering
 Information Technology

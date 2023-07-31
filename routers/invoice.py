@@ -17,12 +17,12 @@ router = APIRouter()
 async def extract_invoice(request: Request, file_name: str, algorithm: str = 'regex'):
     response = {}
     try:
-        print('file_name', file_name, 'algorithm', algorithm)
+        # print('file_name', file_name, 'algorithm', algorithm)
         file_path = f"documents/invoices/{file_name}"
-        print(file_path)
+        # print(file_path)
         if check_file_existence(file_path):
             pdf_response = process_pdf(file_name, algorithm)
-            print(pdf_response)
+            # print(pdf_response)
             unlink_file(file_path)
             response = InvoiceParsingResponse(extract_data=pdf_response)
             return response
@@ -30,7 +30,7 @@ async def extract_invoice(request: Request, file_name: str, algorithm: str = 're
             response = ErrorResponse(message='File is not found')
             return response
     except Exception as e:
-        print('internal error', e)
+        # print('internal error', e)
         response = ErrorResponse()
         return response
     finally:

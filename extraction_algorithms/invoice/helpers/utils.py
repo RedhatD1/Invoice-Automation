@@ -1,10 +1,11 @@
 # Some utility functions for the main script
 # Used only for writing minor functions for cleanup
-
+from camelot.core import TableList
 import re
 import pandas as pd
 
-def count_max_matches(df, keywords):
+
+def count_max_matches(df: pd.DataFrame, keywords: list) -> (int, int, int, int):
     max_matches = 0
     max_match_index = 0
     first_match_column = 0
@@ -17,19 +18,25 @@ def count_max_matches(df, keywords):
         if num_matches > max_matches:
             max_matches = num_matches
             max_match_index = index
-            first_match_column = matches.idxmax() # Find first match column
+            first_match_column = matches.idxmax()  # Find first match column
             last_match_column = matches[::-1].idxmax()  # Find last match column
 
     return max_matches, max_match_index, first_match_column, last_match_column
 
 
-def lru_crop_df(df, row, first_column, last_column): # Left Right Up crop DataFrame
-    df = df.iloc[row:, first_column:last_column+1]
+def lru_crop_df(df, row, first_column, last_column) -> pd.DataFrame:  # Left Right Up crop DataFrame
+    df = df.iloc[row:, first_column:last_column + 1]
     df = df.reset_index(drop=True)
     return df
 
-def lower_crop_df(df):
-    column_data = df.iloc[:, 0]
+
+def lower_crop_df(df: pd.DataFrame) -> pd.DataFrame:
+    try:
+        # Assuming df is your DataFrame
+        column_data = df.iloc[:, 0]
+    except IndexError:
+        # Handle the case when the DataFrame is empty or the column index is out of range
+        column_data = pd.DataFrame()
     index = 0
     # Printing all rows of the column
     for row in column_data:
@@ -42,20 +49,28 @@ def lower_crop_df(df):
     df = df.iloc[:index, :]
     return df
 
-def df_first_row_to_header(df):
-    # df.loc[len(df)] = pd.Series() # Add empty row at the end
-    new_header = df.iloc[0] #grab the first row for the header
-    new_header = pd.Series([re.sub(r'[^a-zA-Z]', '', name) for name in
-                            new_header])  # Convert the list to a Pandas Series and remove non-alphabetic characters
 
-    df = df[1:] #take the data less the header row
-    df.columns = new_header.str.lower() #set the header row as the df header
-    df.columns = df.columns.str.replace('\n', '\\') # Remove newline characters from header
-    df = df.replace('\n', ' ', regex=True)
-    df = df.reset_index(drop=True)
-    return df
+def df_first_row_to_header(df: pd.DataFrame) -> pd.DataFrame:
+    try:
+        if df.empty:
+            # Handle the case when the DataFrame is empty
+            return pd.DataFrame()
 
-def extract_table(tables, header_keywords):
+        new_header = df.iloc[0]  # grab the first row for the header
+        new_header = pd.Series([re.sub(r'[^a-zA-Z]', '', name) for name in new_header])
+
+        df = df[1:]  # take the data less the header row
+        df.columns = new_header.str.lower()  # set the header row as the df header
+        df.columns = df.columns.str.replace('\n', '\\')  # Remove newline characters from header
+        df = df.replace('\n', ' ', regex=True)
+        df = df.reset_index(drop=True)
+        return df
+    except IndexError:
+        # Handle any other potential errors here if needed
+        return pd.DataFrame()
+
+
+def extract_table(tables: TableList, header_keywords: list) -> (pd.DataFrame, int, int, int):
     max_keyword_matches = 0
     best_table = pd.DataFrame()  # Empty DataFrame by default in case no match
     best_table_index = 0
@@ -75,17 +90,18 @@ def extract_table(tables, header_keywords):
             best_table_last_column = last_match_column  # Update best_table_column
     return best_table, best_table_index, best_table_first_column, best_table_last_column
 
-def crop_table(table, top_index, left_index, right_index):
+
+def crop_table(table: pd.DataFrame, top_index: int, left_index: int, right_index: int) -> pd.DataFrame:
     left_right_up_cropped_table = lru_crop_df(table, top_index, left_index, right_index)
     left_right_up_down_cropped_table = lower_crop_df(left_right_up_cropped_table)
     result_table = df_first_row_to_header(left_right_up_down_cropped_table)
     return result_table
 
-def extract_item_table(tables):
+
+def extract_item_table(tables: TableList) -> pd.DataFrame:
+    print(f'type of tables: {type(tables)}')
     header_keywords = ["item", "product", "description", "quantity", "discount", "unit", "price", "amount", "total"]
     item_table, starting_index, starting_column, ending_column = extract_table(tables, header_keywords)
     result_table = crop_table(item_table, starting_index, starting_column, ending_column)
-
-
 
     return result_table

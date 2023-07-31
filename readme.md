@@ -1,17 +1,18 @@
 # Invoice Extraction Module
 Takes a PDF as an input and returns a form with the extracted data.
+It scans the PDF and uses pattern matching and machine learning to extract the data.
 
-### Usage
-Put invoices in "/invoices/" directory
-Put cv.pdf in "backend/cv_extraction/cv" directory --> PDF File
-put job descriptions.txt in "backend/cv_extraction/jobDescriptions" directory --> Txt File
+### Where to put the files
+Put invoices in "documents/invoices/" directory --> PDF File
+Put cv.pdf in "documents/cv" directory --> PDF File
+Job description will be provided on the api end
 
 ### Setup
-python3 -m venv env <br>
-source venv/bin/activate <br>
-pip3 install -r requirements.txt <br>
+python3 -m venv env
+source venv/bin/activate
+pip3 install -r requirements.txt
 
-
+### Running the server
 uvicorn main:app --reload <br>
 
 You need to have java runtime installed

@@ -1,11 +1,12 @@
 import re
 from bs4 import BeautifulSoup
+from langchain.schema.document import Document
 
 
-def parse(data):
+def parse(data: Document) -> list:
     # We are using bs4 for parsing our extracted html file
     soup = BeautifulSoup(data.page_content,'html.parser')
-    # all elements are inside a div, so we are finding all the divs first and those divs contain
+    # all elements are inside a div, so we are finding all the divs first, and those divs contain
     # the information about the CV (title, subsections etc. all text)
     # other parts like <html><title> etc. are discarded in this way
 
