@@ -3,7 +3,7 @@ import pdfplumber
 from camelot import read_pdf
 
 
-def read_invoice(file_path):
+def read_invoice(file_path: str):
     # Open the PDF file in binary mode
     with pdfplumber.open(file_path) as pdf:
         text_content = ""
@@ -15,6 +15,6 @@ def read_invoice(file_path):
     return text_content
 
 
-def read_tables(file_path):
+def read_tables(file_path: str):
     tables = read_pdf(filepath=file_path, pages="all", flavor='stream')
     return tables

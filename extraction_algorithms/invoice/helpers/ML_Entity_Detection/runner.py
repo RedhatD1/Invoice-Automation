@@ -1,7 +1,7 @@
 import spacy
 
 # Replace 'path_to_saved_model' with the actual path where you saved the model
-def ner_extraction(text):
+def ner_extraction(text: str):
     nlp = spacy.load('extraction_algorithms/invoice/helpers/ML_Entity_Detection/model')
     doc = nlp(text)
     target_attribute = {

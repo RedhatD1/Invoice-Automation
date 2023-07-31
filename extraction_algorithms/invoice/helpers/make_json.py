@@ -4,7 +4,7 @@ from extraction_algorithms.invoice.helpers import reader, utils, details_utils
 from helpers.general_helper import remove_space_from_text
 
 
-def get(file_name):
+def get(file_name: str):
     file_path = "documents/invoices/" + file_name
     invoice_text = reader.read_invoice(file_path)
     ml_dict = runner.ner_extraction(invoice_text)

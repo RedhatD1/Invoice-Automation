@@ -14,7 +14,7 @@ Used to extract the following
 """
 
 
-def extract_invoice_number(text):
+def extract_invoice_number(text: str):
     # Define patterns or keywords for invoice number extraction
     patterns = ['Invoice No.', 'Order No.', 'Invoice Number', 'Order #']
     for pattern in patterns:
@@ -50,7 +50,7 @@ def extract_invoice_number(text):
     return ""
 
 
-def standardize_date(text):
+def standardize_date(text: str):
     try:
         date_obj = None
         date_formats = [
@@ -104,7 +104,7 @@ def standardize_date(text):
         return ""
 
 
-def extract_date(text):
+def extract_date(text: str):
     # Define patterns or keywords for invoice date extraction
     patterns = ['Invoice Date', 'Date of Issue', 'Billing Date', 'Order Date', 'Date']
 
@@ -126,7 +126,7 @@ def extract_date(text):
     return ""
 
 
-def extract_total_amount(text):
+def extract_total_amount(text: str):
     # Define patterns or keywords for total amount extraction
     patterns = ['Total', 'TOTAL', 'Amount Due', 'Total Payable', 'Grand Total']
     for pattern in patterns:
@@ -152,7 +152,7 @@ def extract_total_amount(text):
     return 0
 
 
-def extract_phone(text):
+def extract_phone(text: str):
     pattern = r"(?:(?:\+|00)88|01)?\d{11}"
     matches = re.findall(pattern, text)
     matches = list(set(matches))
@@ -162,7 +162,7 @@ def extract_phone(text):
         return ""
 
 
-def extract_email(text):
+def extract_email(text: str):
     pattern = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"
     matches = re.findall(pattern, text)
     if not matches:
@@ -172,7 +172,7 @@ def extract_email(text):
         return email
 
 
-def extract_name(text):
+def extract_name(text: str):
     # Define patterns or keywords for invoice number extraction
     patterns = ['Name', 'Customer name', "Customer info", 'Receiver', 'Receiver Name', 'Receiver info', 'Recipient',
                 'Recipient name']
@@ -189,7 +189,7 @@ def extract_name(text):
             return re.sub(r'[^a-zA-Z]+', '', username)
 
 
-def extract_address(text, patterns):
+def extract_address(text: str, patterns: list):
     for pattern in patterns:
         match = re.search(r'{}(\s*(.*))'.format(pattern), text, re.IGNORECASE)
         if match:
@@ -198,13 +198,13 @@ def extract_address(text, patterns):
     return ""  # Return "" if no shipping address is found
 
 
-def extract_shipping_address(text):
+def extract_shipping_address(text: str):
     pattern = ['shipping address', 'ship to', "delivery address", "receiver address", "customer address"]
     shipping_address = extract_address(text=text, patterns=pattern)
     return shipping_address
 
 
-def extract_billing_address(text):
+def extract_billing_address(text: str):
     pattern = ['billing address', 'bill to']
     billing_address = extract_address(text=text, patterns=pattern)
     return billing_address

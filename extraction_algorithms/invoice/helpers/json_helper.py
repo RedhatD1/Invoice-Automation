@@ -1,9 +1,10 @@
 # Used for formatting the DataFrame and creating JSON
-
+import pandas as pd
+from helpers import general_helper
 from extraction_algorithms.invoice.helpers import details_utils
 
 
-def rename_df_name_column(df):
+def rename_df_name_column(df: pd.DataFrame):
     if 'name' not in df.columns:
         # Check if 'items' column exists
         if 'items' in df.columns:
@@ -20,7 +21,7 @@ def rename_df_name_column(df):
     return df
 
 
-def rename_unit_price_column(df):
+def rename_unit_price_column(df: pd.DataFrame):
     if 'unit_price' not in df.columns:
         # Check if 'items' column exists
         if 'price' in df.columns:
@@ -32,7 +33,7 @@ def rename_unit_price_column(df):
     return df
 
 
-def rename_df_quantity_column(df):
+def rename_df_quantity_column(df: pd.DataFrame):
     if 'quantity' not in df.columns:
         # Check if 'items' column exists
         if 'qty' in df.columns:
@@ -45,7 +46,7 @@ def rename_df_quantity_column(df):
     return df
 
 
-def rename_df_amount_column(df):
+def rename_df_amount_column(df: pd.DataFrame):
     if 'amount' not in df.columns:
         # Check if 'items' column exists
         if 'total' in df.columns:
@@ -59,7 +60,7 @@ def rename_df_amount_column(df):
     return df
 
 
-def rename_df_discount_column(df):
+def rename_df_discount_column(df: pd.DataFrame):
     if 'discount' not in df.columns:
         # Check if 'items' column exists
         if 'discount amount' in df.columns:
@@ -71,10 +72,9 @@ def rename_df_discount_column(df):
     return df
 
 
-from helpers import general_helper
 
 
-def standardize_df(df, currency="Taka"):
+def standardize_df(df: pd.DataFrame, currency="Taka"):
     df = rename_df_name_column(df)
     df = rename_unit_price_column(df)
     df = rename_df_quantity_column(df)
@@ -111,12 +111,12 @@ def standardize_df(df, currency="Taka"):
     return df
 
 
-def get_json(df):
+def get_json(df: pd.DataFrame):
     json = df.to_dict('records')
     return json
 
 
-def get_formatted_date(text):
+def get_formatted_date(text: str):
     raw_data = details_utils.extract_date(text)
     formatted_date = details_utils.standardize_date(raw_data)
     return formatted_date

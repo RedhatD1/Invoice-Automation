@@ -1,11 +1,11 @@
 # Some utility functions for the main script
 # Used only for writing minor functions for cleanup
-
+from camelot.core import TableList
 import re
 import pandas as pd
 
 
-def count_max_matches(df, keywords):
+def count_max_matches(df: pd.DataFrame, keywords: list):
     max_matches = 0
     max_match_index = 0
     first_match_column = 0
@@ -30,7 +30,7 @@ def lru_crop_df(df, row, first_column, last_column):  # Left Right Up crop DataF
     return df
 
 
-def lower_crop_df(df):
+def lower_crop_df(df: pd.DataFrame):
     try:
         # Assuming df is your DataFrame
         column_data = df.iloc[:, 0]
@@ -50,7 +50,7 @@ def lower_crop_df(df):
     return df
 
 
-def df_first_row_to_header(df):
+def df_first_row_to_header(df: pd.DataFrame):
     try:
         if df.empty:
             # Handle the case when the DataFrame is empty
@@ -70,7 +70,7 @@ def df_first_row_to_header(df):
         return pd.DataFrame()
 
 
-def extract_table(tables, header_keywords):
+def extract_table(tables: TableList, header_keywords: list):
     max_keyword_matches = 0
     best_table = pd.DataFrame()  # Empty DataFrame by default in case no match
     best_table_index = 0
@@ -91,14 +91,15 @@ def extract_table(tables, header_keywords):
     return best_table, best_table_index, best_table_first_column, best_table_last_column
 
 
-def crop_table(table, top_index, left_index, right_index):
+def crop_table(table: pd.DataFrame, top_index: int, left_index: int, right_index: int):
     left_right_up_cropped_table = lru_crop_df(table, top_index, left_index, right_index)
     left_right_up_down_cropped_table = lower_crop_df(left_right_up_cropped_table)
     result_table = df_first_row_to_header(left_right_up_down_cropped_table)
     return result_table
 
 
-def extract_item_table(tables):
+def extract_item_table(tables: TableList):
+    print(f'type of tables: {type(tables)}')
     header_keywords = ["item", "product", "description", "quantity", "discount", "unit", "price", "amount", "total"]
     item_table, starting_index, starting_column, ending_column = extract_table(tables, header_keywords)
     result_table = crop_table(item_table, starting_index, starting_column, ending_column)
