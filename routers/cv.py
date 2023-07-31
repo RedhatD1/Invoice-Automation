@@ -6,7 +6,7 @@ from helpers.general_helper import unlink_file, check_file_existence
 from fastapi.encoders import jsonable_encoder
 from typing import Union
 from extraction_algorithms.cv.extract import get_json
-
+from extraction_algorithms.cv.helpers import sort_extracted_cv_list
 
 router = APIRouter()
 
@@ -29,11 +29,12 @@ async def extract_cv(request: Request, cv_model: CvRequestModel):
                 print(individual_cv_response)
                 parse_cv.append(individual_cv_response)
                 unlink_file(file_path)
-        print(parse_cv)
+        # print(parse_cv)
+        parse_cv = sort_extracted_cv_list.sort_list(parse_cv)
         response = CvParsingResponse(cv_list=parse_cv)
         return response
     except Exception as e:
-        print('internal error', e)
+        # print('internal error', e)
         response = ErrorResponse()
         return response
     finally:
