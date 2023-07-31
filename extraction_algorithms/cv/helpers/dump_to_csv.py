@@ -7,18 +7,24 @@ def export_csv(data):
     flattened_data = []
 
     for candidate in data:
-        candidate_info = candidate.get('candidate_info', {})
-        education_info = candidate.get('education_info', [{}])[0]
+        try:
+            candidate_info = candidate.get('candidate_info', {})
+        except AttributeError:
+            candidate_info = {}
+        if len(candidate['education_info']):
+            education_info = candidate.get('education_info', [{}])[0]
+        else:
+            education_info = {}
         row = {
             'name': str(candidate_info.get('name', '')),
-            'score': str(candidate.get('score', '')),
-            'rank': str(candidate.get('rank', '')),
             'phone': str(candidate_info.get('phone', '')),
-            'experience': str(candidate.get('experience', '')),
-            'cgpa': str(education_info.get('cgpa', '')),
             'email': str(candidate_info.get('email', '')),
             'institution': str(education_info.get('institution', '')),
             'department': str(education_info.get('department', '')),
+            'cgpa': str(education_info.get('cgpa', '')),
+            'experience': str(candidate.get('experience', '')),
+            'score': str(candidate.get('score', '')),
+            'rank': str(candidate.get('rank', '')),
         }
         flattened_data.append(row)
 
