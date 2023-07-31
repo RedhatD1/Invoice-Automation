@@ -3,7 +3,7 @@ from langchain.docstore.document import Document
 
 # This module creates the sections grabbed from the parsed html
 # The Document class is used to represent a document with content and associated metadata.
-def convert(parsed_html: list, html: Document):
+def convert(parsed_html: list, html: Document) -> list:
     cur_idx = -1
     # The current idx position in our snippet object
 

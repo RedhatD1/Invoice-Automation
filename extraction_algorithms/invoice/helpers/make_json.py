@@ -1,10 +1,12 @@
+from typing import Dict
+
 from extraction_algorithms.invoice.helpers.ML_Entity_Detection import runner
-from extraction_algorithms.invoice.helpers.json_helper import standardize_df, get_json, get_formatted_date
+from extraction_algorithms.invoice.helpers.json_helper import standardize_df, get_item_list, get_formatted_date
 from extraction_algorithms.invoice.helpers import reader, utils, details_utils
 from helpers.general_helper import remove_space_from_text
 
 
-def get(file_name: str):
+def get(file_name: str) -> Dict:
     file_path = "documents/invoices/" + file_name
     invoice_text = reader.read_invoice(file_path)
     ml_dict = runner.ner_extraction(invoice_text)
@@ -44,7 +46,7 @@ def get(file_name: str):
             "billing_address": billing_address,
             "shipping_address": shipping_address
         },
-        "item_details": get_json(result_table),
+        "item_details": get_item_list(result_table),
         "total_amount": remove_space_from_text(details_utils.extract_total_amount(invoice_text)),
         "note": '',
         "invoice_info": {

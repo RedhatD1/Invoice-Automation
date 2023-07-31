@@ -1,4 +1,4 @@
-def extract_sections(sectioned_document: list, snippets: list):
+def extract_sections(sectioned_document: list, snippets: list) -> list:
     section_titles_with_content = []  # For storing titles and their corresponding content
     # In the below condition, if no text>len 2 is detected, then try another algo
     if len(sectioned_document) >= 2:  # More than just the title has been captured

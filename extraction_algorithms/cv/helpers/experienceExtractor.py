@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 
 
-def standardize_date(date_string: str):
+def standardize_date(date_string: str) -> str:
     date_range_pattern = r"\s*\d{2}/\d{4}"
     month_year_pattern = r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(" \
                          r"?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b"
@@ -25,7 +25,7 @@ def standardize_date(date_string: str):
     return date_string
 
 
-def convert_to_fraction_of_year(date_string: str):
+def convert_to_fraction_of_year(date_string: str) -> float:
     try:
         # Parse the date string into a datetime object with format 'Month Year'
         date_obj = datetime.strptime(date_string, '%B %Y')
@@ -35,13 +35,13 @@ def convert_to_fraction_of_year(date_string: str):
         months_difference = (date_obj.year - reference_date.year) * 12 + (date_obj.month - reference_date.month)
         # Calculate the fraction of a year
         fraction_of_year = months_difference / 12.0 + date_obj.year
-        return fraction_of_year  # Round the result to two decimal places
+        return fraction_of_year
     except ValueError:
         # If the input date_string is in an invalid format, handle the error as needed
         return 0
 
 
-def preprocess(date_string: str):
+def get_individual_experience(date_string: str) -> float:
     date_format = "%B %Y"
     if "-" in date_string:
         start_date, end_date = date_string.split("-")
@@ -67,14 +67,14 @@ def preprocess(date_string: str):
         return 0
 
 
-def sum_experience(experience_list: list):
+def sum_experience(experience_list: list) -> float:
     sum = 0
     for exp in experience_list:
         sum += exp
     return sum
 
 
-def extract_date_ranges(input_text: str):
+def extract_years_experience(input_text: str) -> float:
     input_text = input_text.replace('\xa0', ' ')
     date_range_pattern = r"\d{2}/\d{4}\s*-\s*(?:present|\d{2}/\d{4})"
     month_year_pattern = r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(" \
@@ -84,7 +84,6 @@ def extract_date_ranges(input_text: str):
     combined_pattern = rf"{date_range_pattern}|{month_year_pattern}"
 
     matches = re.findall(combined_pattern, input_text, re.IGNORECASE)
-    print(input_text)
-    standard_matches = [preprocess(match) for match in matches]
+    standard_matches = [get_individual_experience(match) for match in matches]
     exp_years = sum_experience(standard_matches)
     return round(exp_years, 2)

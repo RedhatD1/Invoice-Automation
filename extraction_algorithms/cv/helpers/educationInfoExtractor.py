@@ -1,7 +1,7 @@
 import re
 
 
-def detect_university(education_text: str):
+def detect_university(education_text: str) -> list:
     education_text = " ".join(
         education_text.replace('&', 'and').replace(',', ' ').replace('.', ' ').replace('-', ' ').split())
     education_text = education_text.lower()
@@ -31,7 +31,7 @@ def detect_university(education_text: str):
     return matches
 
 
-def detect_major(education_text: str):
+def detect_major(education_text: str) -> str:
     # Read the institution names from the txt file and store them in a list
     with open('extraction_algorithms/cv/helpers/majorList.txt', 'r') as file:
         major_list = [line.strip() for line in file]
@@ -50,7 +50,7 @@ def detect_major(education_text: str):
         return ""  # Return empty string if no match is found
 
 
-def detect_cgpa(education_text: str):
+def detect_cgpa(education_text: str) -> float:
     # extract cgpa from the text
     pattern = r'\b\d\.\d{2}\b'
     cgpa = re.findall(pattern, education_text)
@@ -60,7 +60,7 @@ def detect_cgpa(education_text: str):
         return 0.00
 
 
-def detect_between_matches(detected_universities: list, education_text: str):
+def detect_between_matches(detected_universities: list, education_text: str) -> list:
     if len(detected_universities) > 1:
         for i in range(len(detected_universities) - 1):
             start_index = detected_universities[i]["startIndex"]
@@ -91,7 +91,7 @@ def detect_between_matches(detected_universities: list, education_text: str):
     return detected_universities
 
 
-def get(education_text: str):
+def get(education_text: str) -> list:
     detected_universities = detect_university(education_text)
     detected_universities = detect_between_matches(detected_universities, education_text)
     return detected_universities
