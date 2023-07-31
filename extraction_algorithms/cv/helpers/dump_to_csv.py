@@ -17,14 +17,14 @@ def export_csv(data):
             education_info = {}
         row = {
             'name': str(candidate_info.get('name', '')),
-            'score': str(candidate.get('score', '')),
-            'rank': str(candidate.get('rank', '')),
             'phone': str(candidate_info.get('phone', '')),
-            'experience': str(candidate.get('experience', '')),
-            'cgpa': str(education_info.get('cgpa', '')),
             'email': str(candidate_info.get('email', '')),
             'institution': str(education_info.get('institution', '')),
             'department': str(education_info.get('department', '')),
+            'cgpa': str(education_info.get('cgpa', '')),
+            'experience': str(candidate.get('experience', '')),
+            'score': str(candidate.get('score', '')),
+            'rank': str(candidate.get('rank', '')),
         }
         flattened_data.append(row)
 
