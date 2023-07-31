@@ -19,8 +19,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-static_path = "documents/invoices"
-app.mount("/static", StaticFiles(directory=static_path), name="static")
+static_directory = "documents/invoices"
+app.mount("/static", StaticFiles(directory=static_directory), name="static")
 
 
 app.include_router(invoice.router)
@@ -29,4 +29,4 @@ app.include_router(cv.router)
 
 @app.get("/", response_model=WelcomeMessage, status_code=status.HTTP_200_OK, tags=['Welcome'], summary='Welcome API')
 def welcome():
-    return {"name": "FastAPI", "version": "0.99.1"}
+    return {"name": "Document extraction API collection", "version": "1.0.0"}
