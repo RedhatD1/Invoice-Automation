@@ -5,7 +5,7 @@ from extraction_algorithms.cv.helpers import pdfReader, htmlParser, \
     sectionToDict, cvScoring, educationInfoExtractor, experienceExtractor
 
 
-def extract_info(pdf_file_path, job_description):
+def extract_info(pdf_file_path: str, job_description: str):
     html = pdfReader.read_as_html(pdf_file_path)
     parsed_html = htmlParser.parse(html)
     sectioned_document = parsedHtmlToSectionedDocument.convert(parsed_html, html)

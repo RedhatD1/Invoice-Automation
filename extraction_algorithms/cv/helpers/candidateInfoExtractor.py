@@ -85,7 +85,7 @@ Parsing all the extracted text from the CV
 """
 
 
-def get_candidate_info(sectioned_document, cv_text, pdf_file_path):
+def get_candidate_info(sectioned_document: list, cv_text: str, pdf_file_path: str):
     applicant_name = get_name(sectioned_document, pdf_file_path)
     applicant_email = get_email(cv_text)
     applicant_phone = get_phone(cv_text)

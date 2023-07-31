@@ -3,16 +3,16 @@ from langchain.docstore.document import Document
 
 # This module creates the sections grabbed from the parsed html
 # The Document class is used to represent a document with content and associated metadata.
-def convert(snippets, data):
+def convert(parsed_html: list, html: Document):
     cur_idx = -1
-    # The current idx position in our snippets object
+    # The current idx position in our snippet object
 
     sectioned_document = []
     # This will contain the organized snippets where there are formed together
     # based on their relative font size in the document
 
     # Assumption: headings have higher font size than their respective content
-    for snippet in snippets:
+    for snippet in parsed_html:
         # if the current snippet's font size > previous section's heading => it is a new heading
         if not sectioned_document or snippet[1] > sectioned_document[cur_idx].metadata['heading_font']:
             metadata = {'heading': snippet[0], 'content_font': 0, 'heading_font': snippet[1]}
@@ -21,7 +21,7 @@ def convert(snippets, data):
             # and the second index contains the fontsize of the heading,
             # We also initialized the content_font of the heading to 0
 
-            metadata.update(data.metadata)  # Here data is inherited from a langchain document library.
+            metadata.update(html.metadata)  # Here data is inherited from a langchain document library.
 
             sectioned_document.append(Document(page_content='', metadata=metadata))
             cur_idx += 1
@@ -45,7 +45,7 @@ def convert(snippets, data):
             # else if current snippet's font size > previous section's content
             # but less than previous section's heading than also make a new section
             metadata = {'heading': snippet[0], 'content_font': 0, 'heading_font': snippet[1]}
-            metadata.update(data.metadata)
+            metadata.update(html.metadata)
             sectioned_document.append(Document(page_content='', metadata=metadata))
             cur_idx += 1
     return sectioned_document

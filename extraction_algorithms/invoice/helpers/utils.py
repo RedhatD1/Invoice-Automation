@@ -95,7 +95,6 @@ def crop_table(table, top_index, left_index, right_index):
     left_right_up_cropped_table = lru_crop_df(table, top_index, left_index, right_index)
     left_right_up_down_cropped_table = lower_crop_df(left_right_up_cropped_table)
     result_table = df_first_row_to_header(left_right_up_down_cropped_table)
-    print('header passed')
     return result_table
 
 

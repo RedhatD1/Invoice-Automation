@@ -2,9 +2,10 @@ import re
 from datetime import datetime
 
 
-def standardize_date(date_string):
+def standardize_date(date_string: str):
     date_range_pattern = r"\s*\d{2}/\d{4}"
-    month_year_pattern = r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b"
+    month_year_pattern = r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(" \
+                         r"?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b"
     # Check if the input date is in the date_range_pattern format
     if re.match(date_range_pattern, date_string):
         month, year = date_string.split('/')
@@ -24,7 +25,7 @@ def standardize_date(date_string):
     return date_string
 
 
-def convert_to_fraction_of_year(date_string):
+def convert_to_fraction_of_year(date_string: str):
     try:
         # Parse the date string into a datetime object with format 'Month Year'
         date_obj = datetime.strptime(date_string, '%B %Y')
@@ -40,7 +41,7 @@ def convert_to_fraction_of_year(date_string):
         return 0
 
 
-def preprocess(date_string):
+def preprocess(date_string: str):
     date_format = "%B %Y"
     if "-" in date_string:
         start_date, end_date = date_string.split("-")
@@ -66,17 +67,20 @@ def preprocess(date_string):
         return 0
 
 
-def sum_experience(experience_list):
+def sum_experience(experience_list: list):
     sum = 0
     for exp in experience_list:
         sum += exp
     return sum
 
 
-def extract_date_ranges(input_text):
+def extract_date_ranges(input_text: str):
     input_text = input_text.replace('\xa0', ' ')
     date_range_pattern = r"\d{2}/\d{4}\s*-\s*(?:present|\d{2}/\d{4})"
-    month_year_pattern = r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b\s*-\s*(?:present|\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b)"
+    month_year_pattern = r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(" \
+                         r"?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b\s*-\s*(" \
+                         r"?:present|\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(" \
+                         r"?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{4}\b)"
     combined_pattern = rf"{date_range_pattern}|{month_year_pattern}"
 
     matches = re.findall(combined_pattern, input_text, re.IGNORECASE)
@@ -84,21 +88,3 @@ def extract_date_ranges(input_text):
     standard_matches = [preprocess(match) for match in matches]
     exp_years = sum_experience(standard_matches)
     return round(exp_years, 2)
-
-# input_text = """
-# 09/2018 - 08/2019
-# 09/2018 - present
-# Sep 2018 - present
-# September 2018 - present
-# Sep 2018 - Aug 2019
-# Sep, 2018 - Aug, 2019
-# Sep, 2018 - present
-# September, 2018 - present
-# September, 2018 - August, 2019
-# December 2019 - March 2021
-# September 2018 - August 2019
-# December 2018 - present
-# """
-# matches = extractDateRanges(input_text)
-# standardMatches = [replace_present(match) for match in matches]
-# print(standardMatches)
