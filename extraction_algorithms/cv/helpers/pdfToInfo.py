@@ -37,6 +37,8 @@ def extract_info(pdf_file_path: str, job_description: str) -> Dict:
     if score > 100.0:
         score = 100.0
 
+    score = round(score, 2)
+
     return {
         "candidate_info": {
             "name": applicant_name,
