@@ -3,7 +3,7 @@ from os import unlink, path
 from typing import Union
 
 
-def remove_space_from_text(text: Union[str, float]):
+def remove_space_from_text(text: Union[str, float]) -> Union[str, float]:
     # print(text)
     if isinstance(text, str):
         # sanitized_text = text.replace(" ", "")
@@ -14,7 +14,7 @@ def remove_space_from_text(text: Union[str, float]):
         return text
 
 
-def unlink_file(file_path: str):
+def unlink_file(file_path: str) -> bool:
     try:
         unlink(file_path)
         return True
@@ -23,5 +23,5 @@ def unlink_file(file_path: str):
         return False
 
 
-def check_file_existence(file_path: str):
+def check_file_existence(file_path: str) -> bool:
     return path.exists(file_path)

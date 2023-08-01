@@ -14,14 +14,14 @@ router = APIRouter()
 
 @router.get("/invoice-extraction/{file_name}", response_model=Union[InvoiceParsingResponse, ErrorResponse],
             tags=['Invoice Extraction'], summary='Extract data from invoice')
-async def extract_invoice(request: Request, file_name: str, algorithm: str = 'regex'):
+async def extract_invoice(request: Request, file_name: str):
     response = {}
     try:
-        # print('file_name', file_name, 'algorithm', algorithm)
+        # print('file_name', file_name)
         file_path = f"documents/invoices/{file_name}"
         # print(file_path)
         if check_file_existence(file_path):
-            pdf_response = process_pdf(file_name, algorithm)
+            pdf_response = process_pdf(file_name)
             # print(pdf_response)
             unlink_file(file_path)
             response = InvoiceParsingResponse(extract_data=pdf_response)

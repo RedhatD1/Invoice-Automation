@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Union
 
 
 class Customer(BaseModel):
@@ -17,10 +18,10 @@ class Invoice(BaseModel):
 
 class ItemDetail(BaseModel):
     name: str = ''
-    unit_price: float | str = ''
-    quantity: int | str = ''
-    discount: float | str = ''
-    amount: float | str = ''
+    unit_price: Union[float, str] = ''
+    quantity: Union[int, str] = ''
+    discount: Union[float, str] = ''
+    amount: Union[float, str] = ''
     currency: str = 'Taka'
 
 
@@ -28,7 +29,7 @@ class IndividualPdfParsingResponse(BaseModel):
     customer_info: Customer
     invoice_info: Invoice
     item_details: list[ItemDetail] = []
-    total_amount: float | str = 0.0
+    total_amount: Union[float, str] = 0.0
     note: str = ''
 
 
@@ -38,6 +39,6 @@ class InvoiceParsingResponse(BaseModel):
 
 
 class WelcomeMessage(BaseModel):
-    name: str
+    title: str
     tagline: str = ''
     version: str

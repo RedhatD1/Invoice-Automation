@@ -1,9 +1,9 @@
 from pydantic import BaseModel, constr
+from typing import Union
 
 
 class CvRequestModel(BaseModel):
     file_list: list[str]
-    algorithm: str
     job_description: constr(max_length=1000000)
 
 
@@ -18,15 +18,15 @@ class Candidate(BaseModel):
 class Education(BaseModel):
     institution: str = ''
     department: str = ''
-    cgpa: float | str = 0.0
+    cgpa: Union[float, str] = 0.0
 
 
 class IndividualCvParsingResponse(BaseModel):
     candidate_info: Candidate
     education_info: list[Education]
-    experience: float | str = ""
+    experience: Union[float, str] = ""
     score: float = 0.0
-    rank: int | str = "--"
+    rank: Union[int, str] = "--"
 
 
 class CvParsingResponse(BaseModel):

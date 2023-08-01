@@ -3,14 +3,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from schemas.invoice import WelcomeMessage
 from routers import invoice, cv
+from core.config import settings
 
 
 app = FastAPI(
-    title="Document extraction API collection",
-    summary="Extract content from the PDF and CV",
-    version="1.0.0",
-    docs_url="/api-documentation",
-    openapi_url="/api/openapi.json"
+    title=settings.APP_TITLE,
+    summary=settings.APP_SUMMARY,
+    version=settings.APP_VERSION,
+    docs_url=settings.DOCS_URL,
+    openapi_url=settings.OPENAPI_URL
 )
 app.add_middleware(
     CORSMiddleware,
@@ -29,4 +30,4 @@ app.include_router(cv.router)
 
 @app.get("/", response_model=WelcomeMessage, status_code=status.HTTP_200_OK, tags=['Welcome'], summary='Welcome API')
 def welcome():
-    return {"name": "Document extraction API collection", "version": "1.0.0"}
+    return {"title": settings.APP_TITLE, "version": settings.APP_VERSION}

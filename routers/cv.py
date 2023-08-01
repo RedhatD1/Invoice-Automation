@@ -18,14 +18,13 @@ async def extract_cv(request: Request, cv_model: CvRequestModel):
     try:
         print(cv_model)
         file_list = cv_model.file_list
-        algorithm = cv_model.algorithm
         job_description = cv_model.job_description
         parse_cv: list = []
         for file_name in file_list:
             print(file_name)
             file_path = f"documents/cv/{file_name}"
             if check_file_existence(file_path):
-                individual_cv_response = get_json(file_name, job_description, algorithm)
+                individual_cv_response = get_json(file_name, job_description)
                 print(individual_cv_response)
                 parse_cv.append(individual_cv_response)
                 unlink_file(file_path)
