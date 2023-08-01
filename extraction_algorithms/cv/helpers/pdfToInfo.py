@@ -27,7 +27,7 @@ def extract_info(pdf_file_path: str, job_description: str) -> Dict:
     experience = experienceExtractor.extract_years_experience(info_dict['experience'])
 
     # adjust to increase weight of experience
-    score = math.sqrt(score * experience * 1.5) + score
+    score = score*(experience/25) + score*0.95
 
     # adjust to increase penalty for no experience
     if experience == 0:
