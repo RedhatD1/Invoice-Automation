@@ -32,6 +32,7 @@ class IndividualCvParsingResponse(BaseModel):
 class CvParsingResponse(BaseModel):
     status: bool = True
     cv_list: list[IndividualCvParsingResponse]
+    file_name: str = ''
 
 
 class ErrorResponse(BaseModel):

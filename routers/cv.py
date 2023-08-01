@@ -29,12 +29,15 @@ async def extract_cv(request: Request, cv_model: CvRequestModel):
                 parse_cv.append(individual_cv_response)
                 unlink_file(file_path)
         # print(parse_cv)
-        parse_cv = sort_extracted_cv_list.sort_list(parse_cv)
-        response = CvParsingResponse(cv_list=parse_cv)
-        print(len(parse_cv))
         if len(parse_cv):
-            dump_to_csv.export_csv(parse_cv)
-        return response
+            parse_cv = sort_extracted_cv_list.sort_list(parse_cv)
+            # print(len(parse_cv))
+            filename = dump_to_csv.export_csv(parse_cv)
+            response = CvParsingResponse(cv_list=parse_cv, file_name=filename)
+            return response
+        else:
+            response = ErrorResponse(message='CV is not found')
+            return response
     except Exception as e:
         print('internal error', e)
         response = ErrorResponse()

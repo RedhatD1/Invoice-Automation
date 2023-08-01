@@ -1,6 +1,7 @@
 import pandas as pd
 import uuid
 
+
 """
 def export_csv(data):
 
@@ -11,7 +12,7 @@ All missing data are handled accordingly
 """
 
 
-def export_csv(data):
+def export_csv(data) -> str:
     # Flatten candidate info and extract the first element from education_info
     flattened_data = []
 
@@ -43,3 +44,4 @@ def export_csv(data):
     # Generate unique filename
     filename = 'assets/dump/' + str(uuid.uuid4()) + '.csv'
     df.to_csv(filename, index=False)
+    return filename
