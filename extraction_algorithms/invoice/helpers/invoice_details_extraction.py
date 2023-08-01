@@ -50,61 +50,7 @@ def extract_invoice_number(text: str) -> str:
     return ""
 
 
-def standardize_date(text: str) -> str:
-    try:
-        date_obj = None
-        date_formats = [
-            "%d-%m-%y",
-            "%d-%m-%Y",
-            "%d/%m/%Y",
-            "%d/%m/%y",
-            "%d.%m.%Y",
-            "%d%m%Y",
-            "%d %b, %Y",
-            "%d %b %Y",
-            "%d %B, %Y",
-            "%d %B %Y",
-            "%B %d, %Y",
-            "%m-%d-%Y",
-            "%m/%d/%Y",
-            "%m-%d-%y",
-            "%B %d %Y",
-            "%b %d, %Y",
-            "%b %d %Y",
-            "%m%Y",
-
-            "%Y/%m/%d",
-            "%Y.%m.%d",
-            "%Y%m%d",
-            "%Y/%m/%d",
-            "%Y%m",
-            "%Y-%m-%d",
-            "%Y-%d-%m",
-            "%Y",
-            "%y",
-        ]
-
-        for format_string in date_formats:
-            try:
-                date_obj = datetime.strptime(text, format_string)
-                break  # Exit the loop if a valid date format is found
-            except ValueError:
-                continue  # Continue to the next format if the current one raises an exception
-
-        if date_obj is None:
-            return ""
-        else:
-            day = date_obj.day
-            month = date_obj.strftime("%B")
-            year = date_obj.year
-            formatted_date = f'{day} {month}, {year}'
-            return formatted_date
-
-    except Exception as e:
-        return ""
-
-
-def extract_date(text: str):
+def extract_date(text: str) -> str:
     # Define patterns or keywords for invoice date extraction
     patterns = ['Invoice Date', 'Date of Issue', 'Billing Date', 'Order Date', 'Date']
 
@@ -115,7 +61,8 @@ def extract_date(text: str):
             date_string = date_string.strip()
             return date_string[1:].strip()
         else:
-            pattern = r'\b(?:\d{1,2}(?:-|\/)\d{1,2}(?:-|\/)\d{4}|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4})\b'
+            pattern = r'\b(?:\d{1,2}(?:-|\/)\d{1,2}(?:-|\/)\d{4}|(' \
+                      r'?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+\d{4})\b'
             matches = re.findall(pattern, text)
             if not matches:
                 today = datetime.today()

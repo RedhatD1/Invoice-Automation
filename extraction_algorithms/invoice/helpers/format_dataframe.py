@@ -1,7 +1,5 @@
-# Used for formatting the DataFrame and creating JSON
 import pandas as pd
 from helpers import general_helper
-from extraction_algorithms.invoice.helpers import details_utils
 
 
 def rename_df_name_column(df: pd.DataFrame) -> pd.DataFrame:
@@ -72,8 +70,6 @@ def rename_df_discount_column(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-
-
 def standardize_df(df: pd.DataFrame, currency="Taka") -> pd.DataFrame:
     df = rename_df_name_column(df)
     df = rename_unit_price_column(df)
@@ -103,7 +99,7 @@ def standardize_df(df: pd.DataFrame, currency="Taka") -> pd.DataFrame:
     df['quantity'] = df['quantity'].str.split().str[0]
     df['amount'] = df['amount'].str.split().str[0]
 
-    # Whitespace cleaning
+    # Space cleaning
     df['unit_price'] = df['unit_price'].apply(lambda x: general_helper.remove_space_from_text(x))
     df['quantity'] = df['quantity'].apply(lambda x: general_helper.remove_space_from_text(x))
     df['amount'] = df['amount'].apply(lambda x: general_helper.remove_space_from_text(x))
@@ -114,9 +110,3 @@ def standardize_df(df: pd.DataFrame, currency="Taka") -> pd.DataFrame:
 def get_item_list(df: pd.DataFrame) -> list:
     item_list = df.to_dict('records')
     return item_list
-
-
-def get_formatted_date(text: str) -> str:
-    raw_data = details_utils.extract_date(text)
-    formatted_date = details_utils.standardize_date(raw_data)
-    return formatted_date
