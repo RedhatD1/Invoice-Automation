@@ -9,6 +9,7 @@ def extract_attribute(tuple_list: list, attribute: str) -> str:
             attribute_text += item[1]
     return attribute_text
 
+
 def extract(tuple_list: list) -> Dict:
     info_dict = {
         'experience': extract_attribute(tuple_list, 'experience'),

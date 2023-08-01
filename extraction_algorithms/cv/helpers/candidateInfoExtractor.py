@@ -45,6 +45,18 @@ def get_file_name(pdf_file_path):
     return file_name
 
 
+"""
+def get_name(sectioned_document, pdf_file_path):
+
+This is the primary function that is used to extract the name from the CV
+It takes the sectioned document and the file path of the CV as input
+If the sectioned document is not empty, it will try to extract the name from the
+sectioned document. Otherwise, it will try to extract the name from the file name
+
+The logic is that the name will usually be the largest text in the CV
+"""
+
+
 def get_name(sectioned_document, pdf_file_path):
     if sectioned_document:
         sorted_headings = sorted(sectioned_document, key=lambda x: x.metadata['heading_font'], reverse=True)
@@ -64,6 +76,7 @@ def get_name(sectioned_document, pdf_file_path):
 
 def get_email(cv_text):
     email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b'
+    # username@example.com
     match = re.search(email_regex, cv_text)
     if match:
         return match.group()
@@ -72,7 +85,8 @@ def get_email(cv_text):
 
 
 def get_phone(cv_text):
-    phone_regex = r"(?:(?:\+|00)88|01)?\d{11}"
+    phone_regex = r"(?:(?:\+)88|01)?\d{11}"
+    #  8801XXXXXXXX, +8801XXXXXXXX or 01XXXXXXXX
     match = re.search(phone_regex, cv_text)
     if match:
         return match.group()

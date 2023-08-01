@@ -1,7 +1,9 @@
-# Used for formatting the DataFrame and creating JSON
+import re
+
 import pandas as pd
+from camelot.core import TableList
+
 from helpers import general_helper
-from extraction_algorithms.invoice.helpers import details_utils
 
 
 def rename_df_name_column(df: pd.DataFrame) -> pd.DataFrame:
@@ -72,8 +74,6 @@ def rename_df_discount_column(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-
-
 def standardize_df(df: pd.DataFrame, currency="Taka") -> pd.DataFrame:
     df = rename_df_name_column(df)
     df = rename_unit_price_column(df)
@@ -103,7 +103,7 @@ def standardize_df(df: pd.DataFrame, currency="Taka") -> pd.DataFrame:
     df['quantity'] = df['quantity'].str.split().str[0]
     df['amount'] = df['amount'].str.split().str[0]
 
-    # Whitespace cleaning
+    # Space cleaning
     df['unit_price'] = df['unit_price'].apply(lambda x: general_helper.remove_space_from_text(x))
     df['quantity'] = df['quantity'].apply(lambda x: general_helper.remove_space_from_text(x))
     df['amount'] = df['amount'].apply(lambda x: general_helper.remove_space_from_text(x))
@@ -116,7 +116,94 @@ def get_item_list(df: pd.DataFrame) -> list:
     return item_list
 
 
-def get_formatted_date(text: str) -> str:
-    raw_data = details_utils.extract_date(text)
-    formatted_date = details_utils.standardize_date(raw_data)
-    return formatted_date
+def lru_crop_df(df, row, first_column, last_column) -> pd.DataFrame:  # Left Right Up crop DataFrame
+    df = df.iloc[row:, first_column:last_column + 1]
+    df = df.reset_index(drop=True)
+    return df
+
+
+def lower_crop_df(df: pd.DataFrame) -> pd.DataFrame:
+    try:
+        # Assuming df is your DataFrame
+        column_data = df.iloc[:, 0]
+    except IndexError:
+        # Handle the case when the DataFrame is empty or the column index is out of range
+        column_data = pd.DataFrame()
+    index = 0
+    # Printing all rows of the column
+    for row in column_data:
+        if not row:
+            # print(f'End row: {index}') # debug
+            break
+        else:
+            # print(row)
+            index += 1
+    df = df.iloc[:index, :]
+    return df
+
+
+def df_first_row_to_header(df: pd.DataFrame) -> pd.DataFrame:
+    try:
+        if df.empty:
+            # Handle the case when the DataFrame is empty
+            return pd.DataFrame()
+
+        new_header = df.iloc[0]  # grab the first row for the header
+        new_header = pd.Series([re.sub(r'[^a-zA-Z]', '', name) for name in new_header])
+
+        df = df[1:]  # take the data less the header row
+        df.columns = new_header.str.lower()  # set the header row as the df header
+        df.columns = df.columns.str.replace('\n', '\\')  # Remove newline characters from header
+        df = df.replace('\n', ' ', regex=True)
+        df = df.reset_index(drop=True)
+        return df
+    except IndexError:
+        # Handle any other potential errors here if needed
+        return pd.DataFrame()
+
+
+def extract_table(tables: TableList, header_keywords: list) -> (pd.DataFrame, int, int, int):
+    max_keyword_matches = 0
+    best_table = pd.DataFrame()  # Empty DataFrame by default in case no match
+    best_table_index = 0
+    best_table_first_column = 0
+    best_table_last_column = 0
+    for table in tables:
+        df = table.df
+        no_of_matches, match_index, first_match_column, last_match_column = count_max_matches(df,
+                                                                                              header_keywords)  # Count number of keywords found in table header
+        # print(f'Number of keywords found: {no_of_matches}')  # Debug
+        # print(f'Table:\n{df}')  # Debug
+        if no_of_matches > max_keyword_matches:  # If more keywords found than previous table
+            max_keyword_matches = no_of_matches  # Update max_keyword_matches
+            best_table = df  # Update best_table
+            best_table_index = match_index  # Update best_table_index
+            best_table_first_column = first_match_column  # Update best_table_column
+            best_table_last_column = last_match_column  # Update best_table_column
+    return best_table, best_table_index, best_table_first_column, best_table_last_column
+
+
+def crop_table(table: pd.DataFrame, top_index: int, left_index: int, right_index: int) -> pd.DataFrame:
+    left_right_up_cropped_table = lru_crop_df(table, top_index, left_index, right_index)
+    left_right_up_down_cropped_table = lower_crop_df(left_right_up_cropped_table)
+    result_table = df_first_row_to_header(left_right_up_down_cropped_table)
+    return result_table
+
+
+def count_max_matches(df: pd.DataFrame, keywords: list) -> (int, int, int, int):
+    max_matches = 0
+    max_match_index = 0
+    first_match_column = 0
+    last_match_column = 0
+
+    for index, row in df.iterrows():
+        matches = row.str.contains('|'.join(keywords), case=False)
+        num_matches = matches.sum()
+
+        if num_matches > max_matches:
+            max_matches = num_matches
+            max_match_index = index
+            first_match_column = matches.idxmax()  # Find first match column
+            last_match_column = matches[::-1].idxmax()  # Find last match column
+
+    return max_matches, max_match_index, first_match_column, last_match_column

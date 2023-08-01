@@ -26,17 +26,17 @@ def extract_info(pdf_file_path: str, job_description: str) -> Dict:
     education = educationInfoExtractor.get(info_dict['education'])
     experience = experienceExtractor.extract_years_experience(info_dict['experience'])
 
+    mul = 0
+    if experience > 10:
+        mul = 10
+    else:
+        mul = experience
     # adjust to increase weight of experience
-    score = math.sqrt(score * experience * 1.5) + score
-
-    # adjust to increase penalty for no experience
-    if experience == 0:
-        score = score / 1.5
-
-    # Clipping result to 100% max
-    if score > 100.0:
-        score = 100.0
-
+    score = score*(mul/25) + score*0.60
+    # Score will be at max 100
+    # A good candidate will have a score of 25+
+    # A very good candidate will have a score of 40+
+    # A perfect candidate will have a score of 50+
     score = round(score, 2)
 
     return {
