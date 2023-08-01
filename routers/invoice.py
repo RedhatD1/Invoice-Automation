@@ -30,7 +30,7 @@ async def extract_invoice(request: Request, file_name: str, algorithm: str = 're
             response = ErrorResponse(message='File is not found')
             return response
     except Exception as e:
-        # print('internal error', e)
+        print('internal error', e)
         response = ErrorResponse()
         return response
     finally:

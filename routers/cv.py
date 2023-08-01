@@ -32,10 +32,12 @@ async def extract_cv(request: Request, cv_model: CvRequestModel):
         # print(parse_cv)
         parse_cv = sort_extracted_cv_list.sort_list(parse_cv)
         response = CvParsingResponse(cv_list=parse_cv)
-        dump_to_csv.export_csv(parse_cv)
+        print(len(parse_cv))
+        if len(parse_cv):
+            dump_to_csv.export_csv(parse_cv)
         return response
     except Exception as e:
-        # print('internal error', e)
+        print('internal error', e)
         response = ErrorResponse()
         return response
     finally:
