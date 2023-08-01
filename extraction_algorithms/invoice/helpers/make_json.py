@@ -10,7 +10,7 @@ def get(file_name: str) -> dict:
     invoice_text = pdf_reader_modes.read_invoice(file_path)
     ml_dict = runner.ner_extraction(invoice_text)
     invoice_tables = pdf_reader_modes.read_tables(file_path)
-    result_table = extract_table.extract_item_table(invoice_tables)
+    result_table = extract_table.result(invoice_tables)
     result_table = standardize_df(result_table)
 
     # try catch block for ML

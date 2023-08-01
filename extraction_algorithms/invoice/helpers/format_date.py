@@ -2,7 +2,6 @@
 from datetime import datetime
 
 from extraction_algorithms.invoice.helpers import invoice_details_extraction
-from extraction_algorithms.invoice.helpers import format_dataframe
 
 
 def standardize_date(text: str) -> str:
