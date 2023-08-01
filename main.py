@@ -20,7 +20,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.mount("/asset", StaticFiles(directory=settings.STATIC_DIRECTORY), name="static")
+app.mount("/assets", StaticFiles(directory=settings.STATIC_DIRECTORY), name="static")
 
 
 app.include_router(invoice.router)
