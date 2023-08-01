@@ -1,7 +1,6 @@
 import pandas as pd
 import uuid
 
-
 """
 def export_csv(data):
 
@@ -10,6 +9,7 @@ This input variable is contains all the detected sections as a dictionary
 The function then flattens the dictionary and exports it as a CSV file
 All missing data are handled accordingly
 """
+
 
 def export_csv(data):
     # Flatten candidate info and extract the first element from education_info
@@ -41,5 +41,5 @@ def export_csv(data):
     df = pd.DataFrame(flattened_data)
 
     # Generate unique filename
-    filename = 'documents/dump/' + str(uuid.uuid4()) + '.csv'
+    filename = 'assets/dump/' + str(uuid.uuid4()) + '.csv'
     df.to_csv(filename, index=False)

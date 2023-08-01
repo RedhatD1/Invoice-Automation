@@ -1,4 +1,6 @@
-documents/
+assets/cv/
+assets/invoices/
+assets/dump
 Invoice_Automation/
 logs/
 /extraction_algorithms/old_regex/test.py

@@ -18,7 +18,7 @@ async def extract_invoice(request: Request, file_name: str):
     response = {}
     try:
         # print('file_name', file_name)
-        file_path = f"documents/invoices/{file_name}"
+        file_path = f"assets/invoices/{file_name}"
         # print(file_path)
         if check_file_existence(file_path):
             pdf_response = process_pdf(file_name)

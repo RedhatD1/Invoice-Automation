@@ -6,7 +6,7 @@ from helpers.general_helper import remove_space_from_text
 
 
 def get(file_name: str) -> dict:
-    file_path = "documents/invoices/" + file_name
+    file_path = "assets/invoices/" + file_name
     invoice_text = pdf_reader_modes.read_invoice(file_path)
     ml_dict = runner.ner_extraction(invoice_text)
     invoice_tables = pdf_reader_modes.read_tables(file_path)

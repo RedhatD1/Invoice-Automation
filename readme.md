@@ -3,8 +3,8 @@ Takes a PDF as an input and returns a form with the extracted data.
 It scans the PDF and uses pattern matching and machine learning to extract the data.
 
 ### Where to put the files
-Put invoices in "documents/invoices/" directory --> PDF File
-Put cv.pdf in "documents/cv" directory --> PDF File
+Put invoices in "assets/invoices/" directory --> PDF File
+Put cv.pdf in "assets/cv" directory --> PDF File
 Job description will be provided on the api end
 
 ### Setup

@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     DOCS_URL: str = "/api-documentation"
     OPENAPI_URL: str = "/api/openapi.json"
     LOG_ENABLED: bool = True
+    STATIC_DIRECTORY: str = "assets"
 
 
 settings = Settings()

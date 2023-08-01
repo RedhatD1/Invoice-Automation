@@ -22,7 +22,7 @@ async def extract_cv(request: Request, cv_model: CvRequestModel):
         parse_cv: list = []
         for file_name in file_list:
             print(file_name)
-            file_path = f"documents/cv/{file_name}"
+            file_path = f"assets/cv/{file_name}"
             if check_file_existence(file_path):
                 individual_cv_response = get_json(file_name, job_description)
                 print(individual_cv_response)
