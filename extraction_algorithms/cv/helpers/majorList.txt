@@ -1,116 +1,116 @@
-#EngineeringMajors
-Computer Science and Engineering
-Computer Science and Systems Engineering
-Computer Science and Electrical Engineering
-Computer Science and Mechanical Engineering
-Computer Science and Aerospace Engineering
-Computer Science and Biomedical Engineering
-Computer Science and Environmental Engineering
-Database Management
-Information Technology
-Electrical and Electronics Engineering
-Electrical Engineering
-Information Technology
-Information Systems
-Information Science
-Information Technology Management
-Information Technology Engineering
-Information Security
-Aerospace Engineering
-Agricultural Engineering
-Architecture
-Biomedical Engineering
-Chemical Engineering
-Civil Engineering
-Computer Engineering
-Environmental Engineering
-Industrial and Production Engineering
-Materials and Metallurgical Engineering
-Mechanical Engineering
-Naval Architecture and Marine Engineering
-Nuclear Engineering
-Petroleum and Mineral Resources Engineering
-Software Engineering
-Robotics Engineering
-Automotive Engineering
-Marine Engineering
-Aerospace Systems Engineering
-Biomechanical Engineering
-Environmental Health Engineering
-Geotechnical Engineering
-Structural Engineering
-Water Resources Engineering
-Power Systems Engineering
-Control Systems Engineering
-Telecommunications Engineering
-Network Engineering
-Mechatronics Engineering
-Renewable Energy Engineering
-Sustainable Engineering
-Manufacturing Engineering
-Process Engineering
-Cybersecurity
-Network and Information Technology
-Engineering Management
-#ScienceMajors
-Biology
-Chemistry
-Physics
-Mathematics
-Environmental Science
-Geology
-Astronomy
-Computer Science
-Neuroscience
-Psychology
-Biochemistry
-Microbiology
-Marine Biology
-Genetics
-Ecology
-Zoology
-Biotechnology
-Nutrition and Dietetics
-Materials Science
-Environmental Engineering
-#CommerceMajors
-Accounting
-Finance
-Marketing
-Economics
-Human Resource Management
-International Relations
-International Business
-Entrepreneurship
-Supply Chain Management
-Corporate Finance
-Banking and Finance
-Real Estate
-Risk Management
-Business Analytics
-Sales and Retail Management
-Hospitality and Tourism Management
-E-commerce
-Advertising and Public Relations
-Operations Management
-Project Management
-#ArtsMajors
-English Literature
-History
-Political Science
-Sociology
-Anthropology
-Philosophy
-Fine Arts
-Theater and Drama
-Music
-Film Studies
-Media and Communication
-Journalism
-Creative Writing
-Linguistics
-Visual Arts
-Graphic Design
-Cultural Studies
-Gender Studies
-Archaeology
+#engineeringmajors
+computer science and engineering
+computer science and systems engineering
+computer science and electrical engineering
+computer science and mechanical engineering
+computer science and aerospace engineering
+computer science and biomedical engineering
+computer science and environmental engineering
+database management
+information technology
+electrical and electronics engineering
+electrical engineering
+information technology
+information systems
+information science
+information technology management
+information technology engineering
+information security
+aerospace engineering
+agricultural engineering
+architecture
+biomedical engineering
+chemical engineering
+civil engineering
+computer engineering
+environmental engineering
+industrial and production engineering
+materials and metallurgical engineering
+mechanical engineering
+naval architecture and marine engineering
+nuclear engineering
+petroleum and mineral resources engineering
+software engineering
+robotics engineering
+automotive engineering
+marine engineering
+aerospace systems engineering
+biomechanical engineering
+environmental health engineering
+geotechnical engineering
+structural engineering
+water resources engineering
+power systems engineering
+control systems engineering
+telecommunications engineering
+network engineering
+mechatronics engineering
+renewable energy engineering
+sustainable engineering
+manufacturing engineering
+process engineering
+cybersecurity
+network and information technology
+engineering management
+#sciencemajors
+biology
+chemistry
+physics
+mathematics
+environmental science
+geology
+astronomy
+computer science
+neuroscience
+psychology
+biochemistry
+microbiology
+marine biology
+genetics
+ecology
+zoology
+biotechnology
+nutrition and dietetics
+materials science
+environmental engineering
+#commercemajors
+accounting
+finance
+marketing
+economics
+human resource management
+international relations
+international business
+entrepreneurship
+supply chain management
+corporate finance
+banking and finance
+real estate
+risk management
+business analytics
+sales and retail management
+hospitality and tourism management
+e-commerce
+advertising and public relations
+operations management
+project management
+#artsmajors
+english literature
+history
+political science
+sociology
+anthropology
+philosophy
+fine arts
+theater and drama
+music
+film studies
+media and communication
+journalism
+creative writing
+linguistics
+visual arts
+graphic design
+cultural studies
+gender studies
+archaeology

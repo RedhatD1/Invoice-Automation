@@ -2,6 +2,15 @@ import pandas as pd
 import uuid
 
 
+"""
+def export_csv(data):
+
+This function takes the dictionary variable 'data' as input
+This input variable is contains all the detected sections as a dictionary
+The function then flattens the dictionary and exports it as a CSV file
+All missing data are handled accordingly
+"""
+
 def export_csv(data):
     # Flatten candidate info and extract the first element from education_info
     flattened_data = []
