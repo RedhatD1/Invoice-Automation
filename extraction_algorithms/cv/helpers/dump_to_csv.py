@@ -26,6 +26,7 @@ def export_csv(data) -> str:
         else:
             education_info = {}
         row = {
+            'rank': str(candidate.get('rank', '')),
             'name': str(candidate_info.get('name', '')),
             'phone': str(candidate_info.get('phone', '')),
             'email': str(candidate_info.get('email', '')),
@@ -34,7 +35,6 @@ def export_csv(data) -> str:
             'cgpa': str(education_info.get('cgpa', '')),
             'experience': str(candidate.get('experience', '')),
             'score': str(candidate.get('score', '')),
-            'rank': str(candidate.get('rank', '')),
         }
         flattened_data.append(row)
 
