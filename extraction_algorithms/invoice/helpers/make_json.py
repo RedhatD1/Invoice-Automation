@@ -8,13 +8,24 @@ from helpers.general_helper import remove_space_from_text
 def get(file_name: str) -> dict:
     file_path = "assets/invoices/" + file_name
     invoice_text = pdf_reader_modes.read_invoice(file_path)
+    # Plaintext extraction
     ml_dict = runner.ner_extraction(invoice_text)
+    # name, shop_name and shipping_address extraction based on ML
+    # Can be improved by training model on a larger dataset
+    # Current model was trained on only 3 Invoices
     invoice_tables = pdf_reader_modes.read_tables(file_path)
+    # Using camelot we extract the table-like part only
     result_table = extract_table.result(invoice_tables)
+    """
+    A camelot extraction can result in multiple tables
+    From pattern matching on the dataframe, we can target tables containing
+    specific keywords like 'item', 'product', 'description', 'quantity' etc
+    which are usually present in invoice tables
+    """
     result_table = standardize_df(result_table)
+    # Clean the dataframe to handle invalid cells
 
-    # try catch block for ML
-    try:
+    try: # try catch block for ML, to handle KeyError
         if ml_dict['CUSTOMER'] != '':
             name = ml_dict['CUSTOMER']
         else:
@@ -36,7 +47,8 @@ def get(file_name: str) -> dict:
         shipping_address = ''
 
     billing_address = invoice_details_extraction.extract_billing_address(invoice_text)
-
+    # ReGeX based extraction
+    # Usually if more than one address is present in the invoice, the billing address is separately mentioned
     return {
         "customer_info": {
             "name": name,
