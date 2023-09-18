@@ -16,7 +16,7 @@ source env/bin/activate
 ```bash
 pip install spacy
 python -m spacy download en_core_web_sm
-python trainer.py
+python 'extraction_algorithms/invoice/helpers/ML_Entity_Detection/trainer.py'
 ```
 Here, training_data.json contains the training data, increase dataset size for better results
 **Installing requirements**
