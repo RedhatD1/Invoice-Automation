@@ -7,7 +7,7 @@ import os
 # print(os.getcwd())
 
 # Assuming your JSON file is named 'training_data.json'
-json_file_path = 'training_data.json'
+json_file_path = 'extraction_algorithms/invoice/helpers/ML_Entity_Detection/training_data.json'
 
 with open(json_file_path, 'r', encoding='utf-8') as f:
     data = json.load(f)
@@ -38,5 +38,5 @@ for _ in range(n_iter):
         nlp.update([gold], drop=0.3)
 
 
-output_dir = 'model'
+output_dir = 'extraction_algorithms/invoice/helpers/ML_Entity_Detection/model'
 nlp.to_disk(output_dir)
