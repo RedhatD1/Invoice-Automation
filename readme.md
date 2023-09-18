@@ -25,7 +25,7 @@ Here, training_data.json contains the training data, increase dataset size for b
 pip install certifi
 pip install --use-pep517 -r requirements.txt
 ```
-For camelot error, use:
+For error, use:
 ```bash
 pip3 install 'camelot-py[cv]', 'fastapi[all]', bs4, pdfplumber, langchain
 ```
