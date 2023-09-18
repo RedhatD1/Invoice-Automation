@@ -7,29 +7,29 @@ Put cv.pdf in "assets/cv" directory --> PDF File
 Job description will be provided on the API end.
 
 # Setup
+**Create and activate virtual environment**
 ```bash
 python3 -m venv env
 source venv/bin/activate
-pip3 install -r requirements.txt
 ```
-For camelot error, use:
-```bash
-pip3 install 'camelot-py[cv]'
-```
-For SSL error:
-```bash
-pip install certifi
-pip install --use-pep517 -r requirements.txt
-```
-Ignore spacy en_core_web_sm error for now
-
-# Running the server
-You might need to have Java runtime installed (Check if it runs without it).
 **Generate ML Model:**
 ```bash
 python -m spacy download en_core_web_sm
 python trainer.py
 ```
+Here, training_data.json contains the training data, increase dataset size for better results
+**Installing requirements**
+```bash
+pip install certifi
+pip install --use-pep517 -r requirements.txt
+```
+For camelot error, use:
+```bash
+pip3 install 'camelot-py[cv]'
+```
+
+# Running the server
+_You might need to have Java runtime installed (Check if it runs without it)._
 **Run Server:**
 ```bash
 uvicorn main:app --reload
