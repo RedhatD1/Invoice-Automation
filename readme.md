@@ -14,6 +14,7 @@ source env/bin/activate
 ```
 **Generate ML Model:**
 ```bash
+pip install spacy
 python -m spacy download en_core_web_sm
 python trainer.py
 ```
