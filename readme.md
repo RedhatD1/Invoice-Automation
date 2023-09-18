@@ -2,9 +2,16 @@
 Takes a PDF as an input and returns a form with the extracted data. It scans the PDF and uses pattern matching and machine learning to extract the data.
 
 ## Where to put the files
-Put invoices in "assets/invoices/" directory --> PDF File  
-Put cv.pdf in "assets/cv" directory --> PDF File  
-Job description will be provided on the API end.
+Put invoices in "assets/invoices/" directory --> PDF File  <br>
+Put cv.pdf in "assets/cv" directory --> PDF File  <br>
+Job description will be provided on the API end. <br>
+
+**You must have 
+- /logs
+- /assets/invoices
+- /assets/cv
+- /assets/dump
+directories in the root folder. <br>**
 
 # Setup
 **Create and activate virtual environment**
@@ -12,7 +19,7 @@ Job description will be provided on the API end.
 python3 -m venv env
 source env/bin/activate
 ```
-make sure it is python 3.11.4 or better
+make sure it is python 3.11.4 or better<br>
 **Generate ML Model:**
 ```bash
 pip install spacy
@@ -24,12 +31,18 @@ Here, training_data.json contains the training data, increase dataset size for b
 ```bash
 pip install certifi
 pip install --use-pep517 -r requirements.txt
+pip install 'fastapi[all]'
+
+pip3 install 'camelot-py[cv]'
+pip3 install bs4, pdfplumber, langchain, scikit-learn, pandas
 ```
-For error, use:
+For uvicorn error:
 ```bash
-pip3 install 'camelot-py[cv]', 'fastapi[all]', bs4, pdfplumber, langchain
+pip3 install uvicorn
+pip3 install pydantic==1.10.11
 ```
 
+Install any missing packages if any error occurs
 # Running the server
 _You might need to have Java runtime installed (Check if it runs without it)._
 **Run Server:**
