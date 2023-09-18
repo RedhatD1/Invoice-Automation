@@ -34,7 +34,7 @@ pip install --use-pep517 -r requirements.txt
 pip install 'fastapi[all]'
 
 pip3 install 'camelot-py[cv]'
-pip3 install bs4, pdfplumber, langchain, scikit-learn, pandas
+pip3 install bs4 pdfplumber langchain scikit-learn pandas
 ```
 For uvicorn error:
 ```bash
