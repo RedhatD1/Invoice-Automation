@@ -10,7 +10,7 @@ Job description will be provided on the API end.
 **Create and activate virtual environment**
 ```bash
 python3 -m venv env
-source venv/bin/activate
+source env/bin/activate
 ```
 **Generate ML Model:**
 ```bash
