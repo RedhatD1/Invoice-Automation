@@ -27,7 +27,7 @@ pip install --use-pep517 -r requirements.txt
 ```
 For camelot error, use:
 ```bash
-pip3 install 'camelot-py[cv]'
+pip3 install 'camelot-py[cv]', 'fastapi[all]', bs4, pdfplumber, langchain
 ```
 
 # Running the server
