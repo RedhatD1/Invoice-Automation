@@ -12,6 +12,7 @@ Job description will be provided on the API end.
 python3 -m venv env
 source env/bin/activate
 ```
+make sure it is python 3.11.4 or better
 **Generate ML Model:**
 ```bash
 pip install spacy
@@ -40,10 +41,6 @@ uvicorn main:app --reload
 pip3 install <library_name>
 ```
 # Updating requirements.txt
-```bash
-pip3 freeze > requirements.txt
-```
-In case of some weird path instead of the package version:
 ```bash
 pip list --format=freeze > requirements.txt
 ```
