@@ -1,4 +1,4 @@
-assets/cv/*.pdf
+assets/cv/
 assets/invoices/
 assets/dump
 Invoice_Automation/
@@ -168,3 +168,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 /assets/*
+!/assets/cv/
+!/assets/invoices/
+!/assets/dump/
