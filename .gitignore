@@ -169,8 +169,5 @@ cython_debug/
 #.idea/
 /assets/*
 !/assets/cv/
-/assets/cv/*
 !/assets/invoices/
-/assets/invoices/*
 !/assets/dump/
-/assets/dump/*
