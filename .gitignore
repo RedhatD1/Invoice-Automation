@@ -1,8 +1,8 @@
-assets/cv/
+assets/cv/*.pdf
 assets/invoices/
 assets/dump
 Invoice_Automation/
-logs/
+/logs/*.txt
 /extraction_algorithms/old_regex/test.py
 .DS_Store
 .idea
@@ -45,7 +45,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit .gitkeep / coverage reports
 htmlcov/
 .tox/
 .nox/
@@ -168,6 +168,3 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 /assets/*
-!/assets/cv/
-!/assets/invoices/
-!/assets/dump/
