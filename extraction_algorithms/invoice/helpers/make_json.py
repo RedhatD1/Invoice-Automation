@@ -24,7 +24,9 @@ def get(file_name: str) -> dict:
     """
     result_table = standardize_df(result_table)
     # Clean the dataframe to handle invalid cells
-
+    name = ''
+    shop_name = ''
+    shipping_address = ''
     try: # try catch block for ML, to handle KeyError
         if ml_dict['CUSTOMER'] != '':
             name = ml_dict['CUSTOMER']

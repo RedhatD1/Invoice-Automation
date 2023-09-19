@@ -42,7 +42,7 @@ def extract_info(pdf_file_path: str, job_description: str) -> Dict:
     # A perfect candidate will have a score of 50+
     score = round(score, 2)
 
-    return {
+    res = {
         "candidate_info": {
             "name": applicant_name,
             "phone": applicant_phone,
@@ -55,4 +55,5 @@ def extract_info(pdf_file_path: str, job_description: str) -> Dict:
         "score": score,
         "rank": "--"
     }
+    return res
     # Json Response
